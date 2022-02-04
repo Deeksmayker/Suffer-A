@@ -11,12 +11,12 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        
+        HorizontalRaw = Input.GetAxisRaw("Horizontal");
+        VerticalRaw = Input.GetAxisRaw("Vertical");
     }
 
     private void FixedUpdate()
     {
-        HorizontalRaw = Input.GetAxisRaw("Horizontal");
-        VerticalRaw = Input.GetAxisRaw("Vertical");
+        
     }
 }

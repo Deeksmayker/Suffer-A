@@ -17,7 +17,6 @@ namespace Movement
 
         private void FixedUpdate()
         {
-            Debug.Log(PlayerInput.HorizontalRaw);
             _rigidbody.velocity = new Vector2(PlayerInput.HorizontalRaw * speed, _rigidbody.velocity.y);
         }
     }
