@@ -841,7 +841,6 @@ GameObject:
   - component: {fileID: 1213088884}
   - component: {fileID: 1213088888}
   - component: {fileID: 1213088885}
-  - component: {fileID: 1213088889}
   - component: {fileID: 1213088890}
   m_Layer: 0
   m_Name: Player
@@ -883,12 +882,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213088883}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee70a5723d63a6f4da30904ab3fd25b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  minGroundNormalY: 0.65
+  gravityModifier: 1
+  velocity: {x: 0, y: 0}
+  speed: 10
 --- !u!50 &1213088886
 Rigidbody2D:
   serializedVersion: 4
@@ -932,26 +934,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213088883}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa9a1710a7de477485f33bc36f7daae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1213088889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213088883}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ce69bd046854487a726faadc06dd2b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minGroundNormalY: 0.65
-  gravityModifier: 1
-  velocity: {x: 0, y: 0}
+  jumpKey: 0
 --- !u!114 &1213088890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,7 +947,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213088883}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22176ddeb9ca4a1b8dec697357f6a8ea, type: 3}
   m_Name: 

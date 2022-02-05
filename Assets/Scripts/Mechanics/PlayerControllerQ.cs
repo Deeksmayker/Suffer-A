@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Mechanics
 {
-    public class PlayerController : KinematicObject
+    public class PlayerControllerQ : KinematicObject
     {
         public AudioClip jumpAudio;
         public AudioClip respawnAudio;

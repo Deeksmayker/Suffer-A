@@ -2,6 +2,7 @@
 
 namespace Mechanics
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class KinematicObject : MonoBehaviour
     {
         /// <summary>
@@ -131,7 +132,7 @@ namespace Mechanics
                 for (var i = 0; i < count; i++)
                 {
                     var currentNormal = hitBuffer[i].normal;
-
+                    
                     //is this surface flat enough to land on?
                     if (currentNormal.y > minGroundNormalY)
                     {

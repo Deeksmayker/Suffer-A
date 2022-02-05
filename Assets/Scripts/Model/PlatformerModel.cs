@@ -20,7 +20,7 @@ namespace DefaultNamespace.Model
         /// The main component which controls the player sprite, controlled 
         /// by the user.
         /// </summary>
-        public PlayerController player;
+        public PlayerControllerQ player;
 
         /// <summary>
         /// The spawn point in the scene.
