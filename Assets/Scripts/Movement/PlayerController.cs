@@ -1,21 +1,34 @@
 using System;
 using System.Collections;
 using DefaultNamespace;
+using DefaultNamespace.Model;
 using Mechanics;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Movement
 {
-    [RequireComponent(typeof(Rigidbody2D))]
     public class PlayerController : KinematicObject
     {
         [SerializeField] private float speed = 7;
+        
+        [SerializeField] private float jumpModifier = 1.5f;
+        [SerializeField] private float jumpTakeOffSpeed = 7f;
+        [SerializeField] private float jumpTime = 0.5f;
+        [SerializeField] private float jumpDeceleration = 0.5f;
+
+        [SerializeField] private float lungeSpeed = 7f;
+        [SerializeField] private float lungeDuration = 0.2f;
+        private int _currentLungeAirCount = Player.LungeAirCount;
+        
         private Vector2 _move;
+        
 
         private void Awake()
         {
-            PlayerInput.OnJumpKeyDown.AddListener(Jump);
+            PlayerInput.OnJumpKeyDown.AddListener(StartJump);
+            PlayerInput.OnJumpKeyUp.AddListener(StopJump);
+            PlayerInput.OnLungeKeyDown.AddListener(StartLunge);
         }
         
         protected override void Update()
@@ -23,6 +36,11 @@ namespace Movement
             if (!Player.ControlEnabled)
             {
                 return;
+            }
+
+            if (IsGrounded)
+            {
+                _currentLungeAirCount = Player.LungeAirCount;
             }
             
             HorizontalMove();
@@ -39,10 +57,65 @@ namespace Movement
             _move.x = PlayerInput.HorizontalRaw;
         }
 
-        private void Jump()
+        #region JumpLogic
+
+        private void StartJump()
         {
-            
+            if (IsGrounded)
+                StartCoroutine("Jump");
         }
+        
+        private IEnumerator Jump()
+        {
+            var duration = 0f;
+            while (duration < jumpTime)
+            {
+                velocity.y = jumpTakeOffSpeed * jumpModifier;
+                duration += Time.deltaTime;
+                yield return new WaitForFixedUpdate();
+            }
+
+            StartCoroutine(SlowStopJump());
+        }
+
+        private IEnumerator SlowStopJump()
+        {
+            while (velocity.y > 0)
+            {
+                velocity.y *= jumpDeceleration;
+                yield return new WaitForFixedUpdate();
+            }
+        }
+
+        private void StopJump()
+        {
+            StopCoroutine("Jump");
+            if (velocity.y > 0)
+                velocity.y = 0;
+        }
+
+        #endregion
+
+        private void StartLunge()
+        {
+            if (!IsGrounded)
+            {
+                if (_currentLungeAirCount == 0)
+                    return;
+                _currentLungeAirCount -= 1;
+            }
+            
+            StartCoroutine("Lunge");
+        }
+        
+        private IEnumerator Lunge()
+        {
+            Player.DisableControl();
+            Bounce(new Vector2(PlayerInput.HorizontalRaw * lungeSpeed, PlayerInput.VerticalRaw * lungeSpeed / 2));
+            yield return new WaitForSeconds(lungeDuration);
+            Player.EnableControl();
+        }
+        
     }
 }
 

@@ -18,7 +18,7 @@ namespace Mechanics
         /// <summary>
         /// The current velocity of the entity.
         /// </summary>
-        public Vector2 velocity;
+        protected Vector2 velocity;
 
         /// <summary>
         /// Is the entity currently sitting on a surface?
@@ -52,7 +52,7 @@ namespace Mechanics
         public void Bounce(Vector2 dir)
         {
             velocity.y = dir.y;
-            velocity.x = dir.x;
+            targetVelocity.x = dir.x;
         }
 
         /// <summary>
@@ -157,14 +157,15 @@ namespace Mechanics
                     else
                     {
                         //We are airborne, but hit something, so cancel vertical up and horizontal velocity.
-                        velocity.x *= 0;
-                        velocity.y = Mathf.Min(velocity.y, 0);
+                        //velocity.x *= 0;
+                       // velocity.y = Mathf.Min(velocity.y, 0);
                     }
                     //remove shellDistance from actual move distance.
                     var modifiedDistance = hitBuffer[i].distance - shellRadius;
                     distance = modifiedDistance < distance ? modifiedDistance : distance;
                 }
             }
+            
             body.position = body.position + move.normalized * distance;
         }
     }
