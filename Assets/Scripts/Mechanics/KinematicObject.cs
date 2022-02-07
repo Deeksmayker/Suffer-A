@@ -24,7 +24,7 @@ namespace Mechanics
         /// Is the entity currently sitting on a surface?
         /// </summary>
         /// <value></value>
-        public bool IsGrounded { get; private set; }
+        public bool IsGrounded { get; set; }
 
         protected Vector2 targetVelocity;
         protected Vector2 groundNormal;
@@ -105,7 +105,7 @@ namespace Mechanics
 
             velocity.x = targetVelocity.x;
 
-            IsGrounded = false;
+            //IsGrounded = false;
 
             var deltaPosition = velocity * Time.deltaTime;
 
@@ -136,7 +136,7 @@ namespace Mechanics
                     //is this surface flat enough to land on?
                     if (currentNormal.y > minGroundNormalY)
                     {
-                        IsGrounded = true;
+                        //IsGrounded = true;
                         // if moving up, change the groundNormal to new surface normal.
                         if (yMovement)
                         {
@@ -165,7 +165,14 @@ namespace Mechanics
                     distance = modifiedDistance < distance ? modifiedDistance : distance;
                 }
             }
-            
+
+            // if (yMovement)
+            // {
+            //     Debug.Log($"Distanse: {distance}");
+            //     Debug.Log($"Normalized move: {move.normalized}");
+            // }
+
+
             body.position = body.position + move.normalized * distance;
         }
     }

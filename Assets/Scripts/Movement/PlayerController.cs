@@ -20,6 +20,8 @@ namespace Movement
         [SerializeField] private float lungeSpeed = 7f;
         [SerializeField] private float lungeDuration = 0.2f;
         private int _currentLungeAirCount = Player.LungeAirCount;
+
+        
         
         private Vector2 _move;
         
@@ -29,6 +31,7 @@ namespace Movement
             PlayerInput.OnJumpKeyDown.AddListener(StartJump);
             PlayerInput.OnJumpKeyUp.AddListener(StopJump);
             PlayerInput.OnLungeKeyDown.AddListener(StartLunge);
+            GroundChecker.OnFloorMove.AddListener(MoveCharacterOnMovingFloor);
         }
         
         protected override void Update()
@@ -114,6 +117,11 @@ namespace Movement
             Bounce(new Vector2(PlayerInput.HorizontalRaw * lungeSpeed, PlayerInput.VerticalRaw * lungeSpeed / 2));
             yield return new WaitForSeconds(lungeDuration);
             Player.EnableControl();
+        }
+
+        private void MoveCharacterOnMovingFloor(Vector2 delta)
+        {
+            transform.position = new Vector3(transform.position.x + delta.x, transform.position.y + delta.y, transform.position.z);
         }
         
     }
