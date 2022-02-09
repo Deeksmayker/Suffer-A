@@ -21,8 +21,6 @@ namespace Movement
         [SerializeField] private float lungeDuration = 0.2f;
         private int _currentLungeAirCount = Player.LungeAirCount;
 
-        
-        
         private Vector2 _move;
         
 
@@ -58,6 +56,7 @@ namespace Movement
         private void HorizontalMove()
         {
             _move.x = PlayerInput.HorizontalRaw;
+            
         }
 
         #region JumpLogic
@@ -99,6 +98,8 @@ namespace Movement
 
         #endregion
 
+        #region LungeLogic
+
         private void StartLunge()
         {
             if (!IsGrounded)
@@ -121,9 +122,19 @@ namespace Movement
 
         private void MoveCharacterOnMovingFloor(Vector2 delta)
         {
-            transform.position = new Vector3(transform.position.x + delta.x, transform.position.y + delta.y, transform.position.z);
+            var currentPosition = transform.position;
+            transform.position = new Vector3(currentPosition.x + delta.x, currentPosition.y + delta.y, currentPosition.z);
         }
-        
+
+        #endregion
+
+        #region Getters
+
+        public Vector2 GetCurrentMove() => _move;
+        public Vector2 GetCurrentVelocity() => velocity;
+
+        #endregion
+
     }
 }
 

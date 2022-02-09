@@ -18,7 +18,8 @@ namespace Camera
             var desiredPosition = target.position + offset;
             var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
 
-            transform.position = smoothedPosition;
+            transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, -100);
+            
         }
     }
 }
