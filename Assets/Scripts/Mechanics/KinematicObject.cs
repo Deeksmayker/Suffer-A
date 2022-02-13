@@ -103,6 +103,8 @@ namespace Mechanics
             else
                 velocity += Physics2D.gravity * Time.deltaTime;
 
+            velocity.y = velocity.y <= -20 ? -20f : velocity.y;
+
             velocity.x = targetVelocity.x;
 
             //IsGrounded = false;

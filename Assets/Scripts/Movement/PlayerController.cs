@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using DefaultNamespace;
-using DefaultNamespace.Model;
 using Mechanics;
 using UnityEngine;
 using UnityEngine.Events;
+using PlayerPrefs = DefaultNamespace.PlayerPrefs;
 
 namespace Movement
 {
@@ -19,7 +19,7 @@ namespace Movement
 
         [SerializeField] private float lungeSpeed = 7f;
         [SerializeField] private float lungeDuration = 0.2f;
-        private int _currentLungeAirCount = Player.LungeAirCount;
+        private int _currentLungeAirCount = PlayerPrefs.LungeAirCount;
 
         private Vector2 _move;
         
@@ -34,18 +34,23 @@ namespace Movement
         
         protected override void Update()
         {
-            if (!Player.ControlEnabled)
+            if (!PlayerPrefs.ControlEnabled)
             {
                 return;
             }
 
             if (IsGrounded)
             {
-                _currentLungeAirCount = Player.LungeAirCount;
+                _currentLungeAirCount = PlayerPrefs.LungeAirCount;
             }
             
             HorizontalMove();
             base.Update();
+        }
+
+        private void LateUpdate()
+        {
+            Reflect();
         }
 
         protected override void ComputeVelocity()
@@ -114,10 +119,11 @@ namespace Movement
         
         private IEnumerator Lunge()
         {
-            Player.DisableControl();
+            PlayerPrefs.DisableControl();
             Bounce(new Vector2(PlayerInput.HorizontalRaw * lungeSpeed, PlayerInput.VerticalRaw * lungeSpeed / 2));
             yield return new WaitForSeconds(lungeDuration);
-            Player.EnableControl();
+            PlayerPrefs.EnableControl();
+            StartCoroutine(SlowStopJump());
         }
 
         private void MoveCharacterOnMovingFloor(Vector2 delta)
@@ -135,6 +141,16 @@ namespace Movement
 
         #endregion
 
+        
+        private void Reflect()
+        {
+            if (_move.x > 0 && !PlayerPrefs.FaceRight ||
+                _move.x < 0 && PlayerPrefs.FaceRight)
+            {
+                transform.localScale *= new Vector2(-1, 1);
+                PlayerPrefs.FaceRight = !PlayerPrefs.FaceRight;
+            }
+        }
     }
 }
 

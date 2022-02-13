@@ -8,6 +8,11 @@ namespace Camera
         [SerializeField] private Vector3 offset;
         [SerializeField] private float smoothSpeed = 10f;
 
+        private void Awake()
+        {
+            //Cursor.visible = false;
+        }
+
         void FixedUpdate()
         {
             TrackPlayer();

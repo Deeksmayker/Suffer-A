@@ -2,6 +2,7 @@
 using DefaultNamespace;
 using Movement;
 using UnityEngine;
+using PlayerPrefs = DefaultNamespace.PlayerPrefs;
 
 namespace Mechanics
 {
@@ -11,7 +12,7 @@ namespace Mechanics
         {
             if (col.tag != "Player")
                 return;
-            col.GetComponent<PlayerController>().Teleport(Player.SpawnPoint);
+            col.GetComponent<PlayerController>().Teleport(PlayerPrefs.SpawnPoint);
         }
     }
 }
