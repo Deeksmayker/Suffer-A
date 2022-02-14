@@ -1,7 +1,6 @@
 ﻿using System;
 using DefaultNamespace;
 using UnityEngine;
-using PlayerPrefs = DefaultNamespace.PlayerPrefs;
 
 namespace Mechanics
 {
@@ -10,7 +9,7 @@ namespace Mechanics
         private void OnTriggerEnter2D(Collider2D col)
         {
             if (col.tag == "Player")
-                PlayerPrefs.SetSpawnPoint(transform.position);
+                PlayerPreferences.SetSpawnPoint(transform.position);
         }
     }
 }

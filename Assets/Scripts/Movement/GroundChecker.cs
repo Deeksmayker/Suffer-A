@@ -4,7 +4,6 @@ using DefaultNamespace;
 using Mechanics;
 using UnityEngine;
 using UnityEngine.Events;
-using PlayerPrefs = DefaultNamespace.PlayerPrefs;
 
 namespace Movement
 {
@@ -63,7 +62,7 @@ namespace Movement
         private IEnumerator MakeCoyoteTime()
         {
             _coroutineRunning = true;
-            yield return new WaitForSeconds(PlayerPrefs.CoyoteTime);
+            yield return new WaitForSeconds(PlayerPreferences.CoyoteTime);
             _player.IsGrounded = false;
             _coroutineRunning = false;
         }

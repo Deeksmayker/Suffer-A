@@ -4,7 +4,6 @@ using DefaultNamespace;
 using Mechanics;
 using UnityEngine;
 using UnityEngine.Events;
-using PlayerPrefs = DefaultNamespace.PlayerPrefs;
 
 namespace Movement
 {
@@ -19,7 +18,7 @@ namespace Movement
 
         [SerializeField] private float lungeSpeed = 7f;
         [SerializeField] private float lungeDuration = 0.2f;
-        private int _currentLungeAirCount = PlayerPrefs.LungeAirCount;
+        private int _currentLungeAirCount = PlayerPreferences.LungeAirCount;
 
         private Vector2 _move;
         
@@ -34,14 +33,14 @@ namespace Movement
         
         protected override void Update()
         {
-            if (!PlayerPrefs.ControlEnabled)
+            if (!PlayerPreferences.ControlEnabled)
             {
                 return;
             }
 
             if (IsGrounded)
             {
-                _currentLungeAirCount = PlayerPrefs.LungeAirCount;
+                _currentLungeAirCount = PlayerPreferences.LungeAirCount;
             }
             
             HorizontalMove();
@@ -119,10 +118,10 @@ namespace Movement
         
         private IEnumerator Lunge()
         {
-            PlayerPrefs.DisableControl();
+            PlayerPreferences.DisableControl();
             Bounce(new Vector2(PlayerInput.HorizontalRaw * lungeSpeed, PlayerInput.VerticalRaw * lungeSpeed / 2));
             yield return new WaitForSeconds(lungeDuration);
-            PlayerPrefs.EnableControl();
+            PlayerPreferences.EnableControl();
             StartCoroutine(SlowStopJump());
         }
 
@@ -144,11 +143,11 @@ namespace Movement
         
         private void Reflect()
         {
-            if (_move.x > 0 && !PlayerPrefs.FaceRight ||
-                _move.x < 0 && PlayerPrefs.FaceRight)
+            if (_move.x > 0 && !PlayerPreferences.FaceRight ||
+                _move.x < 0 && PlayerPreferences.FaceRight)
             {
                 transform.localScale *= new Vector2(-1, 1);
-                PlayerPrefs.FaceRight = !PlayerPrefs.FaceRight;
+                PlayerPreferences.FaceRight = !PlayerPreferences.FaceRight;
             }
         }
     }

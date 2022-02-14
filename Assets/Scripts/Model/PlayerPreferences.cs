@@ -2,7 +2,7 @@
 
 namespace DefaultNamespace
 {
-    public class PlayerPrefs
+    public class PlayerPreferences
     {
         public static Vector3 SpawnPoint { get; private set; }
         public static bool ControlEnabled { get; private set; } = true;
@@ -12,6 +12,8 @@ namespace DefaultNamespace
         public const float InAirCoyoteTime = 0.17f;
 
         public static bool FaceRight = true;
+
+        public static int Damage { get; private set; } = 4;
 
         public static void EnableControl()
         {
