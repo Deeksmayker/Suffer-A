@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &350640915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 350640916}
+  m_Layer: 0
+  m_Name: AttackCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &350640916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350640915}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.377, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 107537497407455088}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &107537497231867153
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,6 +160,7 @@ GameObject:
   - component: {fileID: 107537497407455102}
   - component: {fileID: 107537497407455103}
   - component: {fileID: 107537497407455090}
+  - component: {fileID: 5411342330160355748}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -150,6 +181,7 @@ Transform:
   m_Children:
   - {fileID: 107537497744979456}
   - {fileID: 107537497231867152}
+  - {fileID: 350640916}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -295,14 +327,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
-  gravityModifier: 3.3
+  gravityModifier: 4
   speed: 8
   jumpModifier: 1.5
   jumpTakeOffSpeed: 12
-  jumpTime: 0.25
+  jumpTime: 0.2
   jumpDeceleration: 0.85
   lungeSpeed: 20
   lungeDuration: 0.3
+--- !u!114 &5411342330160355748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107537497407455092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bbfb2a4c3a423dad6ff30455b879af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackStartPoint: {fileID: 350640916}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  attackCooldown: 0.2
+  rangeX: 2.25
+  rangeY: 1.26
+  attackEffect: {fileID: 6818635175928903557, guid: 7d0b95dfbd7545246afed271a8b347dc, type: 3}
 --- !u!1 &107537497744979457
 GameObject:
   m_ObjectHideFlags: 0

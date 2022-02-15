@@ -32,16 +32,17 @@ namespace DefaultNamespace.Fight
         {
             if (_canAttack == false)
                 yield break;    
-
+            Debug.Log(1);
             OnAttack.Invoke(false);
             _canAttack = false;
-            attackEffect.SetActive(true);
+            StartCoroutine(ShowAttackLine());
             
             var enemiesInRange =
                 Physics2D.OverlapBoxAll(attackStartPoint.position, new Vector2(rangeX, rangeY), 0, enemyLayer);
             foreach (var enemy in enemiesInRange)
             {
                 enemy.GetComponent<Enemy>().TakeDamage(PlayerPreferences.Damage);
+                Debug.Log(enemy.name);
             }
 
             yield return new WaitForSeconds(attackCooldown);
@@ -61,6 +62,13 @@ namespace DefaultNamespace.Fight
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(attackStartPoint.position, new Vector3(rangeX, rangeY, 1));
+        }
+
+        private IEnumerator ShowAttackLine()
+        {
+            attackEffect.SetActive(true);
+            yield return new WaitForSeconds(0.3f);
+            attackEffect.SetActive(false);
         }
     }
 }
