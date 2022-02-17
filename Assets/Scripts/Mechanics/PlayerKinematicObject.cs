@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DefaultNamespace;
+using UnityEngine;
 
 namespace Mechanics
 {
@@ -146,7 +147,7 @@ namespace Mechanics
                             currentNormal.x = 0;
                         }
                     }
-                    if (IsGrounded)
+                    if (PlayerPreferences.IsGrounded)
                     {
                         //how much of our velocity aligns with surface normal?
                         var projection = Vector2.Dot(velocity, currentNormal);

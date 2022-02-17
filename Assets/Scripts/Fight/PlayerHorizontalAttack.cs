@@ -7,6 +7,8 @@ namespace DefaultNamespace.Fight
 {
     public class PlayerAttack : MonoBehaviour
     {
+        public static UnityEvent OnEnemyHorizontalHit = new UnityEvent();
+        
         [SerializeField] private Transform attackStartPoint;
         [SerializeField] private LayerMask enemyLayer;
         //[SerializeField] private float attackDuration = 0.1f;
@@ -16,39 +18,37 @@ namespace DefaultNamespace.Fight
         [SerializeField] private GameObject attackEffect;
         private bool _canAttack = true;
 
-        public static UnityEvent<bool> OnAttack = new UnityEvent<bool>();
+        public static UnityEvent<bool> OnHorizontalCanAttack = new UnityEvent<bool>();
         
         private void Awake()
         {
-            PlayerInput.OnAttackKeyDown.AddListener(StartAttack);
+            PlayerInput.OnAttackKeyDown.AddListener(() => StartCoroutine(Attack()));
         }
 
-        private void StartAttack()
-        {
-            StartCoroutine(Attack());
-        }
-        
         private IEnumerator Attack()
         {
             if (_canAttack == false)
                 yield break;    
-            Debug.Log(1);
-            OnAttack.Invoke(false);
+
+            OnHorizontalCanAttack.Invoke(false);
             _canAttack = false;
             StartCoroutine(ShowAttackLine());
             
             var enemiesInRange =
                 Physics2D.OverlapBoxAll(attackStartPoint.position, new Vector2(rangeX, rangeY), 0, enemyLayer);
+            
+            if (enemiesInRange.Length != 0)
+                OnEnemyHorizontalHit.Invoke();
+            
             foreach (var enemy in enemiesInRange)
             {
                 enemy.GetComponent<Enemy>().TakeDamage(PlayerPreferences.Damage);
-                Debug.Log(enemy.name);
             }
 
             yield return new WaitForSeconds(attackCooldown);
             _canAttack = true;
             
-            OnAttack.Invoke(true);
+            OnHorizontalCanAttack.Invoke(true);
             // _canAttack = false;
             // attackTrigger.SetActive(true);
             // yield return new WaitForSeconds(attackDuration);
