@@ -20,14 +20,14 @@ namespace DefaultNamespace
         {
             _player = GetComponentInParent<PlayerController>();
             _animator = GetComponent<Animator>();
-            PlayerAttack.OnAttack.AddListener(SetAttack);
+            PlayerHorizontalAttack.OnHorizontalCanAttack.AddListener(SetAttack);
         }
 
         private void LateUpdate()
         {
             _animator.SetFloat(VelocityX, Math.Abs(_player.GetCurrentMove().x));
             _animator.SetFloat(VelocityY, _player.GetCurrentVelocity().y);
-            _animator.SetBool(Grounded, _player.IsGrounded);
+            _animator.SetBool(Grounded, PlayerPreferences.IsGrounded);
         }
 
         private void SetAttack(bool canAttack)

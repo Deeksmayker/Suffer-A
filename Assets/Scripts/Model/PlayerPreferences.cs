@@ -11,6 +11,7 @@ namespace DefaultNamespace
         public const float CoyoteTime = 0.05f;
         public const float InAirCoyoteTime = 0.17f;
 
+        public static bool IsGrounded;
         public static bool FaceRight = true;
 
         public static int Damage { get; private set; } = 4;

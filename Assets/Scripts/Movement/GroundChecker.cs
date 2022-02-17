@@ -9,7 +9,6 @@ namespace Movement
 {
     public class GroundChecker : MonoBehaviour
     {
-        private PlayerController _player;
         [SerializeField] private LayerMask floorLayer;
         [SerializeField] private BoxCollider2D boxCollider;
         [SerializeField] private float extraHeightText = 0.5f;
@@ -23,7 +22,6 @@ namespace Movement
 
         private void Awake()
         {
-            _player = GetComponentInParent<PlayerController>();
             _previousFloorPosition = Vector2.zero;
             StartCoroutine(CheckFloor());
         }
@@ -32,16 +30,6 @@ namespace Movement
         {
             CheckGrounded();
             
-        }
-
-        private void FixedUpdate()
-        {
-        }
-
-        private void LateUpdate()
-        {
-            
-
         }
 
         private void CheckGrounded()
@@ -53,17 +41,17 @@ namespace Movement
 
             var nowGrounded = _rayCastHit.collider != null;
 
-            if (_player.IsGrounded && !nowGrounded && !_coroutineRunning)
+            if (PlayerPreferences.IsGrounded && !nowGrounded && !_coroutineRunning)
                 StartCoroutine("MakeCoyoteTime");
             else if (!_coroutineRunning)
-                _player.IsGrounded = nowGrounded;
+                PlayerPreferences.IsGrounded = nowGrounded;
         }
 
         private IEnumerator MakeCoyoteTime()
         {
             _coroutineRunning = true;
             yield return new WaitForSeconds(PlayerPreferences.CoyoteTime);
-            _player.IsGrounded = false;
+            PlayerPreferences.IsGrounded = false;
             _coroutineRunning = false;
         }
 
@@ -71,7 +59,7 @@ namespace Movement
         {
             while (true)
             {
-                if (_player.IsGrounded && _rayCastHit)
+                if (PlayerPreferences.IsGrounded && _rayCastHit)
                 {
                     if (_previousFloorPosition == Vector2.zero)
                         _previousFloorPosition = _rayCastHit.collider.transform.position;

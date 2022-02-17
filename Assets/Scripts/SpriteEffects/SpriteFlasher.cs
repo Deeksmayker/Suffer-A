@@ -25,7 +25,8 @@ namespace DefaultNamespace.SpriteEffects
             _originalMaterial = sprite.material;
             sprite.material = flashMaterial;
             yield return new WaitForSeconds(flashDuration);
-            sprite.material = _originalMaterial;
+            if (sprite != null)
+                sprite.material = _originalMaterial;
         }
     }
 }

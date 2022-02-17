@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Mechanics
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class KinematicObject : MonoBehaviour
+    public class PlayerKinematicObject : MonoBehaviour
     {
         /// <summary>
         /// The minimum normal (dot product) considered suitable for the entity sit on.
@@ -25,7 +25,6 @@ namespace Mechanics
         /// Is the entity currently sitting on a surface?
         /// </summary>
         /// <value></value>
-        public bool IsGrounded { get; set; }
 
         protected Vector2 targetVelocity;
         protected Vector2 groundNormal;
@@ -87,7 +86,7 @@ namespace Mechanics
 
         protected virtual void Update()
         {
-            targetVelocity = Vector2.zero;
+            //targetVelocity = Vector2.zero;
             ComputeVelocity();
         }
 

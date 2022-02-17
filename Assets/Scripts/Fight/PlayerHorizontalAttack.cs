@@ -5,18 +5,18 @@ using UnityEngine.Events;
 
 namespace DefaultNamespace.Fight
 {
-    public class PlayerAttack : MonoBehaviour
+    public class PlayerHorizontalAttack : MonoBehaviour
     {
         public static UnityEvent OnEnemyHorizontalHit = new UnityEvent();
         
         [SerializeField] private Transform attackStartPoint;
-        [SerializeField] private LayerMask enemyLayer;
+        [SerializeField] protected LayerMask enemyLayer;
         //[SerializeField] private float attackDuration = 0.1f;
-        [SerializeField] private float attackCooldown = 0.2f;
-        [SerializeField] private float rangeX;
-        [SerializeField] private float rangeY;
-        [SerializeField] private GameObject attackEffect;
-        private bool _canAttack = true;
+        [SerializeField] protected float attackCooldown = 0.4f;
+        [SerializeField] protected float rangeX;
+        [SerializeField] protected float rangeY;
+        [SerializeField] protected GameObject attackEffect;
+        protected bool CanAttack = true;
 
         public static UnityEvent<bool> OnHorizontalCanAttack = new UnityEvent<bool>();
         
@@ -27,11 +27,11 @@ namespace DefaultNamespace.Fight
 
         private IEnumerator Attack()
         {
-            if (_canAttack == false)
+            if (CanAttack == false || PlayerInput.VerticalRaw != 0)
                 yield break;    
 
             OnHorizontalCanAttack.Invoke(false);
-            _canAttack = false;
+            CanAttack = false;
             StartCoroutine(ShowAttackLine());
             
             var enemiesInRange =
@@ -46,7 +46,7 @@ namespace DefaultNamespace.Fight
             }
 
             yield return new WaitForSeconds(attackCooldown);
-            _canAttack = true;
+            CanAttack = true;
             
             OnHorizontalCanAttack.Invoke(true);
             // _canAttack = false;
@@ -58,7 +58,7 @@ namespace DefaultNamespace.Fight
             // OnAttack.Invoke(true);
         }
 
-        private void OnDrawGizmosSelected()
+        protected void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(attackStartPoint.position, new Vector3(rangeX, rangeY, 1));

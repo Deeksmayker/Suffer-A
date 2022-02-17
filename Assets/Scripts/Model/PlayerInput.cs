@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using DefaultNamespace;
 using Movement;
 using UnityEngine;
 using UnityEngine.Events;
@@ -68,7 +69,7 @@ public class PlayerInput : MonoBehaviour
         var duration = 0f;
         while (duration < 0.17f)
         {
-            if (_player.IsGrounded)
+            if (PlayerPreferences.IsGrounded)
             {
                 OnJumpKeyDown.Invoke();
                 yield break;
