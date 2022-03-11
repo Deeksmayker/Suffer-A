@@ -6,7 +6,7 @@ namespace DefaultNamespace
     {
         public static Vector3 SpawnPoint { get; private set; }
         public static bool ControlEnabled { get; private set; } = true;
-        public static int LungeAirCount { get; private set; } = 1;
+        public static int MaxLungeAirCount { get; private set; } = 1;
         
         public const float CoyoteTime = 0.05f;
         public const float InAirCoyoteTime = 0.17f;
@@ -26,9 +26,9 @@ namespace DefaultNamespace
             ControlEnabled = false;
         }
 
-        public static void SetAirLungeCount(int value)
+        public static void SetMaxAirLungeCount(int value)
         {
-            LungeAirCount = value;
+            MaxLungeAirCount = value;
         }
 
         public static void SetSpawnPoint(Vector3 point)

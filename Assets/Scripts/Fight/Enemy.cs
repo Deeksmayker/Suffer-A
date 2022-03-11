@@ -13,6 +13,12 @@ namespace DefaultNamespace.Fight
         [SerializeField] protected int damage;
         private SpriteRenderer _sprite;
 
+        private void OnTriggerStay2D(Collider2D col)
+        {
+            if (!col.gameObject.CompareTag("Player"))
+                return;
+        }
+
         private void Awake()
         {
             _sprite = GetComponent<SpriteRenderer>();
@@ -25,6 +31,11 @@ namespace DefaultNamespace.Fight
             health -= dmg;
             if (health <= 0)
                 Die();
+        }
+
+        public virtual void DealDamage()
+        {
+            
         }
 
         public virtual void Die()

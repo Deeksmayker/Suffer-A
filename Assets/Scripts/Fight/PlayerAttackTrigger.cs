@@ -13,4 +13,4 @@ namespace DefaultNamespace.Fight
                     Debug.Log("FSD");
             }
     }
-}
+} 

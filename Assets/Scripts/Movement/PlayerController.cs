@@ -19,7 +19,9 @@ namespace Movement
 
         [SerializeField] private float lungeSpeed = 7f;
         [SerializeField] private float lungeDuration = 0.2f;
-        private int _currentLungeAirCount = PlayerPreferences.LungeAirCount;
+        [SerializeField] private float lungeCooldown = 0.2f;
+        private bool _canLunge = true;
+        private int _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
 
         private Vector2 _move;
         
@@ -44,7 +46,7 @@ namespace Movement
 
             if (PlayerPreferences.IsGrounded)
             {
-                _currentLungeAirCount = PlayerPreferences.LungeAirCount;
+                _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
             }
             
             HorizontalMove();
@@ -58,8 +60,6 @@ namespace Movement
 
         protected override void ComputeVelocity()
         {
-            Debug.Log(targetVelocity.x);
-
             if ((_move.x > 0 && PlayerInput.HorizontalRaw > 0 || _move.x < 0 && PlayerInput.HorizontalRaw < 0) && Math.Abs(targetVelocity.x) > speed)
             {
                 var deceleration = 0.995f;
@@ -131,19 +131,27 @@ namespace Movement
         
         private IEnumerator Lunge()
         {
+            if (!_canLunge)
+                yield break;
+            
+            Vector2 direction = Vector2.zero;
+            
+            if (PlayerInput.HorizontalRaw == 0 && PlayerInput.VerticalRaw == 0)
+                direction = new Vector2(PlayerPreferences.FaceRight ? lungeSpeed : -lungeSpeed, 0);
+            else
+                direction = new Vector2(PlayerInput.HorizontalRaw * lungeSpeed,
+                    PlayerInput.VerticalRaw * lungeSpeed / 2);
+            
             PlayerPreferences.DisableControl();
-            Bounce(new Vector2(PlayerInput.HorizontalRaw * lungeSpeed, PlayerInput.VerticalRaw * lungeSpeed / 2));
+            Bounce(direction);
             yield return new WaitForSeconds(lungeDuration);
             PlayerPreferences.EnableControl();
             StartCoroutine(SlowStopJump());
+            _canLunge = false;
+            yield return new WaitForSeconds(lungeCooldown);
+            _canLunge = true;
         }
-
-        private void MoveCharacterOnMovingFloor(Vector2 delta)
-        {
-            var currentPosition = transform.position;
-            transform.position = new Vector3(currentPosition.x + delta.x, currentPosition.y + delta.y, currentPosition.z);
-        }
-
+        
         #endregion
 
         private IEnumerator BounceOnHorizontalHit()
@@ -159,7 +167,7 @@ namespace Movement
 
         private void BounceOnDownHit()
         {
-            PlayerPreferences.SetAirLungeCount(1);
+            _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
             var bouncePower = 20;
             Bounce(new Vector2(0, bouncePower));
             StartCoroutine(SlowStopJump());
@@ -181,6 +189,12 @@ namespace Movement
                 transform.Rotate(0f, 180f, 0f);
                 PlayerPreferences.FaceRight = !PlayerPreferences.FaceRight;
             }
+        }
+        
+        private void MoveCharacterOnMovingFloor(Vector2 delta)
+        {
+            var currentPosition = transform.position;
+            transform.position = new Vector3(currentPosition.x + delta.x, currentPosition.y + delta.y, currentPosition.z);
         }
     }
 }
