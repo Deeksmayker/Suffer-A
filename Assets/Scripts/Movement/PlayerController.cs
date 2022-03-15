@@ -48,7 +48,7 @@ namespace Movement
             {
                 _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
             }
-            
+
             HorizontalMove();
             base.Update();
         }
@@ -195,6 +195,15 @@ namespace Movement
         {
             var currentPosition = transform.position;
             transform.position = new Vector3(currentPosition.x + delta.x, currentPosition.y + delta.y, currentPosition.z);
+        }
+
+        public IEnumerator WalkToDirection(int direction)
+        {
+            while (!PlayerPreferences.ControlEnabled)
+            {
+                _move.x = direction;
+                yield return null;
+            }
         }
     }
 }

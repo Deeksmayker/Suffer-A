@@ -11,6 +11,7 @@ namespace Camera
         private void Awake()
         {
             //Cursor.visible = false;
+            DontDestroyOnLoad(gameObject);
         }
 
         void FixedUpdate()
