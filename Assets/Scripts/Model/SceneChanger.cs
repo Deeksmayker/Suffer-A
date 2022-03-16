@@ -16,7 +16,7 @@ namespace DefaultNamespace
         private void OnTriggerEnter2D(Collider2D col)
         {
             var playerController = col.gameObject.GetComponent<PlayerController>();
-            if (playerController == null)
+            if (playerController == null || !PlayerPreferences.ControlEnabled)
                 return;
             DontDestroyOnLoad(col.gameObject);
             _spawnPointName = gameObject.name;
@@ -26,21 +26,16 @@ namespace DefaultNamespace
         private IEnumerator LoadRoom(PlayerController playerController)
         {
             DontDestroyOnLoad(gameObject);
-            var a = transitionTime;
-            
+
             animator.SetTrigger("Start");
             PlayerPreferences.DisableControl();
-            StartCoroutine(playerController.WalkToDirection(1));
+            StartCoroutine(playerController.WalkToDirection(PlayerPreferences.FaceRight ? 1 : -1));
             
-            yield return new WaitForSeconds(a);
+            yield return new WaitForSeconds(transitionTime);
 
             var asyncLoader = SceneManager.LoadSceneAsync(sceneIndex);
             while (!asyncLoader.isDone)
                 yield return null;
-            
-            //playerController.transform.position = GameObject.Find(_spawnPointName).transform.position;
-            
-            
         }
 
         private void Start()
@@ -48,22 +43,27 @@ namespace DefaultNamespace
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        private void OnDestroy()
         {
-            StartCoroutine(NewLoad());
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
-        private IEnumerator NewLoad()
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            Debug.Log(234);
+            StartCoroutine(OnSceneLoad());
+        }
+
+        private IEnumerator OnSceneLoad()
+        {
             var player = GameObject.FindWithTag("Player");
-            Debug.Log(GameObject.Find(_spawnPointName).transform.position);
-            player.transform.position = GameObject.Find(_spawnPointName + "a").transform.position;
-            animator.SetTrigger("Stop");
-            Debug.Log(44);
+            
+            player.transform.position = GameObject.Find(_spawnPointName + "Spawn").transform.position;
+
             yield return new WaitForSeconds(transitionTime);
             
             PlayerPreferences.EnableControl();
+
+            Destroy(gameObject);
         }
     }
 }

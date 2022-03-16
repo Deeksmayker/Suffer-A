@@ -8,10 +8,11 @@ namespace Camera
         [SerializeField] private Vector3 offset;
         [SerializeField] private float smoothSpeed = 10f;
 
-        private void Awake()
+        private void Start()
         {
             //Cursor.visible = false;
-            DontDestroyOnLoad(gameObject);
+            if (target == null)
+                target = GameObject.FindWithTag("Player").transform;
         }
 
         void FixedUpdate()

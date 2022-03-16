@@ -7,7 +7,7 @@ namespace DefaultNamespace
     {
         private void Awake()
         {
-            DontDestroyOnLoad(gameObject);
+            
         }
     }
 }
