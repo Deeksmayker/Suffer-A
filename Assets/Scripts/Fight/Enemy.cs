@@ -11,6 +11,7 @@ namespace DefaultNamespace.Fight
         
         [SerializeField] protected int health;
         [SerializeField] protected int damage;
+        [SerializeField] protected float speed;
         private SpriteRenderer _sprite;
 
         private void OnTriggerStay2D(Collider2D col)
