@@ -12,6 +12,7 @@ namespace DefaultNamespace.SpriteEffects
         private void Awake()
         {
             Fight.Enemy.OnEnemyDamaged.AddListener(StartFlash);
+            //GlobalEvents.OnPlayerDamaged.AddListener(StartFlash);
         }
 
         private void StartFlash(GameObject obj)

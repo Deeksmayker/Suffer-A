@@ -1,16 +1,24 @@
 ﻿using System;
 using System.Collections;
 using Movement;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace DefaultNamespace
 {
-    public class SceneChanger : MonoBehaviour
+    public class RoomTransition : MonoBehaviour
     {
+        private enum Direction
+        {
+            Right = 1,
+            Left = -1
+        }
+        
         [SerializeField] private int sceneIndex;
         [SerializeField] private Animator animator;
         [SerializeField] private float transitionTime;
+        [SerializeField] Direction moveDirection;
         private string _spawnPointName;
 
         private void OnTriggerEnter2D(Collider2D col)
@@ -29,7 +37,7 @@ namespace DefaultNamespace
 
             animator.SetTrigger("Start");
             PlayerPreferences.DisableControl();
-            StartCoroutine(playerController.WalkToDirection(PlayerPreferences.FaceRight ? 1 : -1));
+            StartCoroutine(playerController.WalkToDirection((int)moveDirection));
             
             yield return new WaitForSeconds(transitionTime);
 

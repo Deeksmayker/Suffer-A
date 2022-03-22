@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 107537497407455090}
   - component: {fileID: 5411342330160355748}
   - component: {fileID: 1226655751}
+  - component: {fileID: -5620941944247967656}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -291,7 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   gravityModifier: 4
-  speed: 8
+  speed: 5
   jumpModifier: 1.5
   jumpTakeOffSpeed: 12
   jumpTime: 0.2
@@ -341,6 +342,19 @@ MonoBehaviour:
   rangeY: 2.3
   upAttackEffect: {fileID: 6818635175064211519}
   downAttackEffect: {fileID: 6818635174553402169}
+--- !u!114 &-5620941944247967656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107537497407455092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5164a805b6d347e08a5ede0ee246433e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeStopDuration: 0.1
 --- !u!1 &107537497744979457
 GameObject:
   m_ObjectHideFlags: 0

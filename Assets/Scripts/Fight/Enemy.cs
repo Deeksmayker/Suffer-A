@@ -1,5 +1,6 @@
 ﻿using System;
 using Mechanics;
+using Movement;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,14 +11,16 @@ namespace DefaultNamespace.Fight
         public static UnityEvent<GameObject> OnEnemyDamaged = new UnityEvent<GameObject>();
         
         [SerializeField] protected int health;
-        [SerializeField] protected int damage;
+        [SerializeField] protected int damage = 1;
         [SerializeField] protected float speed;
         private SpriteRenderer _sprite;
 
         private void OnTriggerStay2D(Collider2D col)
         {
-            if (!col.gameObject.CompareTag("Player"))
+            if (col.gameObject.GetComponent<PlayerController>() == null || !PlayerPreferences.CanTakeDamage)
                 return;
+            
+            GlobalEvents.OnPlayerDamaged.Invoke(damage);
         }
 
         private void Awake()

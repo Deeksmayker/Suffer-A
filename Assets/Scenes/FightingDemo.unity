@@ -292,7 +292,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2686345, y: -0.13914168}
+  m_Offset: {x: -0.25178182, y: -0.1784647}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -303,7 +303,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.462731, y: 0.6832912}
+  m_Size: {x: 0.27922368, y: 0.6046452}
   m_EdgeRadius: 0
 --- !u!50 &822822052
 Rigidbody2D:
@@ -403,8 +403,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56363e1ecf8247dfa00431c06cb3fb13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 50
   damage: 3
+  speed: 0
 --- !u!95 &978775286 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 827000699055455737, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
@@ -1130,8 +1131,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1649345196528112659, guid: f78ef2bed3bc1874f91a361c8711370c, type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649345196528112659, guid: f78ef2bed3bc1874f91a361c8711370c, type: 3}
       propertyPath: orthographic size
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1649345196528112876, guid: f78ef2bed3bc1874f91a361c8711370c, type: 3}
       propertyPath: m_RootOrder
@@ -1573,5 +1578,9 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 978775286}
+    - target: {fileID: 6013241788206245671, guid: 73b9a6a342a4450488803433dce5242c, type: 3}
+      propertyPath: moveDirection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73b9a6a342a4450488803433dce5242c, type: 3}
