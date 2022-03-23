@@ -13,31 +13,31 @@ namespace DefaultNamespace.Fight
         [SerializeField] protected LayerMask enemyLayer;
         //[SerializeField] private float attackDuration = 0.1f;
         [SerializeField] protected float attackCooldown = 0.4f;
-        [SerializeField] protected float rangeX;
-        [SerializeField] protected float rangeY;
+        [SerializeField] protected float horizontalRangeX, horizontalRangeY;
+        [SerializeField] protected float verticalRangeX, verticalRangeY;
         [SerializeField] protected GameObject upAttackEffect, downAttackEffect;
         protected bool CanAttack = true;
 
         private void Awake()
         {
-            PlayerInput.OnAttackKeyDown.AddListener(() => StartCoroutine(Attack()));
+            PlayerInGameInput.OnAttackKeyDown.AddListener(() => StartCoroutine(Attack()));
         }
 
         private IEnumerator Attack()
         {
-            var upAttack = PlayerInput.VerticalRaw == 1;
+            var IsUpAttack = PlayerInGameInput.VerticalRaw == 1;
             
-            if (CanAttack == false || PlayerInput.VerticalRaw == 0 || (!upAttack && PlayerPreferences.IsGrounded))
+            if (CanAttack == false || PlayerInGameInput.VerticalRaw == 0 || (!IsUpAttack && PlayerPreferences.IsGrounded))
                 yield break;
             
             CanAttack = false;
             
-            StartCoroutine(ShowAttackLine(upAttack ? upAttackEffect : downAttackEffect));
+            StartCoroutine(ShowAttackLine(IsUpAttack ? upAttackEffect : downAttackEffect));
 
-            var currentAttackPoint = upAttack ? upAttackStartPoint : downAttackStartPoint;
+            var currentAttackPoint = IsUpAttack ? upAttackStartPoint : downAttackStartPoint;
             
             var enemiesInRange =
-                Physics2D.OverlapBoxAll(currentAttackPoint.position, new Vector2(rangeX, rangeY), 0, enemyLayer);
+                Physics2D.OverlapBoxAll(currentAttackPoint.position, new Vector2(horizontalRangeX, horizontalRangeY), 0, enemyLayer);
             
             if (enemiesInRange.Length != 0)
                 OnEnemyVerticalHit.Invoke();
@@ -54,8 +54,8 @@ namespace DefaultNamespace.Fight
         protected void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(upAttackStartPoint.position, new Vector3(rangeX, rangeY, 1));
-            Gizmos.DrawWireCube(downAttackStartPoint.position, new Vector3(rangeX, rangeY, 1));
+            Gizmos.DrawWireCube(upAttackStartPoint.position, new Vector3(horizontalRangeX, horizontalRangeY, 1));
+            Gizmos.DrawWireCube(downAttackStartPoint.position, new Vector3(horizontalRangeX, horizontalRangeY, 1));
         }
 
         private IEnumerator ShowAttackLine(GameObject line)

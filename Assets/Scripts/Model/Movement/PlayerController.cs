@@ -20,6 +20,10 @@ namespace Movement
         [SerializeField] private float lungeSpeed = 7f;
         [SerializeField] private float lungeDuration = 0.2f;
         [SerializeField] private float lungeCooldown = 0.2f;
+
+        [SerializeField] private float horizontalAttackBouncePower;
+        [SerializeField] private float downAttackBouncePower;
+        
         private bool _canLunge = true;
         private int _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
 
@@ -28,12 +32,12 @@ namespace Movement
 
         private void Awake()
         {
-            PlayerInput.OnJumpKeyDown.AddListener(StartJump);
-            PlayerInput.OnJumpKeyUp.AddListener(StopJump);
-            PlayerInput.OnLungeKeyDown.AddListener(StartLunge);
+            PlayerInGameInput.OnJumpKeyDown.AddListener(StartJump);
+            PlayerInGameInput.OnJumpKeyUp.AddListener(StopJump);
+            PlayerInGameInput.OnLungeKeyDown.AddListener(StartLunge);
             GroundChecker.OnFloorMove.AddListener(MoveCharacterOnMovingFloor);
-            PlayerHorizontalAttack.OnEnemyHorizontalHit.AddListener(() => StartCoroutine(BounceOnHorizontalHit()));
-            PlayerVerticalAttack.OnEnemyVerticalHit.AddListener(BounceOnDownHit);
+            PlayerAttack.OnEnemyHorizontalHit.AddListener(() => StartCoroutine(BounceOnHorizontalHit()));
+            PlayerAttack.OnEnemyVerticalHit.AddListener(BounceOnDownHit);
         }
         
         protected override void Update()
@@ -60,7 +64,7 @@ namespace Movement
 
         protected override void ComputeVelocity()
         {
-            if ((_move.x > 0 && PlayerInput.HorizontalRaw > 0 || _move.x < 0 && PlayerInput.HorizontalRaw < 0) && Math.Abs(targetVelocity.x) > speed)
+            if (Math.Abs(_move.x) > 0 && Math.Abs(PlayerInGameInput.HorizontalRaw) > 0 && Math.Abs(targetVelocity.x) > speed)
             {
                 var deceleration = 0.995f;
                 targetVelocity.x *= deceleration;
@@ -73,7 +77,7 @@ namespace Movement
 
         private void HorizontalMove()
         {
-            _move.x = PlayerInput.HorizontalRaw;
+            _move.x = PlayerInGameInput.HorizontalRaw;
         }
 
         #region JumpLogic
@@ -136,11 +140,11 @@ namespace Movement
             
             Vector2 direction = Vector2.zero;
             
-            if (PlayerInput.HorizontalRaw == 0 && PlayerInput.VerticalRaw == 0)
+            if (PlayerInGameInput.HorizontalRaw == 0 && PlayerInGameInput.VerticalRaw == 0)
                 direction = new Vector2(PlayerPreferences.FaceRight ? lungeSpeed : -lungeSpeed, 0);
             else
-                direction = new Vector2(PlayerInput.HorizontalRaw * lungeSpeed,
-                    PlayerInput.VerticalRaw * lungeSpeed / 2);
+                direction = new Vector2(PlayerInGameInput.HorizontalRaw * lungeSpeed,
+                    PlayerInGameInput.VerticalRaw * lungeSpeed / 2);
             
             PlayerPreferences.DisableControl();
             Bounce(direction);
@@ -156,10 +160,9 @@ namespace Movement
 
         private IEnumerator BounceOnHorizontalHit()
         {
-            var bouncePower = 5;
             var delay = 0.1f;
             PlayerPreferences.DisableControl();
-            Bounce(new Vector2(PlayerPreferences.FaceRight ? -bouncePower : bouncePower, 0));
+            Bounce(new Vector2(PlayerPreferences.FaceRight ? -horizontalAttackBouncePower : horizontalAttackBouncePower, 0));
             yield return new WaitForSeconds(delay);
             
             PlayerPreferences.EnableControl();
@@ -168,8 +171,8 @@ namespace Movement
         private void BounceOnDownHit()
         {
             _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
-            var bouncePower = 20;
-            Bounce(new Vector2(0, bouncePower));
+
+            Bounce(new Vector2(0, downAttackBouncePower));
             StartCoroutine(SlowStopJump());
         }
 

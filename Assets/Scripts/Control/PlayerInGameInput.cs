@@ -5,16 +5,17 @@ using Movement;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-public class PlayerInput : MonoBehaviour
+[RequireComponent(typeof(PlayerController))]
+public class PlayerInGameInput : MonoBehaviour
 {
     private PlayerController _player;
     
     public static KeyCode JumpKey = KeyCode.Z;
-    public static KeyCode LungeKey = KeyCode.C;
     public static KeyCode AttackKey = KeyCode.X;
-    
-    
+    public static KeyCode LungeKey = KeyCode.C;
+    public static KeyCode AbilityKey = KeyCode.F;
+
+
     public static float HorizontalRaw { get; private set; }
     public static float VerticalRaw { get; private set; }
     
@@ -22,6 +23,7 @@ public class PlayerInput : MonoBehaviour
     public static UnityEvent OnJumpKeyUp = new UnityEvent();
     public static UnityEvent OnLungeKeyDown = new UnityEvent();
     public static UnityEvent OnAttackKeyDown = new UnityEvent();
+    public static UnityEvent OnAttackKeyUp = new UnityEvent();
 
     private void Awake()
     {
@@ -30,14 +32,18 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        HorizontalRaw = Input.GetAxisRaw("Horizontal");
-        VerticalRaw = Input.GetAxisRaw("Vertical");
-
+        SetAxisInput();
         CheckJumpInputs();
         CheckLungeInputs();
         CheckAttackInput();
-    }   
+    }
 
+    private void SetAxisInput()
+    {
+        HorizontalRaw = Input.GetAxisRaw("Horizontal");
+        VerticalRaw = Input.GetAxisRaw("Vertical");
+    }
+    
     private void CheckJumpInputs()
     {
         if (Input.GetKeyDown(JumpKey))
@@ -61,6 +67,11 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(AttackKey))
         {
             OnAttackKeyDown.Invoke();
+        }
+
+        if (Input.GetKeyUp(AttackKey))
+        {
+            OnAttackKeyUp.Invoke();
         }
     }
 

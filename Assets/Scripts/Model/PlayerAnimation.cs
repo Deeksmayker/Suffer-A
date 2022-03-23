@@ -20,7 +20,7 @@ namespace DefaultNamespace
         {
             _player = GetComponentInParent<PlayerController>();
             _animator = GetComponent<Animator>();
-            PlayerHorizontalAttack.OnHorizontalCanAttack.AddListener(SetAttack);
+            PlayerAttack.OnHorizontalCanAttack.AddListener(SetAttack);
         }
 
         private void LateUpdate()

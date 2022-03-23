@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56363e1ecf8247dfa00431c06cb3fb13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 300000
   damage: 3
   speed: 0
 --- !u!95 &978775286 stripped
