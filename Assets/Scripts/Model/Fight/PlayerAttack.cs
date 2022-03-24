@@ -58,7 +58,6 @@ namespace DefaultNamespace.Fight
             {
                 if (_chargeDuration >= chargedAttackTime - timeForKeyUp && flag)
                 {
-                    Debug.Log(1);
                     ParticlesEffects.StartParticle(preparedChargedParticle, preparedChargedCenter);
                     SoundEffects.PlayPreparedChargedAttackSound(preparedChargedAudio, preparedChargedCenter);
                     flag = false;
@@ -97,7 +96,7 @@ namespace DefaultNamespace.Fight
                 yield break;
             }
 
-            var damage = PlayerPreferences.Damage;
+            var damage = PlayerPreferences.HitDamage;
             CanAttack = false;
             //OnHorizontalCanAttack.Invoke(false);
 
@@ -136,7 +135,7 @@ namespace DefaultNamespace.Fight
             
             if (Math.Abs(chargedAttackTime - _chargeDuration) <= timeForKeyUp)
             {
-                damage *= 2;
+                damage *= 5;
                 attackEffect.GetComponent<LineRenderer>().startColor = Color.red;
             }
         }

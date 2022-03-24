@@ -44,7 +44,7 @@ namespace DefaultNamespace.Fight
             
             foreach (var enemy in enemiesInRange)
             {
-                enemy.GetComponent<Enemy>().TakeDamage(PlayerPreferences.Damage);
+                enemy.GetComponent<Enemy>().TakeDamage(PlayerPreferences.HitDamage);
             }
 
             yield return new WaitForSeconds(attackCooldown);

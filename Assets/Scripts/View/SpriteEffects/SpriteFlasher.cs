@@ -23,7 +23,9 @@ namespace DefaultNamespace.SpriteEffects
         private IEnumerator Flash(GameObject obj)
         {
             var sprite = obj.GetComponent<SpriteRenderer>();
+
             _originalMaterial = sprite.material;
+            
             sprite.material = flashMaterial;
             yield return new WaitForSeconds(flashDuration);
             if (sprite != null)

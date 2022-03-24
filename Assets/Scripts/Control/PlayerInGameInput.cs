@@ -24,6 +24,9 @@ public class PlayerInGameInput : MonoBehaviour
     public static UnityEvent OnLungeKeyDown = new UnityEvent();
     public static UnityEvent OnAttackKeyDown = new UnityEvent();
     public static UnityEvent OnAttackKeyUp = new UnityEvent();
+    public static UnityEvent OnHorizontalAbility = new UnityEvent();
+    public static UnityEvent OnUpAbility = new UnityEvent();
+    public static UnityEvent OnDownAbility = new UnityEvent();
 
     private void Awake()
     {
@@ -36,6 +39,7 @@ public class PlayerInGameInput : MonoBehaviour
         CheckJumpInputs();
         CheckLungeInputs();
         CheckAttackInput();
+        CheckAbilityInput();
     }
 
     private void SetAxisInput()
@@ -73,6 +77,19 @@ public class PlayerInGameInput : MonoBehaviour
         {
             OnAttackKeyUp.Invoke();
         }
+    }
+
+    private void CheckAbilityInput()
+    {
+        if (!Input.GetKeyDown(AbilityKey))
+            return;
+        
+        if (VerticalRaw == 1)
+            OnUpAbility.Invoke();
+        else if (VerticalRaw == -1)
+            OnDownAbility.Invoke();
+        else
+            OnHorizontalAbility.Invoke();
     }
 
     private IEnumerator CheckCoyote()

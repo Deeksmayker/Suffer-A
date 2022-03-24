@@ -14,8 +14,10 @@ namespace DefaultNamespace
 
         public static bool IsGrounded;
         public static bool FaceRight = true;
+        public static int LookDirection => FaceRight ? 1 : -1;
 
-        public static int Damage { get; private set; } = 4;
+        public static int HitDamage { get; private set; } = 1;
+        public static int HorizontalProjectileDamage = 4;
 
         public static void EnableControl()
         {
