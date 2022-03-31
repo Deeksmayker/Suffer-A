@@ -21,7 +21,6 @@ namespace DefaultNamespace.Fight
             PlayerPreferences.DisableControl();
             PlayerPreferences.CanTakeDamage = false;
             yield return new WaitForSeconds(0.1f);
-            
             PlayerPreferences.EnableControl();
             yield return new WaitForSeconds(1.5f);
             PlayerPreferences.CanTakeDamage = true;
