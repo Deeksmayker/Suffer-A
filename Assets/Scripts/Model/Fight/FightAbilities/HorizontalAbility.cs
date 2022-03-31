@@ -16,9 +16,12 @@ namespace DefaultNamespace.Fight
 
         protected override IEnumerator Cast()
         {
-            Debug.Log(_canUse);
             if (!_canUse)
                 yield break;
+            _canUse = false;
+            PlayerPreferences.CanMove = false;
+            yield return new WaitForSeconds(timeForCast);
+            PlayerPreferences.CanMove = true;
             
             StartCoroutine(StartCooldown());
             

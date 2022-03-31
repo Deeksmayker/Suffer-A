@@ -10,7 +10,8 @@ namespace DefaultNamespace.Fight
     public class PlayerAttack : MonoBehaviour
     {
         public static UnityEvent OnEnemyHorizontalHit = new UnityEvent();
-        public static UnityEvent OnEnemyVerticalHit = new UnityEvent();
+        public static UnityEvent OnEnemyDownHit = new UnityEvent();
+        public static UnityEvent OnEnemyUpHit = new UnityEvent();
         public static UnityEvent OnVerticalCanAttack = new UnityEvent();
 
 
@@ -19,16 +20,18 @@ namespace DefaultNamespace.Fight
         [SerializeField] protected float horizontalRangeX, horizontalRangeY;
         [SerializeField] protected float verticalRangeX, verticalRangeY;
 
+        [SerializeField] private AudioSource chargedPreparingAudio;
         [SerializeField] private AudioSource preparedChargedAudio;
         [SerializeField] private Transform preparedChargedCenter;
         [SerializeField] private ParticleSystem preparedChargedParticle;
         
         [SerializeField] private Transform horizontalAttackCenter;
         [SerializeField] private Transform upAttackCenter, downAttackCenter;
-        [SerializeField] protected GameObject horizontalAttackEffect;
-        [SerializeField] protected GameObject upAttackEffect, downAttackEffect;
+        [SerializeField] protected GameObject horizontalAttackLine, bigHorizontalAttackLine;
+        [SerializeField] protected GameObject upAttackLine, downAttackLine, bigUpAttackLine, bigDownAttackLine;
 
-        protected bool CanAttack = true;
+        private bool _canAttack = true;
+        [NonSerialized] public bool PowerAttack = false;
 
         [SerializeField] protected float attackCooldown = 0.4f;
         [SerializeField] private float chargedAttackTime;
@@ -39,6 +42,7 @@ namespace DefaultNamespace.Fight
         public static UnityEvent<bool> OnHorizontalCanAttack = new UnityEvent<bool>();
 
         private Coroutine _chargeAttackCoroutine;
+        private AudioSource _preparingSound;
         
         private void Awake()
         {
@@ -52,14 +56,16 @@ namespace DefaultNamespace.Fight
 
         private IEnumerator ChargeAttack()
         {
+            _preparingSound = Instantiate(chargedPreparingAudio, preparedChargedCenter);
+            
             var flag = true;
             
             while (_chargeDuration < maxChargeTime)
             {
-                if (_chargeDuration >= chargedAttackTime - timeForKeyUp && flag)
+                if (_chargeDuration >= chargedAttackTime && _chargeDuration - chargedAttackTime <= timeForKeyUp && flag)
                 {
                     ParticlesEffects.StartParticle(preparedChargedParticle, preparedChargedCenter);
-                    SoundEffects.PlayPreparedChargedAttackSound(preparedChargedAudio, preparedChargedCenter);
+                    Instantiate(preparedChargedAudio, preparedChargedCenter);
                     flag = false;
                 }
                 _chargeDuration += Time.deltaTime;
@@ -71,33 +77,43 @@ namespace DefaultNamespace.Fight
 
         private void DecideAttackDirection()
         {
+            if (_chargeDuration < chargedAttackTime)
+                Destroy(_preparingSound);
+            
             if (PlayerInGameInput.VerticalRaw == 0 ||
                 PlayerInGameInput.VerticalRaw == -1 && PlayerPreferences.IsGrounded)
             {
-                StartCoroutine(Attack(horizontalRangeX, horizontalRangeY, horizontalAttackCenter,
-                    horizontalAttackEffect, OnEnemyHorizontalHit));
+                var x = PowerAttack ? horizontalRangeX * 2 : horizontalRangeX;
+                var y = PowerAttack ? horizontalRangeY * 2 : horizontalRangeY;
+                var line = PowerAttack ? bigHorizontalAttackLine : horizontalAttackLine;
+                StartCoroutine(Attack(x, y, horizontalAttackCenter,
+                    line, OnEnemyHorizontalHit));
             }
             else
             {
                 var isUpAttack = PlayerInGameInput.VerticalRaw == 1;
-                
-                StartCoroutine(Attack(verticalRangeX, verticalRangeY,
+                var x = PowerAttack ? verticalRangeX * 2 : verticalRangeX;
+                var y = PowerAttack ? verticalRangeY * 2 : verticalRangeY;
+                var line = PowerAttack
+                    ? (isUpAttack ? bigUpAttackLine : bigDownAttackLine)
+                    : (isUpAttack ? upAttackLine : downAttackLine);
+                StartCoroutine(Attack(x, y,
                     isUpAttack ? upAttackCenter : downAttackCenter,
-                    isUpAttack ? upAttackEffect : downAttackEffect,
-                    OnEnemyVerticalHit));
+                    line,
+                    isUpAttack ? OnEnemyUpHit : OnEnemyDownHit));
             }
         }
         
         private IEnumerator Attack(float rangeX, float rangeY, Transform attackCenter, GameObject attackEffect, UnityEvent hitEvent)
         {
-            if (_chargeDuration == 0 || !CanAttack)
+            if (_chargeDuration == 0 || !_canAttack)
             {
                 _chargeDuration = 0;
                 yield break;
             }
 
-            var damage = PlayerPreferences.HitDamage;
-            CanAttack = false;
+            var damage = PowerAttack ? PlayerPreferences.HitDamage * 2 : PlayerPreferences.HitDamage;
+            _canAttack = false;
             //OnHorizontalCanAttack.Invoke(false);
 
             CheckPowerAttack(ref damage, attackEffect);
@@ -108,9 +124,10 @@ namespace DefaultNamespace.Fight
            
             StartCoroutine(ShowAttackLine(attackEffect));
             yield return new WaitForSeconds(attackCooldown);
-            CanAttack = true;
+            _canAttack = true;
 
             //OnHorizontalCanAttack.Invoke(true);
+            PowerAttack = false;
         }
 
         private void DealDamageInRange(Transform attackCenter, float rangeX, float rangeY, UnityEvent hitEvent, int damage)
@@ -133,7 +150,7 @@ namespace DefaultNamespace.Fight
         {
             attackEffect.GetComponent<LineRenderer>().startColor = Color.green;
             
-            if (Math.Abs(chargedAttackTime - _chargeDuration) <= timeForKeyUp)
+            if (_chargeDuration >= chargedAttackTime && _chargeDuration - chargedAttackTime <= timeForKeyUp)
             {
                 damage *= 5;
                 attackEffect.GetComponent<LineRenderer>().startColor = Color.red;

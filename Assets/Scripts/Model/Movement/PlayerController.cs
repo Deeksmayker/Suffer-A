@@ -36,8 +36,8 @@ namespace Movement
             PlayerInGameInput.OnJumpKeyUp.AddListener(StopJump);
             PlayerInGameInput.OnLungeKeyDown.AddListener(StartLunge);
             GroundChecker.OnFloorMove.AddListener(MoveCharacterOnMovingFloor);
-            PlayerAttack.OnEnemyHorizontalHit.AddListener(() => StartCoroutine(BounceOnHorizontalHit()));
-            PlayerAttack.OnEnemyVerticalHit.AddListener(BounceOnDownHit);
+            //PlayerAttack.OnEnemyHorizontalHit.AddListener(() => StartCoroutine(BounceOnHorizontalHit()));
+            PlayerAttack.OnEnemyDownHit.AddListener(BounceOnDownHit);
         }
         
         protected override void Update()
@@ -98,14 +98,14 @@ namespace Movement
                 yield return new WaitForFixedUpdate();
             }
 
-            StartCoroutine(SlowStopJump());
+            StartCoroutine(SlowStopJump(jumpDeceleration));
         }
 
-        private IEnumerator SlowStopJump()
+        private IEnumerator SlowStopJump(float deceleration)
         {
             while (velocity.y > 0)
             {
-                velocity.y *= jumpDeceleration;
+                velocity.y *= deceleration;
                 yield return new WaitForFixedUpdate();
             }
         }
@@ -150,7 +150,7 @@ namespace Movement
             Bounce(direction);
             yield return new WaitForSeconds(lungeDuration);
             PlayerPreferences.EnableControl();
-            StartCoroutine(SlowStopJump());
+            StartCoroutine(SlowStopJump(jumpDeceleration));
             _canLunge = false;
             yield return new WaitForSeconds(lungeCooldown);
             _canLunge = true;
@@ -173,7 +173,7 @@ namespace Movement
             _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
 
             Bounce(new Vector2(0, downAttackBouncePower));
-            StartCoroutine(SlowStopJump());
+            StartCoroutine(SlowStopJump(jumpDeceleration));
         }
 
         #region Getters
@@ -207,6 +207,20 @@ namespace Movement
                 _move.x = direction;
                 yield return null;
             }
+        }
+
+        public IEnumerator FlyUp(float power, float time, float deceleration)
+        {
+            var duration = 0f;
+
+            while (duration <= time)
+            {
+                duration += Time.deltaTime;
+                velocity.y = power;
+                yield return new WaitForFixedUpdate();
+            }
+
+            StartCoroutine(SlowStopJump(deceleration));
         }
     }
 }

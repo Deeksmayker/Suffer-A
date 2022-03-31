@@ -7,6 +7,7 @@ namespace DefaultNamespace
         public static Vector3 SpawnPoint { get; private set; }
         public static bool ControlEnabled { get; private set; } = true;
         public static bool CanTakeDamage = true;
+        public static bool CanMove = true;
         public static int MaxLungeAirCount { get; private set; } = 1;
         
         public const float CoyoteTime = 0.05f;

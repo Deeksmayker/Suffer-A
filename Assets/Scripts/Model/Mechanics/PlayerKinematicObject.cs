@@ -86,6 +86,8 @@ namespace Mechanics
 
         protected virtual void Update()
         {
+            if (!PlayerPreferences.CanMove)
+                return;
             //targetVelocity = Vector2.zero;
             ComputeVelocity();
         }
@@ -97,6 +99,12 @@ namespace Mechanics
 
         protected virtual void FixedUpdate()
         {
+            if (!PlayerPreferences.CanMove)
+            {
+                velocity.y = 0;
+                return;
+            }
+            
             //if already falling, fall faster than the jump speed, otherwise use normal gravity.
             if (velocity.y < 0)
                 velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
