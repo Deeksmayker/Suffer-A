@@ -29,6 +29,9 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (player == null)
+            player = GameObject.FindWithTag("Player").transform;
+        
         physic = GetComponent<Rigidbody2D>();
         standEnemy = new StandingEnemy();
         startPoint = transform.position.x + 5;
