@@ -18,6 +18,8 @@ public class PlayerInGameInput : MonoBehaviour
 
     public static float HorizontalRaw { get; private set; }
     public static float VerticalRaw { get; private set; }
+    public static float Horizontal;
+    public static float Vertical;
     
     public static UnityEvent OnJumpKeyDown = new UnityEvent();
     public static UnityEvent OnJumpKeyUp = new UnityEvent();
@@ -44,6 +46,8 @@ public class PlayerInGameInput : MonoBehaviour
 
     private void SetAxisInput()
     {
+        Horizontal = Input.GetAxis("Horizontal");
+        Vertical = Input.GetAxis("Vertical");
         HorizontalRaw = Input.GetAxisRaw("Horizontal");
         VerticalRaw = Input.GetAxisRaw("Vertical");
     }

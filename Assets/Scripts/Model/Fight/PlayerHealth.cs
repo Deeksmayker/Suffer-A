@@ -8,6 +8,7 @@ namespace DefaultNamespace.Fight
     public class PlayerHealth : MonoBehaviour//, IDamageble
     {
         [SerializeField] private float timeStopDuration;
+        [SerializeField] private float damageImmunityDuration;
 
         private void Awake()
         {
@@ -16,13 +17,17 @@ namespace DefaultNamespace.Fight
         
         public IEnumerator TakeDamage(int value = 1)
         {
-            StartCoroutine(Utils.StopTimeForWhile(0.5f));
+            StartCoroutine(Utils.StopTimeForWhile(timeStopDuration));
             GetComponent<PlayerController>().Bounce(new Vector2(PlayerPreferences.FaceRight ? -1 : 1, 0.3f) * 10);
+            
             PlayerPreferences.DisableControl();
+            
             PlayerPreferences.CanTakeDamage = false;
             yield return new WaitForSeconds(0.1f);
+            
             PlayerPreferences.EnableControl();
-            yield return new WaitForSeconds(1.5f);
+            
+            yield return new WaitForSeconds(damageImmunityDuration);
             PlayerPreferences.CanTakeDamage = true;
         }
 

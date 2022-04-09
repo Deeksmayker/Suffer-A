@@ -9,9 +9,9 @@ namespace DefaultNamespace.Fight
 {
     public class PlayerAttack : MonoBehaviour
     {
-        public static UnityEvent OnEnemyHorizontalHit = new UnityEvent();
-        public static UnityEvent OnEnemyDownHit = new UnityEvent();
-        public static UnityEvent OnEnemyUpHit = new UnityEvent();
+        public static UnityEvent<bool> OnEnemyHorizontalHit = new UnityEvent<bool>();
+        public static UnityEvent<bool> OnEnemyDownHit = new UnityEvent<bool>();
+        public static UnityEvent<bool> OnEnemyUpHit = new UnityEvent<bool>();
         public static UnityEvent OnVerticalCanAttack = new UnityEvent();
 
 
@@ -104,7 +104,7 @@ namespace DefaultNamespace.Fight
             }
         }
         
-        private IEnumerator Attack(float rangeX, float rangeY, Transform attackCenter, GameObject attackEffect, UnityEvent hitEvent)
+        private IEnumerator Attack(float rangeX, float rangeY, Transform attackCenter, GameObject attackEffect, UnityEvent<bool> hitEvent)
         {
             if (_chargeDuration == 0 || !_canAttack)
             {
@@ -116,7 +116,7 @@ namespace DefaultNamespace.Fight
             _canAttack = false;
             //OnHorizontalCanAttack.Invoke(false);
 
-            CheckPowerAttack(ref damage, attackEffect);
+            CheckStrongAttack(ref damage, attackEffect);
 
             _chargeDuration = 0f;
             
@@ -130,14 +130,15 @@ namespace DefaultNamespace.Fight
             PowerAttack = false;
         }
 
-        private void DealDamageInRange(Transform attackCenter, float rangeX, float rangeY, UnityEvent hitEvent, int damage)
+        private void DealDamageInRange(Transform attackCenter, float rangeX, float rangeY, UnityEvent<bool> hitEvent, int damage)
         {
             var enemiesInRange =
                 Physics2D.OverlapBoxAll(attackCenter.position, new Vector2(rangeX, rangeY), 0, hitLayer);
 
             if (enemiesInRange.Length != 0)
             {
-                hitEvent.Invoke();
+                var isStrongAttack = damage > PlayerPreferences.HitDamage;
+                hitEvent.Invoke(isStrongAttack);
             }
 
             foreach (var enemy in enemiesInRange)
@@ -146,7 +147,7 @@ namespace DefaultNamespace.Fight
             }
         }
 
-        private void CheckPowerAttack(ref int damage, GameObject attackEffect)
+        private void CheckStrongAttack(ref int damage, GameObject attackEffect)
         {
             attackEffect.GetComponent<LineRenderer>().startColor = Color.green;
             

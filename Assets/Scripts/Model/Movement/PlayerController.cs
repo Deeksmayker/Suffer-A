@@ -10,7 +10,8 @@ namespace Movement
 {
     public class PlayerController : PlayerKinematicObject
     {
-        [SerializeField] private float speed = 7;
+        [SerializeField] private float maxSpeed = 7;
+        [SerializeField] private float acceleration;
         
         [SerializeField] private float jumpModifier = 1.5f;
         [SerializeField] private float jumpTakeOffSpeed = 7f;
@@ -38,6 +39,7 @@ namespace Movement
             GroundChecker.OnFloorMove.AddListener(MoveCharacterOnMovingFloor);
             //PlayerAttack.OnEnemyHorizontalHit.AddListener(() => StartCoroutine(BounceOnHorizontalHit()));
             PlayerAttack.OnEnemyDownHit.AddListener(BounceOnDownHit);
+            PlayerAttack.OnEnemyHorizontalHit.AddListener((b) => StartCoroutine(BounceOnHorizontalHit(b)));
         }
         
         protected override void Update()
@@ -64,20 +66,22 @@ namespace Movement
 
         protected override void ComputeVelocity()
         {
-            if (Math.Abs(_move.x) > 0 && Math.Abs(PlayerInGameInput.HorizontalRaw) > 0 && Math.Abs(targetVelocity.x) > speed)
+            if (Math.Abs(_move.x) > 0 && Math.Abs(PlayerInGameInput.HorizontalRaw) > 0 && Math.Abs(targetVelocity.x) > maxSpeed)
             {
                 var deceleration = 0.995f;
                 targetVelocity.x *= deceleration;
             }
             else
             {
-                targetVelocity = _move * speed;
+                targetVelocity = _move * maxSpeed;
             }
         }
 
         private void HorizontalMove()
         {
+            Debug.Log("ФИКСИТЬ СРОЧНО");
             _move.x = PlayerInGameInput.HorizontalRaw;
+            //_move.x = Mathf.Clamp(PlayerInGameInput.Horizontal * acceleration, -1, 1);
         }
 
         #region JumpLogic
@@ -158,17 +162,34 @@ namespace Movement
         
         #endregion
 
-        private IEnumerator BounceOnHorizontalHit()
+        private IEnumerator BounceOnHorizontalHit(bool powerAttack)
         {
+            if (!powerAttack)
+                yield break;
+            
             var delay = 0.1f;
             PlayerPreferences.DisableControl();
-            Bounce(new Vector2(PlayerPreferences.FaceRight ? -horizontalAttackBouncePower : horizontalAttackBouncePower, 0));
-            yield return new WaitForSeconds(delay);
+            var bounceVector = Vector2.right * (PlayerPreferences.FaceRight
+                ? -horizontalAttackBouncePower
+                : horizontalAttackBouncePower);
             
+            
+            /*if (!PlayerPreferences.IsGrounded)
+            {
+                _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
+
+                bounceVector.y = downAttackBouncePower * 0.5f;
+            }*/
+            
+            Bounce(bounceVector);
+            /*StartCoroutine(SlowStopJump(jumpDeceleration));*/
+
+            yield return new WaitForSeconds(delay);
+
             PlayerPreferences.EnableControl();
         }
 
-        private void BounceOnDownHit()
+        private void BounceOnDownHit(bool powerAttack)
         {
             _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
 
