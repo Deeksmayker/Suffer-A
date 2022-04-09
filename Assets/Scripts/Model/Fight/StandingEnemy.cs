@@ -22,11 +22,11 @@ public class StandingEnemy
         if (playerPosition + distanceStopMove < enemyPosition)
         {
             
-            motionController = -1;
+            motionController = 1;
         }
         else if (playerPosition - distanceStopMove > enemyPosition)
         {
-            motionController = 1;
+            motionController = -1;
         }
 
         return motionController;

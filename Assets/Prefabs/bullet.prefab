@@ -96,10 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  lifeTime: 4
-  distance: 30
+  lifeTime: 3
+  distance: 0
   whatIsSolid:
     serializedVersion: 2
     m_Bits: 320
-  directionX: 0
-  directionY: -1
+  mobOption: 0
