@@ -15,7 +15,7 @@ public class EnemyMove : MonoBehaviour
     public Transform player;
     public float startPoint;
     public float endPoint;
-    private int motionControll;
+    public int motionControll;
     public mobOptions mobOption;
     public float speed;
     private StandingEnemy standEnemy;
@@ -24,6 +24,8 @@ public class EnemyMove : MonoBehaviour
     public float distanceStopMove;
     public float agroDistance;
     public bool isAgro;
+    private bool _side = true;
+    private bool _side1 = true;
     public Vector2 vectorMove;
 
     // Start is called before the first frame update
@@ -87,7 +89,18 @@ public class EnemyMove : MonoBehaviour
         physic.velocity = new Vector2(motionControll * speed, 0);
         if (motionControll != 0)
         {
-            transform.localScale = new Vector2(motionControll * 1, 1);
+            if(motionControll == -1 && _side1 == true)
+            {
+                transform.Rotate(new Vector2(0, 180));
+                _side1 = false;
+                _side = true;
+            }
+            else if (motionControll == 1 && _side == true)
+            {
+                _side = false;
+                _side1 = true;
+                transform.Rotate(new Vector2(0, -180));
+            }
         }
     }
 

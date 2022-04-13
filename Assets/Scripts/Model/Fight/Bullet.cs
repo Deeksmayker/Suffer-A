@@ -10,14 +10,19 @@ public class Bullet : MonoBehaviour
     public float lifeTime;
     public float distance;
     public LayerMask whatIsSolid;
-    public int directionX;
-    public int directionY;
+    public enum mobOptions
+    {
+        flyingMob,
+        defoultMob
+    }
+    public mobOptions mobOption;
 
     private void Update()
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);  
         if (hitInfo.collider != null)
         {
+            Debug.Log(hitInfo);
             if (hitInfo.collider.CompareTag("Player"))
             {
                 StartCoroutine(hitInfo.collider.GetComponent<PlayerHealth>().TakeDamage()); 
@@ -28,7 +33,14 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        transform.Translate(new Vector2(directionX, directionY) * speed * Time.deltaTime);
+        if (mobOptions.defoultMob == mobOption)
+        {
+            transform.Translate(Vector2.left * speed * Time.deltaTime);
+        }
+        else if(mobOptions.flyingMob == mobOption)
+        {
+            transform.Translate(Vector2.down * speed * Time.deltaTime);
+        }
         lifeTime -= Time.deltaTime;
     }
 }
