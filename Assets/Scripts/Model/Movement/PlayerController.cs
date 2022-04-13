@@ -77,11 +77,16 @@ namespace Movement
             }
         }
 
+        private float previousHorizontal;
         private void HorizontalMove()
         {
-            Debug.Log("ФИКСИТЬ СРОЧНО");
-            _move.x = PlayerInGameInput.HorizontalRaw;
-            //_move.x = Mathf.Clamp(PlayerInGameInput.Horizontal * acceleration, -1, 1);
+            var absHorizontal = Math.Abs(PlayerInGameInput.Horizontal);
+            bool isAccelerationOrMaxSpeed = absHorizontal.CompareTo(previousHorizontal) > 1 || absHorizontal.Equals(1);
+            Debug.Log(absHorizontal);
+            Debug.Log(previousHorizontal);
+            Debug.Log(isAccelerationOrMaxSpeed);
+            _move.x = Mathf.Clamp(PlayerInGameInput.Horizontal * (isAccelerationOrMaxSpeed ? acceleration : 1/acceleration), -1, 1);
+            previousHorizontal = Math.Abs(PlayerInGameInput.Horizontal);
         }
 
         #region JumpLogic
