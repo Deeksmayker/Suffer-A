@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Mechanics
 {
-    public class PlayerHealth : MonoBehaviour
+    public class OLDSTUFFPlayerHealth : MonoBehaviour
     {
         [SerializeField] private int maxHp = 3;
         private int currentHp;

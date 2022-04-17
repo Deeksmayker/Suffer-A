@@ -4,6 +4,24 @@ namespace DefaultNamespace
 {
     public class PlayerPreferences
     {
+        public static int MaxHealth = 4;
+        private static int _currentHealth = MaxHealth;
+        public static int CurrentHealth
+        {
+            get => _currentHealth;
+            set => _currentHealth = Mathf.Clamp(value, 0, MaxHealth);
+        }
+
+        public static float MaxBlood = 100;
+
+        private static float _currentBlood = MaxBlood;
+        public static float CurrentBlood
+        {
+            get => _currentBlood;
+            set => _currentBlood = Mathf.Clamp(value, 0, MaxBlood);
+        }
+        public static float BloodSpend = 50;
+        
         public static Vector3 SpawnPoint { get; private set; }
         public static bool ControlEnabled { get; private set; } = true;
         public static bool CanTakeDamage = true;

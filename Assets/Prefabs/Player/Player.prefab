@@ -360,6 +360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeStopDuration: 0.2
   damageImmunityDuration: 0.7
+  healDuration: 2
+  healParticles: {fileID: 6870273931962037729, guid: 6842778a73aa83a40b4f65f66f68da9d, type: 3}
 --- !u!114 &2341990547614878307
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class PlayerInGameInput : MonoBehaviour
     public static KeyCode AttackKey = KeyCode.X;
     public static KeyCode LungeKey = KeyCode.C;
     public static KeyCode AbilityKey = KeyCode.F;
+    public static KeyCode HealKey = KeyCode.A;
 
 
     public static float HorizontalRaw { get; private set; }
@@ -26,9 +27,12 @@ public class PlayerInGameInput : MonoBehaviour
     public static UnityEvent OnLungeKeyDown = new UnityEvent();
     public static UnityEvent OnAttackKeyDown = new UnityEvent();
     public static UnityEvent OnAttackKeyUp = new UnityEvent();
+    public static UnityEvent OnAbility = new UnityEvent();
     public static UnityEvent OnHorizontalAbility = new UnityEvent();
     public static UnityEvent OnUpAbility = new UnityEvent();
     public static UnityEvent OnDownAbility = new UnityEvent();
+    public static UnityEvent OnHealDown = new UnityEvent();
+    public static UnityEvent OnHealUp = new UnityEvent();
 
     private void Awake()
     {
@@ -42,6 +46,7 @@ public class PlayerInGameInput : MonoBehaviour
         CheckLungeInputs();
         CheckAttackInput();
         CheckAbilityInput();
+        CheckHealInput();
     }
 
     private void SetAxisInput()
@@ -85,7 +90,7 @@ public class PlayerInGameInput : MonoBehaviour
 
     private void CheckAbilityInput()
     {
-        if (!Input.GetKeyDown(AbilityKey))
+        if (!Input.GetKeyDown(AbilityKey) || PlayerPreferences.CurrentBlood < PlayerPreferences.BloodSpend) 
             return;
         
         if (VerticalRaw == 1)
@@ -94,6 +99,16 @@ public class PlayerInGameInput : MonoBehaviour
             OnDownAbility.Invoke();
         else
             OnHorizontalAbility.Invoke();
+    }
+
+    private void CheckHealInput()
+    {
+        if (PlayerPreferences.CurrentBlood < PlayerPreferences.BloodSpend)
+            return;
+        if (Input.GetKeyDown(HealKey))
+            OnHealDown.Invoke();
+        if (Input.GetKeyUp(HealKey))
+            OnHealUp.Invoke();
     }
 
     private IEnumerator CheckCoyote()

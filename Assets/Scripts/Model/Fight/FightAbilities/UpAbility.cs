@@ -21,6 +21,7 @@ namespace DefaultNamespace.Fight
         {
             if (!_canUse)
                 yield break;
+            PlayerInGameInput.OnAbility.Invoke();
             _canUse = false;
 
             var flyCoroutine = GetComponent<PlayerController>().FlyUp(flyUpSpeed, flyTime, inAirHeightDeceleration);

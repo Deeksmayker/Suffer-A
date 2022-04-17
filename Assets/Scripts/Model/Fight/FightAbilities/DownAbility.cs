@@ -17,6 +17,7 @@ namespace DefaultNamespace.Fight
         {
             if (!_canUse)
                 yield break;
+            PlayerInGameInput.OnAbility.Invoke();
 
             prefab.SetActive(true);
             PlayerPreferences.CanMove = false;

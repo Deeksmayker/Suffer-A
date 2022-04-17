@@ -20,7 +20,7 @@ namespace DefaultNamespace.Fight
             if (col.gameObject.GetComponent<PlayerController>() == null || !PlayerPreferences.CanTakeDamage)
                 return;
             
-            GlobalEvents.OnPlayerDamaged.Invoke(damage);
+            PlayerHealth.OnHitTaken.Invoke(damage);
         }
 
         private void Awake()

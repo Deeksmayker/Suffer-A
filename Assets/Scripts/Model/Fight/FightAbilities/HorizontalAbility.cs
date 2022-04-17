@@ -18,6 +18,7 @@ namespace DefaultNamespace.Fight
         {
             if (!_canUse)
                 yield break;
+            PlayerInGameInput.OnAbility.Invoke();
             _canUse = false;
             PlayerPreferences.CanMove = false;
             yield return new WaitForSeconds(timeForCast);

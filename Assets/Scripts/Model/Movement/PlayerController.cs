@@ -47,6 +47,7 @@ namespace Movement
             if (!PlayerPreferences.ControlEnabled)
             {
                 _move = Vector2.zero;
+                velocity.x = 0;
                 return;
             }
 
@@ -66,9 +67,12 @@ namespace Movement
 
         protected override void ComputeVelocity()
         {
-            if (Math.Abs(_move.x) > 0 && Math.Abs(PlayerInGameInput.HorizontalRaw) > 0 && Math.Abs(targetVelocity.x) > maxSpeed)
+            var inMove = Math.Abs(_move.x) > 0;
+            var needToMove = Math.Abs(PlayerInGameInput.HorizontalRaw) > 0;
+            
+            if (inMove && needToMove && Math.Abs(targetVelocity.x) > maxSpeed)
             {
-                var deceleration = 0.995f;
+                var deceleration = 0.99f;
                 targetVelocity.x *= deceleration;
             }
             else
@@ -76,17 +80,12 @@ namespace Movement
                 targetVelocity = _move * maxSpeed;
             }
         }
-
-        private float previousHorizontal;
+        
         private void HorizontalMove()
         {
-            var absHorizontal = Math.Abs(PlayerInGameInput.Horizontal);
-            bool isAccelerationOrMaxSpeed = absHorizontal.CompareTo(previousHorizontal) > 1 || absHorizontal.Equals(1);
-            Debug.Log(absHorizontal);
-            Debug.Log(previousHorizontal);
-            Debug.Log(isAccelerationOrMaxSpeed);
+            bool isAccelerationOrMaxSpeed = Math.Abs(PlayerInGameInput.HorizontalRaw) == 1;
+            
             _move.x = Mathf.Clamp(PlayerInGameInput.Horizontal * (isAccelerationOrMaxSpeed ? acceleration : 1/acceleration), -1, 1);
-            previousHorizontal = Math.Abs(PlayerInGameInput.Horizontal);
         }
 
         #region JumpLogic
@@ -146,7 +145,7 @@ namespace Movement
         {
             if (!_canLunge)
                 yield break;
-            
+            yield return new WaitForFixedUpdate();
             Vector2 direction = Vector2.zero;
             
             if (PlayerInGameInput.HorizontalRaw == 0 && PlayerInGameInput.VerticalRaw == 0)
@@ -212,6 +211,9 @@ namespace Movement
         
         private void Reflect()
         {
+            if (!PlayerPreferences.CanMove || !PlayerPreferences.ControlEnabled)
+                return;
+            
             if (_move.x > 0 && !PlayerPreferences.FaceRight ||
                 _move.x < 0 && PlayerPreferences.FaceRight)
             {

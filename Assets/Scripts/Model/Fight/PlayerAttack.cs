@@ -12,6 +12,7 @@ namespace DefaultNamespace.Fight
         public static UnityEvent<bool> OnEnemyHorizontalHit = new UnityEvent<bool>();
         public static UnityEvent<bool> OnEnemyDownHit = new UnityEvent<bool>();
         public static UnityEvent<bool> OnEnemyUpHit = new UnityEvent<bool>();
+        public static UnityEvent<float> OnHit = new UnityEvent<float>();
         public static UnityEvent OnVerticalCanAttack = new UnityEvent();
 
 
@@ -139,6 +140,7 @@ namespace DefaultNamespace.Fight
             {
                 var isStrongAttack = damage > PlayerPreferences.HitDamage;
                 hitEvent.Invoke(isStrongAttack);
+                OnHit.Invoke(damage > PlayerPreferences.HitDamage ? damage*3.35f : damage * 5);
             }
 
             foreach (var enemy in enemiesInRange)
