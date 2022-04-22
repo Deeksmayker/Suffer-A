@@ -23,6 +23,8 @@ namespace DefaultNamespace
         public static float BloodSpend = 50;
         
         public static Vector3 SpawnPoint { get; private set; }
+
+        public static bool InTransition = false;
         public static bool ControlEnabled { get; private set; } = true;
         public static bool CanTakeDamage = true;
         public static bool CanMove = true;

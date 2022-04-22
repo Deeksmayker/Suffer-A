@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using Movement;
 using UnityEditor;
 using UnityEngine;
@@ -12,22 +13,24 @@ namespace DefaultNamespace
         private enum Direction
         {
             Right = 1,
-            Left = -1
+            Left = -1,
+            Stay = 0
         }
         
         [SerializeField] private int sceneIndex;
-        [SerializeField] private Animator animator;
+        [SerializeField] private Animator blackScreen;
         [SerializeField] private float transitionTime;
-        [SerializeField] Direction moveDirection;
-        private string _spawnPointName;
+        [SerializeField] private Direction moveDirection;
+        private string _transitionName;
 
         private void OnTriggerEnter2D(Collider2D col)
         {
             var playerController = col.gameObject.GetComponent<PlayerController>();
-            if (playerController == null || !PlayerPreferences.ControlEnabled)
+            if (playerController == null || PlayerPreferences.InTransition)
                 return;
-            DontDestroyOnLoad(col.gameObject);
-            _spawnPointName = gameObject.name;
+            PlayerPreferences.InTransition = true;
+            DontDestroyOnLoad(playerController.gameObject);
+            _transitionName = gameObject.name;
             StartCoroutine(LoadRoom(playerController));
         }
 
@@ -35,7 +38,7 @@ namespace DefaultNamespace
         {
             DontDestroyOnLoad(gameObject);
 
-            animator.SetTrigger("Start");
+            blackScreen.SetTrigger("Start");
             PlayerPreferences.DisableControl();
             StartCoroutine(playerController.WalkToDirection((int)moveDirection));
             
@@ -65,11 +68,12 @@ namespace DefaultNamespace
         {
             var player = GameObject.FindWithTag("Player");
             
-            player.transform.position = GameObject.Find(_spawnPointName + "Spawn").transform.position;
+            player.transform.position = GameObject.Find(_transitionName + 1).transform.position;
 
             yield return new WaitForSeconds(transitionTime);
             
             PlayerPreferences.EnableControl();
+            PlayerPreferences.InTransition = false;
 
             Destroy(gameObject);
         }

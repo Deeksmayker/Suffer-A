@@ -44,20 +44,19 @@ namespace Movement
         
         protected override void Update()
         {
-            if (!PlayerPreferences.ControlEnabled)
-            {
-                _move = Vector2.zero;
-                velocity.x = 0;
-                return;
-            }
-
             if (PlayerPreferences.IsGrounded)
             {
                 _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
             }
 
-            HorizontalMove();
-            base.Update();
+            if (PlayerPreferences.ControlEnabled)
+            {
+                HorizontalMove();
+                base.Update();
+            }
+            
+            else if (PlayerPreferences.InTransition)
+                base.Update();
         }
 
         private void LateUpdate()
@@ -106,6 +105,11 @@ namespace Movement
                 yield return new WaitForFixedUpdate();
             }
 
+            while (PlayerPreferences.InTransition)
+            {
+                velocity.y = jumpTakeOffSpeed * jumpModifier / 3;
+                yield return new WaitForFixedUpdate();
+            }
             StartCoroutine(SlowStopJump(jumpDeceleration));
         }
 
@@ -157,7 +161,8 @@ namespace Movement
             PlayerPreferences.DisableControl();
             Bounce(direction);
             yield return new WaitForSeconds(lungeDuration);
-            PlayerPreferences.EnableControl();
+            if (!PlayerPreferences.InTransition)
+                PlayerPreferences.EnableControl();
             StartCoroutine(SlowStopJump(jumpDeceleration));
             _canLunge = false;
             yield return new WaitForSeconds(lungeCooldown);

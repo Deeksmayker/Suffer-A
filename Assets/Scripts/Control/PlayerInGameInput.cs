@@ -41,10 +41,13 @@ public class PlayerInGameInput : MonoBehaviour
 
     private void Update()
     {
+        CheckAttackInput();
+        if (!PlayerPreferences.ControlEnabled)
+            return;
+
         SetAxisInput();
         CheckJumpInputs();
         CheckLungeInputs();
-        CheckAttackInput();
         CheckAbilityInput();
         CheckHealInput();
     }

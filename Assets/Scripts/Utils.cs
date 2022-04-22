@@ -25,8 +25,8 @@ namespace DefaultNamespace
 
         public static IEnumerator StopTimeForWhile(float time)
         {
-            Time.timeScale = 0.01f;
-            yield return new WaitForSeconds(time/100);
+            Time.timeScale = 0;
+            yield return new WaitForSecondsRealtime(time);
             Time.timeScale = 1;
         }
 

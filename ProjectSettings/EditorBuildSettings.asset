@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FightingDemo.unity
     guid: 7001e7387d25ef74fa61e97c1e35af42
+  - enabled: 1
+    path: Assets/Scenes/TransitionTest.unity
+    guid: ccf1781d2c88b0a4596cabfb544f0775
   m_configObjects: {}

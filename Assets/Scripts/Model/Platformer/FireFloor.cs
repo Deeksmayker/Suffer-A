@@ -58,6 +58,7 @@ namespace DefaultNamespace.Platformer
             }
             
             PlayerHealth.OnDamageTaken.Invoke(1);
+            _isRunning = false;
         } 
     }
 }
