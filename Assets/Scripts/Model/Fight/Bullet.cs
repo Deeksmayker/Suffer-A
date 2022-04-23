@@ -10,6 +10,10 @@ public class Bullet : MonoBehaviour
     public float lifeTime;
     public float distance;
     public LayerMask whatIsSolid;
+    public Transform playerPos;
+    private Vector2 vectorBullet = new Vector2();
+    private float playerposY;
+    public GameObject bulletObject;
     public enum mobOptions
     {
         flyingMob,
@@ -17,29 +21,35 @@ public class Bullet : MonoBehaviour
     }
     public mobOptions mobOption;
 
+    private void Start()
+    {
+        playerPos = GameObject.Find("Player").transform;
+        vectorBullet = playerPos.position - transform.position;
+    }
+
     private void Update()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);  
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
         if (hitInfo.collider != null)
         {
-            Debug.Log(hitInfo);
             if (hitInfo.collider.CompareTag("Player"))
             {
-                StartCoroutine(hitInfo.collider.GetComponent<PlayerHealth>().TakeDamage()); 
+                StartCoroutine(hitInfo.collider.GetComponent<PlayerHealth>().TakeDamage());
             }
             Destroy(gameObject);
         }
-        else if(lifeTime < 0)
+        else if (lifeTime < 0)
         {
             Destroy(gameObject);
         }
+        Debug.Log(playerPos.position.x);
         if (mobOptions.defoultMob == mobOption)
         {
-            transform.Translate(Vector2.left * speed * Time.deltaTime);
+            transform.Translate(Vector2.right * speed * Time.deltaTime * 10);
         }
-        else if(mobOptions.flyingMob == mobOption)
+        else if (mobOptions.flyingMob == mobOption)
         {
-            transform.Translate(Vector2.down * speed * Time.deltaTime);
+            transform.Translate(vectorBullet * speed * Time.deltaTime);
         }
         lifeTime -= Time.deltaTime;
     }

@@ -23,10 +23,22 @@ public class EnemyMove : MonoBehaviour
     private FlyingEnemy flyingEnemy;
     public float distanceStopMove;
     public float agroDistance;
+    private float _prevAgroDistance;
     public bool isAgro;
     private bool _side = true;
     private bool _side1 = true;
     public Vector2 vectorMove;
+
+    public Transform mobPlatform;
+
+    public float normalSpeed;
+    public float startStopTime;
+    public float stopTime;
+
+    private void Awake()
+    {
+        player = GameObject.Find("Player").transform;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +47,8 @@ public class EnemyMove : MonoBehaviour
         standEnemy = new StandingEnemy();
         startPoint = transform.position.x + 5;
         endPoint = transform.position.x - 5;
+        normalSpeed = speed;
+        _prevAgroDistance = agroDistance;
 
         if (mobOption == mobOptions.standingMob)
         {
@@ -61,6 +75,14 @@ public class EnemyMove : MonoBehaviour
         {
             motionControll = standEnemy.GenerateStandingMob(distanceToPlayer, agroDistance, player.position.x, transform.position.x, distanceStopMove);
             vectorMove = new Vector2(motionControll, 0);
+            if (motionControll !=0 && agroDistance == _prevAgroDistance)
+            {
+                agroDistance += 1;
+            }
+            else if(motionControll == 0 && agroDistance != _prevAgroDistance)
+            {
+                agroDistance -= 1;
+            }
         }
         else if (mobOption == mobOptions.walkingMob)
         {
@@ -77,8 +99,52 @@ public class EnemyMove : MonoBehaviour
             isAgro = true;
         }
         else isAgro = false;
-
+        CheckEndPlatform();
+        StopMoveEnemy();
         MovingEnemy();
+    }
+
+    private void StopMoveEnemy()
+    {
+        if (stopTime <= 0)
+        {
+            speed = normalSpeed;
+        }
+        else
+        {
+            speed = 0;
+            stopTime -= Time.deltaTime;
+        }
+    }
+
+    private void CheckEndPlatform()
+    {
+        if (transform.position.x >= mobPlatform.position.x + mobPlatform.localScale.x / 2 - 3 )
+        {
+            agroDistance = 0;
+            Debug.Log(1);
+        }
+        else if (transform.position.x < startPoint - 4)
+        {
+            agroDistance = _prevAgroDistance;
+            Debug.Log(_prevAgroDistance);
+        }
+
+        if (transform.position.x <= mobPlatform.position.x - mobPlatform.localScale.x / 2 + 3)
+        {
+            agroDistance = 0;
+            Debug.Log(1);
+        }
+        else if (transform.position.x > startPoint + 4)
+        {
+            agroDistance = _prevAgroDistance;
+            Debug.Log(_prevAgroDistance);
+        }
+    }
+
+    public void StanEnemy()
+    {
+        stopTime = startStopTime;
     }
 
     private void MovingEnemy()
@@ -98,14 +164,6 @@ public class EnemyMove : MonoBehaviour
                 _side1 = true;
                 transform.Rotate(new Vector2(0, -180));
             }
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            motionControll = 0;
         }
     }
 }
