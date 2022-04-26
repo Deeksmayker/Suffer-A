@@ -1,10 +1,10 @@
-using DefaultNamespace.Fight;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttackJump : MonoBehaviour
+public class EnemyAttackJerk : MonoBehaviour
 {
+    // Start is called before the first frame update
     // Start is called before the first frame update
     private float timeBtwAttack;
     public float startTimeBtwAttacl;
@@ -34,7 +34,7 @@ public class EnemyAttackJump : MonoBehaviour
         if (timeBtwAttack <= 0 && _startCaroutine && distanceToPlayer < enemyMove.agroDistance)
         {
             _startCaroutine = false;
-            StartCoroutine(Jump());
+            StartCoroutine(Jerk());
             timeBtwAttack = startTimeBtwAttacl;
         }
         else if (_startCaroutine)
@@ -43,31 +43,28 @@ public class EnemyAttackJump : MonoBehaviour
         }
     }
 
-    public IEnumerator Jump()
+    public IEnumerator Jerk()
     {
         enemyMove.StanEnemy();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);
         }
+
+        enemyMove.speed = enemyMove.normalSpeed;
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(0.01f);
-            physic.AddForce(new Vector2(10 * enemyMove.motionControll, 10));
+            physic.AddForce(new Vector2(enemyMove.agroDistance * 2 * enemyMove.motionControll, 0));
         }
-        for (int i = 0; i < 60; i++)
-        {
-            yield return new WaitForSeconds(0.01f);
-            physic.AddForce(new Vector2(10 * enemyMove.motionControll, -10));
-        }
-        Collider2D player = Physics2D.OverlapBox(attackPos.position, new Vector2 (rangeAttackX,rangeAttackY), playerMask);
+        Collider2D player = Physics2D.OverlapBox(attackPos.position, new Vector2(rangeAttackX, rangeAttackY), playerMask);
         StopAllCoroutines();
         _startCaroutine = true;
     }
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(attackPos.position, new Vector2(rangeAttackX,rangeAttackY));
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(attackPos.position, new Vector2(rangeAttackX, rangeAttackY));
     }
 }

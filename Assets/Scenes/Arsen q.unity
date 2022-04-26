@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 456697130}
   m_Layer: 0
   m_Name: Level
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -438,6 +438,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6818635175928903557, guid: 7d0b95dfbd7545246afed271a8b347dc, type: 3}
   m_PrefabInstance: {fileID: 515292824}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &671868697 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6438397715640674181, guid: 924959d9d0ddf334889b7ad3a5b361e6, type: 3}
+  m_PrefabInstance: {fileID: 6438397715327927046}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &730744790
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,7 +457,7 @@ GameObject:
   - component: {fileID: 730744792}
   m_Layer: 6
   m_Name: Static Sprite (1)
-  m_TagString: Untagged
+  m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -878,7 +883,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251564141}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 699115465d5b2a744af8c4b5e086fb3e, type: 3}
   m_Name: 
@@ -887,11 +892,28 @@ MonoBehaviour:
   physic: {fileID: 1251564147}
   attackDamage: 0
   attackPos: {fileID: 1023008424}
+  player: {fileID: 2029019399}
   rangeAttackX: 15
   rangeAttackY: 1
   playerMask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &1251564143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251564141}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d8a44bd659fd1349a6b14effde63341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTimeBtwAttacl: 1
+  bullet: {fileID: 7245986657592744961, guid: 2cf6ff9c88e42a040b9da3b9bffed0ab, type: 3}
+  shotPoint: {fileID: 671868697}
+  bulletOption: 0
 --- !u!50 &1251564147 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 6438397716004234954, guid: 924959d9d0ddf334889b7ad3a5b361e6, type: 3}
@@ -1256,7 +1278,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6438397715640674181, guid: 924959d9d0ddf334889b7ad3a5b361e6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.86
+      value: -0.28
       objectReference: {fileID: 0}
     - target: {fileID: 6438397715640674181, guid: 924959d9d0ddf334889b7ad3a5b361e6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1321,6 +1343,22 @@ PrefabInstance:
     - target: {fileID: 6438397716004234954, guid: 924959d9d0ddf334889b7ad3a5b361e6, type: 3}
       propertyPath: m_Mass
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234954, guid: 924959d9d0ddf334889b7ad3a5b361e6, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234954, guid: 924959d9d0ddf334889b7ad3a5b361e6, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234954, guid: 924959d9d0ddf334889b7ad3a5b361e6, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234957, guid: 924959d9d0ddf334889b7ad3a5b361e6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6438397716004234959, guid: 924959d9d0ddf334889b7ad3a5b361e6, type: 3}
       propertyPath: m_Name

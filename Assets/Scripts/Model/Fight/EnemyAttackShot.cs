@@ -8,13 +8,37 @@ public class EnemyAttackShot : MonoBehaviour
     public float startTimeBtwAttacl;
     public GameObject bullet;
     public Transform shotPoint;
+    public Transform player;
+    private EnemyMove enemyMove;
+    public enum bulletOptions
+    {
+        defoultBullets,
+        homingBullets
+    }
+
+    public bulletOptions bulletOption;
+
+    private void Awake()
+    {
+        player = GameObject.Find("Player").transform;
+        enemyMove = GetComponent<EnemyMove>();
+    }
 
     private void Update()
     {
-        if (timeBtwAttack <= 0)
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        if (timeBtwAttack <= 0 && distanceToPlayer < enemyMove.agroDistance)
         {
-            Instantiate(bullet, shotPoint.position, transform.rotation);
-            timeBtwAttack = startTimeBtwAttacl;
+            if (bulletOption == bulletOptions.defoultBullets)
+            {
+                Instantiate(bullet, shotPoint.position, transform.rotation);
+                timeBtwAttack = startTimeBtwAttacl;
+            }
+            else if (bulletOption == bulletOptions.homingBullets)
+            {
+                Instantiate(bullet, shotPoint.position, bullet.transform.rotation);
+                timeBtwAttack = startTimeBtwAttacl;
+            }
         }
         else
         {
