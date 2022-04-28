@@ -39,11 +39,7 @@ namespace DefaultNamespace.Fight
             
             PlayerInGameInput.OnHealUp.AddListener(() =>
             {
-                if (_healingCoroutine == null)
-                    return;
-                StopCoroutine(_healingCoroutine);
-                PlayerPreferences.CanMove = true;
-                Destroy(_particles);
+                StopHeal();
             });
             PlayerInGameInput.OnAbility.AddListener(() => SpendBlood());
             OnHeal.AddListener(SpendBlood);
@@ -52,6 +48,8 @@ namespace DefaultNamespace.Fight
         
         public IEnumerator TakeDamage(int value = 1)
         {
+            StopHeal();
+            
             PlayerPreferences.CanTakeDamage = false;
             
             PlayerPreferences.CurrentHealth -= value;
@@ -87,6 +85,16 @@ namespace DefaultNamespace.Fight
             OnHeal.Invoke();
             PlayerPreferences.CurrentHealth += 1;
             PlayerPreferences.CanMove = true;
+        }
+
+        private void StopHeal()
+        {
+            if (_healingCoroutine == null)
+                return;
+            StopCoroutine(_healingCoroutine);
+            PlayerPreferences.CanMove = true;
+            if (_particles != null)
+                _particles.Stop();
         }
 
         private void SpendBlood()

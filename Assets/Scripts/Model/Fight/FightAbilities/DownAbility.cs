@@ -15,8 +15,9 @@ namespace DefaultNamespace.Fight
 
         protected override IEnumerator Cast()
         {
-            if (!_canUse)
+            if (!_canUse || !PlayerPreferences.DownAbilityAvailable)
                 yield break;
+            
             PlayerInGameInput.OnAbility.Invoke();
 
             prefab.SetActive(true);

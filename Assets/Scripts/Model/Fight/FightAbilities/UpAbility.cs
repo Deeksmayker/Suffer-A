@@ -19,7 +19,7 @@ namespace DefaultNamespace.Fight
 
         protected override IEnumerator Cast()
         {
-            if (!_canUse)
+            if (!_canUse || !PlayerPreferences.UpAbilityAvailable)
                 yield break;
             PlayerInGameInput.OnAbility.Invoke();
             _canUse = false;

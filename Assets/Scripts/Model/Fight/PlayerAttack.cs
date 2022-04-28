@@ -40,6 +40,8 @@ namespace DefaultNamespace.Fight
         [SerializeField] private float timeForKeyUp;
         private float _chargeDuration = 0f;
 
+        public static Vector2 AttackDirection = Vector2.right;
+
         public static UnityEvent<bool> OnHorizontalCanAttack = new UnityEvent<bool>();
 
         private Coroutine _chargeAttackCoroutine;
@@ -50,13 +52,17 @@ namespace DefaultNamespace.Fight
             PlayerInGameInput.OnAttackKeyDown.AddListener(() => _chargeAttackCoroutine = StartCoroutine(ChargeAttack()));
             PlayerInGameInput.OnAttackKeyUp.AddListener(() =>
             {
-                StopCoroutine(_chargeAttackCoroutine);
+                if (_chargeAttackCoroutine != null)
+                    StopCoroutine(_chargeAttackCoroutine);
                 DecideAttackDirection();
             });
         }
 
         private IEnumerator ChargeAttack()
         {
+            if (!PlayerPreferences.AttackAvailable)
+                yield break;
+            
             _preparingSound = Instantiate(chargedPreparingAudio, preparedChargedCenter);
             
             var flag = true;
@@ -78,12 +84,17 @@ namespace DefaultNamespace.Fight
 
         private void DecideAttackDirection()
         {
+            if (!PlayerPreferences.AttackAvailable)
+                return;
+            
             if (_chargeDuration < chargedAttackTime)
                 Destroy(_preparingSound);
             
             if (PlayerInGameInput.VerticalRaw == 0 ||
                 PlayerInGameInput.VerticalRaw == -1 && PlayerPreferences.IsGrounded)
             {
+                AttackDirection = PlayerPreferences.FaceRight ? Vector2.right : Vector2.left;
+                
                 var x = PowerAttack ? horizontalRangeX * 2 : horizontalRangeX;
                 var y = PowerAttack ? horizontalRangeY * 2 : horizontalRangeY;
                 var line = PowerAttack ? bigHorizontalAttackLine : horizontalAttackLine;
@@ -93,6 +104,7 @@ namespace DefaultNamespace.Fight
             else
             {
                 var isUpAttack = PlayerInGameInput.VerticalRaw == 1;
+                AttackDirection = isUpAttack ? Vector2.up : Vector2.down;
                 var x = PowerAttack ? verticalRangeX * 2 : verticalRangeX;
                 var y = PowerAttack ? verticalRangeY * 2 : verticalRangeY;
                 var line = PowerAttack

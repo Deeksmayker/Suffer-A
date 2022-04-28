@@ -34,12 +34,7 @@ public class EnemyMove : MonoBehaviour
     public float normalSpeed;
     public float startStopTime;
     public float stopTime;
-
-    private void Awake()
-    {
-        player = GameObject.Find("Player").transform;
-    }
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -125,23 +120,19 @@ public class EnemyMove : MonoBehaviour
         if (transform.position.x >= mobPlatform.position.x + mobPlatform.localScale.x / 2 - 3 )
         {
             agroDistance = 0;
-            Debug.Log(1);
         }
         else if (transform.position.x < startPoint - 4)
         {
             agroDistance = _prevAgroDistance;
-            Debug.Log(_prevAgroDistance);
         }
 
         if (transform.position.x <= mobPlatform.position.x - mobPlatform.localScale.x / 2 + 3)
         {
             agroDistance = 0;
-            Debug.Log(1);
         }
         else if (transform.position.x > startPoint + 4)
         {
             agroDistance = _prevAgroDistance;
-            Debug.Log(_prevAgroDistance);
         }
     }
 

@@ -4,7 +4,6 @@ using DefaultNamespace;
 using DefaultNamespace.Fight;
 using Mechanics;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Movement
 {
@@ -29,7 +28,6 @@ namespace Movement
         private int _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
 
         private Vector2 _move;
-        
 
         private void Awake()
         {

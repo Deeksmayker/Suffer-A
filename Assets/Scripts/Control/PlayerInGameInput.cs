@@ -15,6 +15,9 @@ public class PlayerInGameInput : MonoBehaviour
     public static KeyCode LungeKey = KeyCode.C;
     public static KeyCode AbilityKey = KeyCode.F;
     public static KeyCode HealKey = KeyCode.A;
+    public static KeyCode InteractionKey = KeyCode.UpArrow;
+    public static KeyCode EscapeKey = KeyCode.Escape;
+    public static KeyCode JournalKey = KeyCode.J;
 
 
     public static float HorizontalRaw { get; private set; }
@@ -106,7 +109,7 @@ public class PlayerInGameInput : MonoBehaviour
 
     private void CheckHealInput()
     {
-        if (PlayerPreferences.CurrentBlood < PlayerPreferences.BloodSpend)
+        if (PlayerPreferences.CurrentBlood < PlayerPreferences.BloodSpend || PlayerPreferences.CurrentHealth == PlayerPreferences.MaxHealth || !PlayerPreferences.AttackAvailable)
             return;
         if (Input.GetKeyDown(HealKey))
             OnHealDown.Invoke();

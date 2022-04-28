@@ -85,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1649345196528112876, guid: f78ef2bed3bc1874f91a361c8711370c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.47754097
+      value: -3.0334048
       objectReference: {fileID: 0}
     - target: {fileID: 1649345196528112876, guid: f78ef2bed3bc1874f91a361c8711370c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -180,6 +180,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6506188835933485867}
     m_Modifications:
+    - target: {fileID: 4503763180631777321, guid: 7c322069cd712d4479057da22c7a9740, type: 3}
+      propertyPath: playerSpawnPoint.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4503763180631777325, guid: 7c322069cd712d4479057da22c7a9740, type: 3}
       propertyPath: m_Name
       value: CM vcam1

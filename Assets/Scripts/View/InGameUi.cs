@@ -10,6 +10,8 @@ namespace DefaultNamespace
         [SerializeField] private Slider bloodSlider;
         [SerializeField] private Slider healthSlider;
 
+        [SerializeField] private GameObject journal;
+
         private void Awake()
         {
             bloodSlider.value = PlayerPreferences.CurrentBlood;
@@ -19,6 +21,12 @@ namespace DefaultNamespace
             PlayerHealth.OnHeal.AddListener(DecreaseBloodValue);
             PlayerInGameInput.OnAbility.AddListener(DecreaseBloodValue);
             PlayerAttack.OnHit.AddListener(IncreaseBloodValue);
+        }
+
+        private void Update()
+        {
+            CheckMenuInput();
+            CheckMenuCloseInput();
         }
 
         private void DecreaseHealthValue(int value)
@@ -39,6 +47,20 @@ namespace DefaultNamespace
         private void IncreaseBloodValue(float value)
         {
             bloodSlider.value += value;
+        }
+        
+        private void CheckMenuInput()
+        {
+            if (Input.GetKeyDown(PlayerInGameInput.JournalKey))
+                journal.SetActive(true);
+        }
+
+        private void CheckMenuCloseInput()
+        {
+            if (Input.GetKeyDown(PlayerInGameInput.EscapeKey))
+            {
+                journal.SetActive(false);
+            }
         }
     }
 }

@@ -18,13 +18,11 @@ public class EnemyAttackJump : MonoBehaviour
     private bool _startCaroutine = true;
     private EnemyMove enemyMove;
 
-    private void Awake()
-    {
-        player = GameObject.Find("Player").transform;
-    }
+
     private void Start()
     {
         enemyMove = GetComponent<EnemyMove>();
+        player = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame

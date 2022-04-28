@@ -16,7 +16,7 @@ namespace DefaultNamespace.Fight
 
         protected override IEnumerator Cast()
         {
-            if (!_canUse)
+            if (!_canUse || !PlayerPreferences.HorizontalAbilityAvailable)
                 yield break;
             PlayerInGameInput.OnAbility.Invoke();
             _canUse = false;

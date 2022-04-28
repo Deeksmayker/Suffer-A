@@ -18,9 +18,9 @@ public class EnemyAttackShot : MonoBehaviour
 
     public bulletOptions bulletOption;
 
-    private void Awake()
+    private void Start()
     {
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindWithTag("Player").transform;
         enemyMove = GetComponent<EnemyMove>();
     }
 
