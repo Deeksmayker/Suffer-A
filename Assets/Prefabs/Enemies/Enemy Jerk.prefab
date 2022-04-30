@@ -236,7 +236,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6438397716004234957
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -299,7 +299,8 @@ MonoBehaviour:
   agroDistance: 15
   isAgro: 0
   vectorMove: {x: 0, y: 0}
-  mobPlatform: {fileID: 0}
+  startPointMove: {fileID: 0}
+  endPointMove: {fileID: 0}
   normalSpeed: 2
   startStopTime: 2
   stopTime: 0
@@ -359,6 +360,8 @@ MonoBehaviour:
   bullet: {fileID: 7245986657592744961, guid: 32b4271aad152a447b293c222ab4ff92, type: 3}
   shotPoint: {fileID: 6438397715640674181}
   player: {fileID: 0}
+  startTimePeriodAttacl: 0
+  startTimePeriodMove: 0
   bulletOption: 1
 --- !u!114 &1251564151
 MonoBehaviour:

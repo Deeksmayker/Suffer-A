@@ -29,8 +29,8 @@ public class EnemyMove : MonoBehaviour
     private bool _side1 = true;
     public Vector2 vectorMove;
 
-    public Transform mobPlatform;
-
+    public Transform startPointMove;
+    public Transform endPointMove;
     public float normalSpeed;
     public float startStopTime;
     public float stopTime;
@@ -122,26 +122,19 @@ public class EnemyMove : MonoBehaviour
 
     private void CheckEndPlatform()
     {
-        if (transform.position.x >= mobPlatform.position.x + mobPlatform.localScale.x / 2 - 3 )
+        if (transform.position.x >= endPointMove.position.x)
         {
             agroDistance = 0;
-            Debug.Log(1);
-        }
-        else if (transform.position.x < startPoint - 4)
-        {
-            agroDistance = _prevAgroDistance;
-            Debug.Log(_prevAgroDistance);
         }
 
-        if (transform.position.x <= mobPlatform.position.x - mobPlatform.localScale.x / 2 + 3)
+        if (transform.position.x <= startPointMove.position.x )
         {
             agroDistance = 0;
-            Debug.Log(1);
         }
-        else if (transform.position.x > startPoint + 4)
+
+        if (transform.position.x < endPointMove.position.x - 4 && transform.position.x > startPointMove.position.x + 4)
         {
             agroDistance = _prevAgroDistance;
-            Debug.Log(_prevAgroDistance);
         }
     }
 

@@ -10,6 +10,11 @@ public class EnemyAttackShot : MonoBehaviour
     public Transform shotPoint;
     public Transform player;
     private EnemyMove enemyMove;
+    private float timePeriodAttack;
+    public float startTimePeriodAttacl;
+    private float timePeriodMove;
+    public float startTimePeriodMove;
+
     public enum bulletOptions
     {
         defoultBullets,
@@ -25,6 +30,26 @@ public class EnemyAttackShot : MonoBehaviour
     }
 
     private void Update()
+    {
+        if (timePeriodAttack >= 0 )
+        {
+            ShotPlayer();
+            enemyMove.StanEnemy();
+            timePeriodAttack -= Time.deltaTime;
+            Debug.Log(timePeriodAttack);
+        }
+        else if (timePeriodAttack < 0 && timePeriodMove >= 0)
+        {
+            timePeriodMove -= Time.deltaTime;
+        }
+        else
+        {
+            timePeriodAttack = startTimePeriodAttacl;
+            timePeriodMove = startTimePeriodMove;
+        }
+    }
+
+    private void ShotPlayer()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         if (timeBtwAttack <= 0 && distanceToPlayer < enemyMove.agroDistance)

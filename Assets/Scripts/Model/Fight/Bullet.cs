@@ -42,7 +42,6 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Debug.Log(playerPos.position.x);
         if (mobOptions.defoultMob == mobOption)
         {
             transform.Translate(Vector2.right * speed * Time.deltaTime * 10);

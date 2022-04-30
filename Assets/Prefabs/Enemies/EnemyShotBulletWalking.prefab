@@ -299,7 +299,8 @@ MonoBehaviour:
   agroDistance: 0
   isAgro: 0
   vectorMove: {x: 0, y: 0}
-  mobPlatform: {fileID: 0}
+  startPointMove: {fileID: 0}
+  endPointMove: {fileID: 0}
   normalSpeed: 2
   startStopTime: 2
   stopTime: 0
@@ -358,6 +359,9 @@ MonoBehaviour:
   startTimeBtwAttacl: 1
   bullet: {fileID: 7245986657592744961, guid: 32b4271aad152a447b293c222ab4ff92, type: 3}
   shotPoint: {fileID: 6438397715640674181}
+  player: {fileID: 0}
+  startTimePeriodAttacl: 3
+  startTimePeriodMove: 3
   bulletOption: 0
 --- !u!114 &1251564151
 MonoBehaviour:
