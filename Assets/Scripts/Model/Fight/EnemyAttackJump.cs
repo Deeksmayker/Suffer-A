@@ -59,6 +59,11 @@ public class EnemyAttackJump : MonoBehaviour
             physic.AddForce(new Vector2(10 * enemyMove.motionControll, -10));
         }
         Collider2D player = Physics2D.OverlapBox(attackPos.position, new Vector2 (rangeAttackX,rangeAttackY), playerMask);
+        enemyMove.StanEnemy();
+        for (int i = 0; i < 60; i++)
+        {
+            yield return new WaitForSeconds(enemyMove.startStopTime / 100);
+        }
         StopAllCoroutines();
         _startCaroutine = true;
     }

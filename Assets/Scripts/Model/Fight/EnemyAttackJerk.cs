@@ -58,6 +58,11 @@ public class EnemyAttackJerk : MonoBehaviour
             physic.AddForce(new Vector2(enemyMove.agroDistance * 2 * enemyMove.motionControll, 0));
         }
         Collider2D player = Physics2D.OverlapBox(attackPos.position, new Vector2(rangeAttackX, rangeAttackY), playerMask);
+        enemyMove.StanEnemy();
+        for (int i = 0; i < 60; i++)
+        {
+            yield return new WaitForSeconds(enemyMove.startStopTime / 100);
+        }
         StopAllCoroutines();
         _startCaroutine = true;
     }
