@@ -12,6 +12,7 @@ namespace DefaultNamespace.Fight
         [SerializeField] private float damageImmunityDuration;
         [SerializeField] private float healDuration;
         [SerializeField] private ParticleSystem healParticles;
+        [SerializeField] private ParticleSystem hitParticles;
 
         private ParticleSystem _particles;
         private Coroutine _healingCoroutine;
@@ -48,6 +49,7 @@ namespace DefaultNamespace.Fight
         
         public IEnumerator TakeDamage(int value = 1)
         {
+            Instantiate(hitParticles, transform.position, Quaternion.identity);
             StopHeal();
             
             PlayerPreferences.CanTakeDamage = false;

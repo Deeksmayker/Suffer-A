@@ -362,6 +362,7 @@ MonoBehaviour:
   damageImmunityDuration: 0.7
   healDuration: 2
   healParticles: {fileID: 6870273931962037729, guid: 6842778a73aa83a40b4f65f66f68da9d, type: 3}
+  hitParticles: {fileID: 8726942104815698756, guid: e4c2871cf3bc68e45bb77b402e050e9a, type: 3}
 --- !u!114 &2341990547614878307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,7 +510,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184719984706411764}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.076, y: 0.03, z: -5}
+  m_LocalPosition: {x: 0.076, y: 0.03, z: 5}
   m_LocalScale: {x: 0.3030303, y: 0.3030303, z: 1}
   m_Children: []
   m_Father: {fileID: 107537497407455088}
@@ -1232,7 +1233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8623418859253113192, guid: 330fff5b12f74a54487b7198ccc482de, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 330fff5b12f74a54487b7198ccc482de, type: 3}

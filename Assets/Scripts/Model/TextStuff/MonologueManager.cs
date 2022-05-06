@@ -67,6 +67,9 @@ namespace DefaultNamespace.TextStuff
         
         private void LateUpdate()
         {
+            if (character == null)
+                character = FindObjectOfType<PlayerController>().transform;
+            
             FollowCharacter();
         }
 

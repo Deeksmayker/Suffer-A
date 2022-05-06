@@ -14,6 +14,9 @@ namespace DefaultNamespace.Fight
         
         [SerializeField] protected int health;
         [SerializeField] protected int damage = 1;
+
+        [SerializeField] protected ParticleSystem hitParticles;
+        
         private SpriteRenderer _sprite;
 
         private void OnTriggerStay2D(Collider2D col)
@@ -21,17 +24,20 @@ namespace DefaultNamespace.Fight
             if (col.gameObject.GetComponent<PlayerController>() == null || !PlayerPreferences.CanTakeDamage)
                 return;
             
-            PlayerHealth.OnHitTaken.Invoke(damage);
+            if (damage != 0)
+                PlayerHealth.OnHitTaken.Invoke(damage);
         }
 
         private void Awake()
         {
             _sprite = GetComponent<SpriteRenderer>();
-            _sprite.material.color = Color.white;
+            if (_sprite != null)
+                _sprite.material.color = Color.white;
         }
 
         public virtual void TakeDamage(int dmg)
         {
+            Instantiate(hitParticles, transform.position, Quaternion.identity);
             OnEnemyDamaged.Invoke(gameObject);
             if (dmg > PlayerPreferences.HitDamage)
                 OnEnemyPowerDamaged.Invoke(gameObject);

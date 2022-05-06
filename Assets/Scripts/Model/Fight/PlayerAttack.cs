@@ -45,10 +45,12 @@ namespace DefaultNamespace.Fight
         public static UnityEvent<bool> OnHorizontalCanAttack = new UnityEvent<bool>();
 
         private Coroutine _chargeAttackCoroutine;
-        private AudioSource _preparingSound;
-        
+
         private void Awake()
         {
+            chargedPreparingAudio = Instantiate(chargedPreparingAudio, preparedChargedCenter);
+            preparedChargedAudio = Instantiate(preparedChargedAudio, preparedChargedCenter);
+            
             PlayerInGameInput.OnAttackKeyDown.AddListener(() => _chargeAttackCoroutine = StartCoroutine(ChargeAttack()));
             PlayerInGameInput.OnAttackKeyUp.AddListener(() =>
             {
@@ -63,7 +65,7 @@ namespace DefaultNamespace.Fight
             if (!PlayerPreferences.AttackAvailable)
                 yield break;
             
-            _preparingSound = Instantiate(chargedPreparingAudio, preparedChargedCenter);
+            chargedPreparingAudio.Play();
             
             var flag = true;
             
@@ -72,7 +74,7 @@ namespace DefaultNamespace.Fight
                 if (_chargeDuration >= chargedAttackTime && _chargeDuration - chargedAttackTime <= timeForKeyUp && flag)
                 {
                     ParticlesEffects.StartParticle(preparedChargedParticle, preparedChargedCenter);
-                    Instantiate(preparedChargedAudio, preparedChargedCenter);
+                    preparedChargedAudio.Play();
                     flag = false;
                 }
                 _chargeDuration += Time.deltaTime;
@@ -88,7 +90,7 @@ namespace DefaultNamespace.Fight
                 return;
             
             if (_chargeDuration < chargedAttackTime)
-                Destroy(_preparingSound);
+                chargedPreparingAudio.Stop();
             
             if (PlayerInGameInput.VerticalRaw == 0 ||
                 PlayerInGameInput.VerticalRaw == -1 && PlayerPreferences.IsGrounded)

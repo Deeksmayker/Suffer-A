@@ -36,7 +36,6 @@ public class EnemyAttackShot : MonoBehaviour
             ShotPlayer();
             enemyMove.StanEnemy();
             timePeriodAttack -= Time.deltaTime;
-            Debug.Log(timePeriodAttack);
         }
         else if (timePeriodAttack < 0 && timePeriodMove >= 0)
         {
