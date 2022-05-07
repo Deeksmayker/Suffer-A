@@ -1,4 +1,5 @@
 using System.Collections;
+using DefaultNamespace.Fight;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -57,7 +58,11 @@ public class EnemyAttackJerk : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             physic.AddForce(new Vector2(enemyMove.agroDistance * 2 * enemyMove.motionControll, 0));
         }
-        Collider2D player = Physics2D.OverlapBox(attackPos.position, new Vector2(rangeAttackX, rangeAttackY), playerMask);
+        Collider2D playerCollider = Physics2D.OverlapBox(attackPos.position, new Vector2(rangeAttackX, rangeAttackY), 0, playerMask);
+        if (playerCollider)
+        {
+            PlayerHealth.OnHitTaken.Invoke(attackDamage);
+        }
         enemyMove.StanEnemy();
         for (int i = 0; i < 60; i++)
         {

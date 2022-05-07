@@ -34,7 +34,7 @@ public class Bullet : MonoBehaviour
         {
             if (hitInfo.collider.CompareTag("Player"))
             {
-                StartCoroutine(hitInfo.collider.GetComponent<PlayerHealth>().TakeDamage());
+                PlayerHealth.OnHitTaken.Invoke(3);
             }
             Destroy(gameObject);
         }

@@ -7,18 +7,22 @@ public class EnemyAttack : MonoBehaviour
 {
     public Transform attackPos;
     public int attackDamage;
-    public float rangeAttack;
+    public float rangeAttackX;
+    public float rangeAttackY;
     public LayerMask playerMask;
 
     private void Update()
     {
-        Collider2D player = Physics2D.OverlapCircle(attackPos.position, rangeAttack, playerMask);
-        //StartCoroutine(player.GetComponent<PlayerHealth>().TakeDamage());
+        Collider2D player = Physics2D.OverlapBox(attackPos.position, new Vector2(rangeAttackX, rangeAttackY), 0, playerMask);
+        if (player)
+        {
+            PlayerHealth.OnHitTaken.Invoke(attackDamage);
+        }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(attackPos.position, rangeAttack); 
+        Gizmos.DrawWireCube(attackPos.position, new Vector2(rangeAttackX, rangeAttackY));
     }
 }
