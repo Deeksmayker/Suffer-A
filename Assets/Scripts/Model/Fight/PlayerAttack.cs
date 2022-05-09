@@ -15,6 +15,9 @@ namespace DefaultNamespace.Fight
         public static UnityEvent<float> OnHit = new UnityEvent<float>();
         public static UnityEvent OnVerticalCanAttack = new UnityEvent();
 
+        public static UnityEvent OnSimpleAttack = new UnityEvent();
+        public static UnityEvent OnStrongAttack = new UnityEvent();
+        public static UnityEvent OnFailedStrong = new UnityEvent();
 
         [SerializeField] protected LayerMask hitLayer;
 
@@ -130,9 +133,9 @@ namespace DefaultNamespace.Fight
             var damage = PowerAttack ? PlayerPreferences.HitDamage * 2 : PlayerPreferences.HitDamage;
             _canAttack = false;
             //OnHorizontalCanAttack.Invoke(false);
-
             CheckStrongAttack(ref damage, attackEffect);
-
+            
+         
             _chargeDuration = 0f;
             
             DealDamageInRange(attackCenter, rangeX, rangeY, hitEvent, damage);
@@ -171,6 +174,15 @@ namespace DefaultNamespace.Fight
             {
                 damage *= 5;
                 attackEffect.GetComponent<LineRenderer>().startColor = Color.red;
+                OnStrongAttack.Invoke();
+            }
+
+            else
+            {
+                if (_chargeDuration < chargedAttackTime)
+                    OnSimpleAttack.Invoke();
+                else
+                    OnFailedStrong.Invoke();
             }
         }
         

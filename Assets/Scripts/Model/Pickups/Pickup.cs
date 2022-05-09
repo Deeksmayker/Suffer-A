@@ -49,6 +49,7 @@ namespace DefaultNamespace.Pickups
         public virtual void Interact()
         {
             AlreadyUsed = true;
+            GlobalEvents.OnPickup.Invoke();
         }
 
         public abstract IEnumerator ShowInfoPanel();

@@ -4,6 +4,7 @@ using DefaultNamespace;
 using DefaultNamespace.Fight;
 using Mechanics;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Movement
 {
@@ -28,6 +29,9 @@ namespace Movement
         private int _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
 
         private Vector2 _move;
+
+        public static UnityEvent OnAirJerk = new UnityEvent();
+        public static UnityEvent OnRoll = new UnityEvent();
 
         private void Awake()
         {
@@ -133,20 +137,25 @@ namespace Movement
 
         private void StartLunge()
         {
+            if (!_canLunge)
+                return;
+            
             if (!PlayerPreferences.IsGrounded)
             {
                 if (_currentLungeAirCount == 0)
                     return;
                 _currentLungeAirCount -= 1;
+                OnAirJerk.Invoke();
             }
+            
+            else
+                OnRoll.Invoke();
             
             StartCoroutine("Lunge");
         }
         
         private IEnumerator Lunge()
         {
-            if (!_canLunge)
-                yield break;
             yield return new WaitForFixedUpdate();
             Vector2 direction = Vector2.zero;
             

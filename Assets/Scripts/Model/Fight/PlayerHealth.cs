@@ -20,6 +20,10 @@ namespace DefaultNamespace.Fight
         public static UnityEvent OnHeal = new UnityEvent();
         public static UnityEvent<int> OnHitTaken = new UnityEvent<int>();
         public static UnityEvent<int> OnDamageTaken = new UnityEvent<int>();
+
+        public static UnityEvent OnHealStart = new UnityEvent();
+        public static UnityEvent OnHealEnd = new UnityEvent();
+        public static UnityEvent OnDie = new UnityEvent();
         
         private void Awake()
         {
@@ -76,11 +80,12 @@ namespace DefaultNamespace.Fight
 
         public void Die()
         {
-            
+            OnDie.Invoke();
         }
 
         private IEnumerator Heal()
         {
+            OnHealStart.Invoke();
             _particles = Instantiate(healParticles, transform.position, Quaternion.identity);
             PlayerPreferences.CanMove = false;
             yield return new WaitForSeconds(healDuration);
@@ -93,6 +98,7 @@ namespace DefaultNamespace.Fight
         {
             if (_healingCoroutine == null)
                 return;
+            OnHealEnd.Invoke();
             StopCoroutine(_healingCoroutine);
             PlayerPreferences.CanMove = true;
             if (_particles != null)

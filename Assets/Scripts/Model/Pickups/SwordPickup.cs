@@ -10,6 +10,7 @@ namespace DefaultNamespace.Pickups
         {
             PlayerPreferences.AttackAvailable = true;
             StartCoroutine(ShowInfoPanel());
+            GlobalEvents.OnSwordPickup.Invoke();
             base.Interact();
         }
 

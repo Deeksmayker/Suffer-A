@@ -6,6 +6,8 @@ namespace DefaultNamespace.Fight
 {
     public class UpAbility : Ability
     {
+        
+    
         [SerializeField] private float flyUpSpeed;
         [SerializeField] private float flyTime;
         [SerializeField] private float inAirHeightDeceleration;

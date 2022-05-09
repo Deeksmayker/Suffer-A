@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Cinemachine;
 using Movement;
 using UnityEngine;
@@ -32,6 +33,15 @@ namespace DefaultNamespace.Platformer
                 return;
 
             machine.m_BoundingShape2D = null;
+            StartCoroutine(Aboba());
+        }
+
+        private IEnumerator Aboba()
+        {
+            yield return null;
+            if (machine.m_BoundingShape2D == null)
+                machine.m_BoundingShape2D = gameObject.GetComponent<PolygonCollider2D>();
+
         }
     }
 }
