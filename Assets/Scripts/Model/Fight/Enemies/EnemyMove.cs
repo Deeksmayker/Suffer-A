@@ -80,11 +80,13 @@ public class EnemyMove : MonoBehaviour
             vectorMove = new Vector2(motionControll, 0);
             if (motionControll !=0 && agroDistance == _prevAgroDistance)
             {
-                agroDistance += 1;
+                agroDistance += 2;
+                Debug.Log(agroDistance);
             }
             else if(motionControll == 0 && agroDistance != _prevAgroDistance)
             {
-                agroDistance -= 1;
+                Debug.Log(3);
+                agroDistance -= 2;
             }
         }
         else if (mobOption == mobOptions.walkingMob)
@@ -132,7 +134,7 @@ public class EnemyMove : MonoBehaviour
             agroDistance = 0;
         }
 
-        if (transform.position.x < endPointMove.position.x - 4 && transform.position.x > startPointMove.position.x + 4)
+        if (transform.position.x < endPointMove.position.x - 4 && transform.position.x > startPointMove.position.x + 4 && mobOption != mobOptions.standingMob)
         {
             agroDistance = _prevAgroDistance;
         }

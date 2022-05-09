@@ -1,9 +1,8 @@
-using DefaultNamespace.Fight;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttackJump : MonoBehaviour
+public class EnemyAttackDive : MonoBehaviour
 {
     // Start is called before the first frame update
     private float timeBtwAttack;
@@ -12,17 +11,17 @@ public class EnemyAttackJump : MonoBehaviour
     public int attackDamage;
     public Transform attackPos;
     public Transform player;
-    public float rangeAttackX;
-    public float rangeAttackY;
     public LayerMask playerMask;
     private bool _startCaroutine = true;
     private EnemyMove enemyMove;
 
-
+    private void Awake()
+    {
+        player = GameObject.Find("Player").transform;
+    }
     private void Start()
     {
         enemyMove = GetComponent<EnemyMove>();
-        player = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame
@@ -48,20 +47,16 @@ public class EnemyAttackJump : MonoBehaviour
         {
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);
         }
-        for (int i = 0; i < 60; i++)
-        {
-            yield return new WaitForSeconds(0.01f);
-            physic.AddForce(new Vector2(10 * enemyMove.motionControll, 10));
-        }
+        enemyMove.StanEnemy();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(0.01f);
             physic.AddForce(new Vector2(10 * enemyMove.motionControll, -10));
         }
-        Collider2D playerCollider = Physics2D.OverlapBox(attackPos.position, new Vector2(rangeAttackX, rangeAttackY), 0, playerMask);
-        if (playerCollider)
+        for (int i = 0; i < 60; i++)
         {
-            PlayerHealth.OnHitTaken.Invoke(attackDamage);
+            yield return new WaitForSeconds(0.01f);
+            physic.AddForce(new Vector2(10 * enemyMove.motionControll, 10));
         }
         enemyMove.StanEnemy();
         for (int i = 0; i < 60; i++)
@@ -70,11 +65,5 @@ public class EnemyAttackJump : MonoBehaviour
         }
         StopAllCoroutines();
         _startCaroutine = true;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(attackPos.position, new Vector2(rangeAttackX,rangeAttackY));
     }
 }

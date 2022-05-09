@@ -28,36 +28,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6438397716004234952}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6438397715640674180
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6438397715640674181}
-  m_Layer: 7
-  m_Name: shotPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6438397715640674181
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6438397715640674180}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28, y: -1.28, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6438397716004234952}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6438397716004234959
@@ -75,9 +45,8 @@ GameObject:
   - component: {fileID: 6438397716004234956}
   - component: {fileID: 6438397716004234953}
   - component: {fileID: 6438397716004234966}
-  - component: {fileID: 1251564143}
   m_Layer: 7
-  m_Name: EnemyFlyingHomingShot
+  m_Name: EnemyRock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +64,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6438397716023908200}
-  - {fileID: 6438397715640674181}
   - {fileID: 1839736986}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -140,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 338732c350d6de3449f104f4da36b8dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 81c74c10b21e3b643a598990aee38032, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -189,7 +157,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.25, y: 10.17}
+    oldSize: {x: 6, y: 5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -228,16 +196,16 @@ MonoBehaviour:
   startPoint: 5
   endPoint: 5
   motionControll: 0
-  mobOption: 0
+  mobOption: 2
   speed: 2
   distanceStopMove: 4
-  agroDistance: 15
+  agroDistance: 5
   isAgro: 0
   vectorMove: {x: 0, y: 0}
   startPointMove: {fileID: 0}
   endPointMove: {fileID: 0}
   normalSpeed: 2
-  startStopTime: 0.1
+  startStopTime: 2
   stopTime: 0
 --- !u!114 &6438397716004234966
 MonoBehaviour:
@@ -253,30 +221,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPos: {fileID: 6438397716023908200}
   attackDamage: 0
-  rangeAttackX: 7
+  rangeAttackX: 8
   rangeAttackY: 5
   playerMask:
     serializedVersion: 2
     m_Bits: 256
---- !u!114 &1251564143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6438397716004234959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d8a44bd659fd1349a6b14effde63341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startTimeBtwAttacl: 1
-  bullet: {fileID: 7245986657592744961, guid: 5f78056722af14549b8e4f73b45b6ca1, type: 3}
-  shotPoint: {fileID: 6438397715640674181}
-  player: {fileID: 0}
-  startTimePeriodAttacl: 3
-  startTimePeriodMove: 3
-  bulletOption: 1
 --- !u!1 &6438397716023908203
 GameObject:
   m_ObjectHideFlags: 0
