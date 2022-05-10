@@ -140,8 +140,12 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    public void StanEnemy()
+    public void StanEnemy(float stanTime = 0)
     {
+        if (stanTime > 0)
+        {
+            startStopTime = stanTime;
+        }
         stopTime = startStopTime;
     }
 
