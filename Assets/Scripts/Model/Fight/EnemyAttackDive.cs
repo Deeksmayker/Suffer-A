@@ -4,66 +4,76 @@ using UnityEngine;
 
 public class EnemyAttackDive : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float speed;
+    public float distance;
+    public LayerMask whatIsSolid;
+    public Transform playerPos;
     private float timeBtwAttack;
     public float startTimeBtwAttacl;
-    public Rigidbody2D physic;
-    public int attackDamage;
-    public Transform attackPos;
-    public Transform player;
-    public LayerMask playerMask;
-    private bool _startCaroutine = true;
+    private Vector2 vectorPlayer = new Vector2();
+    public Transform startPoint;
+    private bool backToStartPoint;
+    private bool hitInfo;
     private EnemyMove enemyMove;
-
-    private void Awake()
-    {
-        player = GameObject.Find("Player").transform;
-    }
+    public Rigidbody2D physic;
     private void Start()
     {
+        hitInfo = false;
+        playerPos = GameObject.Find("Player").transform;
+        vectorPlayer = playerPos.position - transform.position;
+        timeBtwAttack = startTimeBtwAttacl;
+        backToStartPoint = false;
         enemyMove = GetComponent<EnemyMove>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        if (timeBtwAttack <= 0 && _startCaroutine && distanceToPlayer < enemyMove.agroDistance)
-        {
-            _startCaroutine = false;
-            StartCoroutine(Jump());
-            timeBtwAttack = startTimeBtwAttacl;
-        }
-        else if (_startCaroutine)
+        if (timeBtwAttack > 0)
         {
             timeBtwAttack -= Time.deltaTime;
+            vectorPlayer = playerPos.position - transform.position;
+            backToStartPoint = true;
         }
+        else if (backToStartPoint)
+        {
+            StartCoroutine(Dive());
+        }
+
     }
 
-    public IEnumerator Jump()
+    public IEnumerator Dive()
     {
-        enemyMove.StanEnemy();
-        for (int i = 0; i < 60; i++)
+        backToStartPoint = false;
+        Debug.Log(1);
+        for (int i = 0; i < 1000; i++)
         {
-            yield return new WaitForSeconds(enemyMove.startStopTime / 100);
-        }
-        enemyMove.StanEnemy();
-        for (int i = 0; i < 60; i++)
-        {
+            if (hitInfo)
+            {
+                break;
+            }
+            enemyMove.stopTime = 1;
+            physic.AddForce(vectorPlayer );
             yield return new WaitForSeconds(0.01f);
-            physic.AddForce(new Vector2(10 * enemyMove.motionControll, -10));
         }
-        for (int i = 0; i < 60; i++)
+
+        for (int i = 0; i < 1000; i++)
         {
+            enemyMove.stopTime = 1;
+            if (transform.position.y > startPoint.position.y)
+            {
+                break;
+            }
+
+            physic.AddForce(-vectorPlayer );
             yield return new WaitForSeconds(0.01f);
-            physic.AddForce(new Vector2(10 * enemyMove.motionControll, 10));
-        }
-        enemyMove.StanEnemy();
-        for (int i = 0; i < 60; i++)
-        {
-            yield return new WaitForSeconds(enemyMove.startStopTime / 100);
         }
         StopAllCoroutines();
-        _startCaroutine = true;
+        timeBtwAttack = startTimeBtwAttacl;
+        hitInfo = false;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        hitInfo = true;
     }
 }

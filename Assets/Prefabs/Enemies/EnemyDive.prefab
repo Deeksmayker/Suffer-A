@@ -258,6 +258,7 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 256
+  startTimeBtwAttacl: 0
 --- !u!114 &1718378735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,14 +271,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce54bc96f9c2c5b40bf819a93902b664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimeBtwAttacl: 4
-  physic: {fileID: 6438397716004234954}
-  attackDamage: 0
-  attackPos: {fileID: 1184307328}
-  player: {fileID: 0}
-  playerMask:
+  speed: 2
+  distance: 0
+  whatIsSolid:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
+  playerPos: {fileID: 0}
+  startTimeBtwAttacl: 4
+  startPoint: {fileID: 0}
+  physic: {fileID: 6438397716004234954}
 --- !u!1 &6438397716023908203
 GameObject:
   m_ObjectHideFlags: 0

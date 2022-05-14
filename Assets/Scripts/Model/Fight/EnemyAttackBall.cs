@@ -1,10 +1,11 @@
-using DefaultNamespace.Fight;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttackJump : MonoBehaviour
+public class EnemyAttackBall : MonoBehaviour
 {
+    // Start is called before the first frame update
+    // Start is called before the first frame update
     // Start is called before the first frame update
     private float timeBtwAttack;
     public float startTimeBtwAttacl;
@@ -17,6 +18,7 @@ public class EnemyAttackJump : MonoBehaviour
     public LayerMask playerMask;
     private bool _startCaroutine = true;
     private EnemyMove enemyMove;
+    private bool hitInfo;
 
     private void Start()
     {
@@ -31,7 +33,7 @@ public class EnemyAttackJump : MonoBehaviour
         if (timeBtwAttack <= 0 && _startCaroutine && distanceToPlayer < enemyMove.agroDistance)
         {
             _startCaroutine = false;
-            StartCoroutine(Jump());
+            StartCoroutine(Jerk());
             timeBtwAttack = startTimeBtwAttacl;
         }
         else if (_startCaroutine)
@@ -40,40 +42,61 @@ public class EnemyAttackJump : MonoBehaviour
         }
     }
 
-    public IEnumerator Jump()
+    public IEnumerator Jerk()
     {
         enemyMove.StanEnemy();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);
         }
+
+        enemyMove.speed = enemyMove.normalSpeed;
         for (int i = 0; i < 60; i++)
         {
+            if (hitInfo)
+            {
+                break;
+            }    
             yield return new WaitForSeconds(0.01f);
-            physic.AddForce(new Vector2(10 * enemyMove.motionControll, 10));
+            physic.AddForce(new Vector2(enemyMove.agroDistance * 2 * enemyMove.motionControll, 0));
         }
-        for (int i = 0; i < 60; i++)
+
+        if (hitInfo)
         {
-            yield return new WaitForSeconds(0.01f);
-            physic.AddForce(new Vector2(10 * enemyMove.motionControll, -10));
-        }
-        Collider2D playerCollider = Physics2D.OverlapBox(attackPos.position, new Vector2(rangeAttackX, rangeAttackY), 0, playerMask);
-        if (playerCollider)
-        {
-            PlayerHealth.OnHitTaken.Invoke(attackDamage);
+            turnEnemy();
+            for (int i = 0; i < 60; i++)
+            {
+                yield return new WaitForSeconds(0.01f);
+                physic.AddForce(new Vector2(-enemyMove.agroDistance * 2 * enemyMove.motionControll, 0));
+            }
+            turnEnemy();
         }
         enemyMove.StanEnemy();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);
         }
+        hitInfo = false;
         StopAllCoroutines();
         _startCaroutine = true;
     }
 
-    private void OnDrawGizmosSelected()
+    private void turnEnemy()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(attackPos.position, new Vector2(rangeAttackX,rangeAttackY));
+        if (transform.rotation.y < 0)
+        {
+            transform.Rotate(new Vector2(0, 180));
+        }
+        else
+        {
+            transform.Rotate(new Vector2(0, -180));
+        }
+    }
+
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(1);
+        hitInfo = true;
     }
 }
