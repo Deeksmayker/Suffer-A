@@ -11,9 +11,19 @@ namespace DefaultNamespace
         public const string VelocityX = "velocityX";
         public const string VelocityY = "velocityY";
         public const string Grounded = "grounded";
-        public const string SimpleAttack = "attack";
+        
+        public const string SimpleAttack = "simpleAttack";
         public const string StrongAttack = "strongAttack";
         public const string FailedStrong = "failedStrong";
+
+        public const string SimpleUp = "simpleUp";
+        public const string StrongUp = "strongUp";
+        public const string FailedStrongUp = "failedStrongUp";
+        
+        public const string SimpleDown = "simpleDown";
+        public const string StrongDown = "strongDown";
+        public const string FailedStrongDown = "failedStrongDown";
+        
         public const string Roll = "roll";
         public const string AirJerk = "airJerk";
         public const string Damaged = "damaged";

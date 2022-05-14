@@ -16,12 +16,15 @@ namespace DefaultNamespace.Pickups
 
         public override IEnumerator ShowInfoPanel()
         {
+            infoPanel.GetComponent<Image>().enabled = true;
+            infoPanel.GetComponentInChildren<Text>().enabled = true;
             infoPanel.GetComponentInChildren<Text>().text = "Рывок в воздухе. С";
-            infoPanel.SetActive(true);
+            
             ParticleInstance.Stop();
 
             yield return new WaitForSeconds(5f);
-            infoPanel.SetActive(false);
+            infoPanel.GetComponent<Image>().enabled = false;
+            infoPanel.GetComponentInChildren<Text>().enabled = false;
             Destroy(gameObject);
 
         }

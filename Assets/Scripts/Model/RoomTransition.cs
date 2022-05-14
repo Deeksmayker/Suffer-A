@@ -18,11 +18,11 @@ namespace DefaultNamespace
         }
         
         [SerializeField] private int sceneIndex;
-        [SerializeField] private Animator blackScreen;
+        private Animator blackScreen;
         [SerializeField] private float transitionTime;
         [SerializeField] private Direction moveDirection;
         private string _transitionName;
-
+        
         private void OnTriggerEnter2D(Collider2D col)
         {
             var playerController = col.gameObject.GetComponent<PlayerController>();
@@ -51,6 +51,8 @@ namespace DefaultNamespace
 
         private void Start()
         {
+            blackScreen = GameObject.Find("MinorLoadScreen").GetComponent<Animator>();
+            
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 

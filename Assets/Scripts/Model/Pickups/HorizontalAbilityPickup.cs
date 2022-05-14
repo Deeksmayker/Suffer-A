@@ -16,11 +16,13 @@ namespace DefaultNamespace.Pickups
         public override IEnumerator ShowInfoPanel()
         {
             infoPanel.GetComponentInChildren<Text>().text = "Способность. В сторону и F";
-            infoPanel.SetActive(true);
+            infoPanel.GetComponent<Image>().enabled = true;
+            infoPanel.GetComponentInChildren<Text>().enabled = true;
             ParticleInstance.Stop();
 
             yield return new WaitForSeconds(5f);
-            infoPanel.SetActive(false);
+            infoPanel.GetComponent<Image>().enabled = false;
+            infoPanel.GetComponentInChildren<Text>().enabled = false;
             Destroy(gameObject);
 
         }

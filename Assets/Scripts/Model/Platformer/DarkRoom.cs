@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Movement;
 using UnityEngine;
 
@@ -8,19 +9,25 @@ namespace DefaultNamespace.Platformer
     [RequireComponent(typeof(Animator))]
     public class DarkRoom : MonoBehaviour
     {
-        private Animator _animator;
+        [NonSerialized] public Animator Animator;
+
+        [SerializeField] private List<GameObject> nearestDarkRooms = new List<GameObject>();
 
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
+            Animator = GetComponent<Animator>();
         }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.GetComponent<PlayerController>() == null)
+            if (col.GetComponent<PlayerController>() == null) 
                 return;
-            
-            _animator.SetBool("Inside", true);
+             
+            Animator.SetBool("Inside", true);
+            foreach (var room in nearestDarkRooms)
+            {
+                room.GetComponent<DarkRoom>().Animator.SetBool("Inside", true);
+            }
         }
 
         private void OnTriggerExit2D(Collider2D other)
@@ -28,7 +35,11 @@ namespace DefaultNamespace.Platformer
             if (other.GetComponent<PlayerController>() == null)
                 return;
             
-            _animator.SetBool("Inside", false);
+            Animator.SetBool("Inside", false);
+            foreach (var room in nearestDarkRooms)
+            {
+                room.GetComponent<DarkRoom>().Animator.SetBool("Inside", false);
+            }
         }
     }
 }

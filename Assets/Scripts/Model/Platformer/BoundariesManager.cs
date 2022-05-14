@@ -8,7 +8,12 @@ namespace DefaultNamespace.Platformer
 {
     public class BoundariesManager : MonoBehaviour
     {
-        [SerializeField] private CinemachineConfiner machine;
+        private CinemachineConfiner machine;
+
+        private void Start()
+        {
+            machine = GameObject.FindObjectOfType<CinemachineConfiner>();
+        }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
@@ -18,30 +23,9 @@ namespace DefaultNamespace.Platformer
             machine.m_BoundingShape2D = gameObject.GetComponent<PolygonCollider2D>();
         }
 
-        private void OnTriggerStay2D(Collider2D other)
+        private void OnDestroy()
         {
-            if (!other.gameObject.GetComponent<PlayerController>())
-                return;
-            
-            if (machine.m_BoundingShape2D == null)
-                machine.m_BoundingShape2D = gameObject.GetComponent<PolygonCollider2D>();
-        }
-
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            if (!other.gameObject.GetComponent<PlayerController>())
-                return;
-
             machine.m_BoundingShape2D = null;
-            StartCoroutine(Aboba());
-        }
-
-        private IEnumerator Aboba()
-        {
-            yield return null;
-            if (machine.m_BoundingShape2D == null)
-                machine.m_BoundingShape2D = gameObject.GetComponent<PolygonCollider2D>();
-
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using DefaultNamespace.TextStuff.JournalStuff;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,11 +7,11 @@ namespace DefaultNamespace.Pickups
 {
     public class NotePickup : Pickup
     {
-        [SerializeField] private GameObject noteButton;
+        [SerializeField] private int noteIndex;
     
         public override void Interact()
         {
-            noteButton.SetActive(true);
+            Diary.OnNotePickup.Invoke(noteIndex);
             StartCoroutine(ShowInfoPanel());
             base.Interact();
         }
@@ -18,10 +19,12 @@ namespace DefaultNamespace.Pickups
         public override IEnumerator ShowInfoPanel()
         {
             infoPanel.GetComponentInChildren<Text>().text = "Поднята записка";
-            infoPanel.SetActive(true);
+            infoPanel.GetComponent<Image>().enabled = true;
+            infoPanel.GetComponentInChildren<Text>().enabled = true;
             ParticleInstance.Stop();
             yield return new WaitForSeconds(2f);
-            infoPanel.SetActive(false);
+            infoPanel.GetComponent<Image>().enabled = false;
+            infoPanel.GetComponentInChildren<Text>().enabled = false;
             Destroy(gameObject);
         }
     }

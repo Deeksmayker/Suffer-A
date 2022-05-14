@@ -35,11 +35,6 @@ public class EnemyMove : MonoBehaviour
     public float startStopTime;
     public float stopTime;
 
-    private void Awake()
-    {
-        player = GameObject.Find("Player").transform;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +68,11 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+            player = GameObject.FindWithTag("Player").transform;
+        if (player == null)
+            return;
+    
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         if (mobOption == mobOptions.standingMob)
         {

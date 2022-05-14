@@ -27,7 +27,8 @@ namespace DefaultNamespace.SpriteEffects
             if (sprite == null)
                 yield break;
             
-            _originalMaterial = sprite.material;
+            if (_originalMaterial == null)
+                _originalMaterial = sprite.material;
             
             sprite.material = flashMaterial;
             yield return new WaitForSeconds(flashDuration);

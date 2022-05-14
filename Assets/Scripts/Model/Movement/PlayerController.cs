@@ -35,6 +35,8 @@ namespace Movement
 
         private void Awake()
         {
+            Application.targetFrameRate = 60;
+            
             PlayerInGameInput.OnJumpKeyDown.AddListener(StartJump);
             PlayerInGameInput.OnJumpKeyUp.AddListener(StopJump);
             PlayerInGameInput.OnLungeKeyDown.AddListener(StartLunge);
@@ -66,6 +68,7 @@ namespace Movement
             Reflect();
         }
 
+        private bool _speedIsHightCoroutine;
         protected override void ComputeVelocity()
         {
             var inMove = Math.Abs(_move.x) > 0;
@@ -73,12 +76,26 @@ namespace Movement
             
             if (inMove && needToMove && Math.Abs(targetVelocity.x) > maxSpeed)
             {
-                var deceleration = 0.99f;
-                targetVelocity.x *= deceleration;
+                if (!_speedIsHightCoroutine)
+                {
+                    _speedIsHightCoroutine = true;
+                    StartCoroutine(HighSpeed());
+                }
             }
             else
             {
+                _speedIsHightCoroutine = false;
                 targetVelocity = _move * maxSpeed;
+            }
+        }
+
+        private IEnumerator HighSpeed()
+        {
+            while (_speedIsHightCoroutine)
+            {
+                var deceleration = 0.85f;
+                targetVelocity.x *= deceleration;
+                yield return new WaitForSeconds(0.05f);
             }
         }
         

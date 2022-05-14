@@ -3181,6 +3181,7 @@ GameObject:
   - component: {fileID: 827000700761208057}
   - component: {fileID: 6974209413325826861}
   - component: {fileID: 1037945388}
+  - component: {fileID: 331757613}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3302,8 +3303,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
-  monologuePanel: {fileID: 1459666281}
-  monologueText: {fileID: 178212699}
+--- !u!114 &331757613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827000700761208058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331e9a391d8241b38be9828849a91e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diaryButtons:
+  - {fileID: 55865794}
+  - {fileID: 75384689}
+  - {fileID: 507791461}
+  - {fileID: 2118585562}
+  - {fileID: 170374509}
+  - {fileID: 1458108335}
+  - {fileID: 1662587587}
 --- !u!1001 &1111967146637100958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3395,13 +3414,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1111967145378790133, guid: e4ad26544f3430e418613807e66ba36d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1111967145378790135, guid: e4ad26544f3430e418613807e66ba36d, type: 3}
       propertyPath: m_Name
       value: MonologuePanel
       objectReference: {fileID: 0}
     - target: {fileID: 1111967145378790135, guid: e4ad26544f3430e418613807e66ba36d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111967145378790135, guid: e4ad26544f3430e418613807e66ba36d, type: 3}
       propertyPath: m_TagString
       value: Info
+      objectReference: {fileID: 0}
+    - target: {fileID: 1111967146544122053, guid: e4ad26544f3430e418613807e66ba36d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1111967146544122053, guid: e4ad26544f3430e418613807e66ba36d, type: 3}
       propertyPath: m_FontData.m_BestFit
@@ -3409,24 +3440,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4ad26544f3430e418613807e66ba36d, type: 3}
---- !u!114 &178212699 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1111967146544122053, guid: e4ad26544f3430e418613807e66ba36d, type: 3}
-  m_PrefabInstance: {fileID: 1111967146637100958}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1459666282 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1111967145378790132, guid: e4ad26544f3430e418613807e66ba36d, type: 3}
-  m_PrefabInstance: {fileID: 1111967146637100958}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1459666281 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1111967145378790135, guid: e4ad26544f3430e418613807e66ba36d, type: 3}
   m_PrefabInstance: {fileID: 1111967146637100958}
   m_PrefabAsset: {fileID: 0}

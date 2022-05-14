@@ -17,6 +17,7 @@ namespace DefaultNamespace
 
         private void Awake()
         {
+            DontDestroyOnLoad(gameObject);
             bloodSlider.value = PlayerPreferences.CurrentBlood;
             healthSlider.value = PlayerPreferences.CurrentHealth;
             PlayerHealth.OnDamageTaken.AddListener(DecreaseHealthValue);

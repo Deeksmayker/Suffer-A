@@ -17,11 +17,13 @@ namespace DefaultNamespace.Pickups
         public override IEnumerator ShowInfoPanel()
         {
             infoPanel.GetComponentInChildren<Text>().text = "Атака X. Если зажать и отжать в нужный момент произведется усиленная атака";
-            infoPanel.SetActive(true);
+            infoPanel.GetComponent<Image>().enabled = true;
+            infoPanel.GetComponentInChildren<Text>().enabled = true;
             ParticleInstance.Stop();
 
             yield return new WaitForSeconds(5f);
-            infoPanel.SetActive(false);
+            infoPanel.GetComponent<Image>().enabled = false;
+            infoPanel.GetComponentInChildren<Text>().enabled = false;
             Destroy(gameObject);
 
         }
