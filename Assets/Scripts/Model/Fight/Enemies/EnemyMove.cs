@@ -81,11 +81,9 @@ public class EnemyMove : MonoBehaviour
             if (motionControll !=0 && agroDistance == _prevAgroDistance)
             {
                 agroDistance += 2;
-                Debug.Log(agroDistance);
             }
             else if(motionControll == 0 && agroDistance != _prevAgroDistance)
             {
-                Debug.Log(3);
                 agroDistance -= 2;
             }
         }

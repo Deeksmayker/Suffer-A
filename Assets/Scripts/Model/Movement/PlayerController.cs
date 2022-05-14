@@ -35,7 +35,8 @@ namespace Movement
 
         private void Awake()
         {
-            Application.targetFrameRate = 60;
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 144;
             
             PlayerInGameInput.OnJumpKeyDown.AddListener(StartJump);
             PlayerInGameInput.OnJumpKeyUp.AddListener(StopJump);
