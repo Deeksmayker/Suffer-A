@@ -19,6 +19,18 @@ namespace DefaultNamespace.Fight
         public static UnityEvent OnSimpleAttack = new UnityEvent();
         public static UnityEvent OnStrongAttack = new UnityEvent();
         public static UnityEvent OnFailedStrong = new UnityEvent();
+        
+        public static UnityEvent OnSimpleHorizontal = new UnityEvent();
+        public static UnityEvent OnStrongHorizontal = new UnityEvent();
+        public static UnityEvent OnFailedHorizontal = new UnityEvent();
+        
+        public static UnityEvent OnSimpleUp = new UnityEvent();
+        public static UnityEvent OnStrongUp = new UnityEvent();
+        public static UnityEvent OnFailedUp = new UnityEvent();
+        
+        public static UnityEvent OnSimpleDown = new UnityEvent();
+        public static UnityEvent OnStrongDown = new UnityEvent();
+        public static UnityEvent OnFailedDown = new UnityEvent();
 
         [SerializeField] protected LayerMask hitLayer;
 
@@ -178,16 +190,57 @@ namespace DefaultNamespace.Fight
                 damage *= 5;
                 attackEffect.GetComponent<LineRenderer>().startColor = Color.red;
                 OnStrongAttack.Invoke();
+                
+                if (IsHorizontal())
+                    OnStrongHorizontal.Invoke();
+
+                else
+                {
+                    if (IsUp())
+                        OnStrongUp.Invoke();
+
+                    else
+                        OnStrongDown.Invoke();
+                }
             }
 
             else
             {
                 if (_chargeDuration < chargedAttackTime)
+                {
                     OnSimpleAttack.Invoke();
+                    
+                    if (IsHorizontal())
+                        OnSimpleHorizontal.Invoke();
+                    else
+                    {
+                        if (IsUp())
+                            OnSimpleUp.Invoke();
+                        else
+                            OnSimpleDown.Invoke();
+                    }
+                }
                 else
+                {
                     OnFailedStrong.Invoke();
+                    
+                    if (IsHorizontal())
+                        OnFailedHorizontal.Invoke();
+                    else
+                    {
+                        if (IsUp())
+                            OnFailedUp.Invoke();
+                        else
+                            OnFailedDown.Invoke();
+                    }
+                }
             }
         }
+
+        private bool IsHorizontal() => PlayerInGameInput.VerticalRaw == 0 ||
+                                       PlayerInGameInput.VerticalRaw == -1 && PlayerPreferences.IsGrounded;
+
+        private bool IsUp() => PlayerInGameInput.VerticalRaw == 1;
         
         private IEnumerator ShowAttackLine(GameObject attackEffect)
         {

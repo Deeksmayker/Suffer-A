@@ -11,18 +11,18 @@ namespace DefaultNamespace
         public const string VelocityX = "velocityX";
         public const string VelocityY = "velocityY";
         public const string Grounded = "grounded";
-        
-        public const string SimpleAttack = "simpleAttack";
-        public const string StrongAttack = "strongAttack";
-        public const string FailedStrong = "failedStrong";
+                                  
+        public const string SimpleHorizontal = "simpleHorizontal";
+        public const string StrongHorizontal = "strongHorizontal";
+        public const string FailedHorizontal = "failedHorizontal";
 
         public const string SimpleUp = "simpleUp";
         public const string StrongUp = "strongUp";
-        public const string FailedStrongUp = "failedStrongUp";
+        public const string FailedUp = "failedUp";
         
         public const string SimpleDown = "simpleDown";
         public const string StrongDown = "strongDown";
-        public const string FailedStrongDown = "failedStrongDown";
+        public const string FailedDown = "failedDown";
         
         public const string Roll = "roll";
         public const string AirJerk = "airJerk";
@@ -48,9 +48,17 @@ namespace DefaultNamespace
             PlayerInGameInput.OnUpAbility.AddListener(() => _animator.SetTrigger(Up));
             PlayerInGameInput.OnDownAbility.AddListener(() => _animator.SetTrigger(Down));
             
-            PlayerAttack.OnStrongAttack.AddListener(() => _animator.SetTrigger(StrongAttack));
-            PlayerAttack.OnSimpleAttack.AddListener(() => _animator.SetTrigger(SimpleAttack));
-            PlayerAttack.OnFailedStrong.AddListener(() => _animator.SetTrigger(FailedStrong));
+            PlayerAttack.OnStrongHorizontal.AddListener(() => _animator.SetTrigger(StrongHorizontal));
+            PlayerAttack.OnSimpleHorizontal.AddListener(() => _animator.SetTrigger(SimpleHorizontal));
+            PlayerAttack.OnFailedHorizontal.AddListener(() => _animator.SetTrigger(FailedHorizontal));
+            
+            PlayerAttack.OnStrongUp.AddListener(() => _animator.SetTrigger(StrongUp));
+            PlayerAttack.OnSimpleUp.AddListener(() => _animator.SetTrigger(SimpleUp));
+            PlayerAttack.OnFailedUp.AddListener(() => _animator.SetTrigger(FailedUp));
+            
+            PlayerAttack.OnStrongDown.AddListener(() => _animator.SetTrigger(StrongDown));
+            PlayerAttack.OnSimpleDown.AddListener(() => _animator.SetTrigger(SimpleDown));
+            PlayerAttack.OnFailedDown.AddListener(() => _animator.SetTrigger(FailedDown));
             
             PlayerController.OnAirJerk.AddListener(() => _animator.SetTrigger(AirJerk));
             PlayerController.OnRoll.AddListener(() => _animator.SetTrigger(Roll));
