@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace DefaultNamespace.SpriteEffects
 {
@@ -23,8 +24,11 @@ namespace DefaultNamespace.SpriteEffects
         private IEnumerator Flash(GameObject obj)
         {
             var sprite = obj.GetComponent<SpriteRenderer>();
-
-            _originalMaterial = sprite.material;
+            if (sprite == null)
+                yield break;
+            
+            if (_originalMaterial == null)
+                _originalMaterial = sprite.material;
             
             sprite.material = flashMaterial;
             yield return new WaitForSeconds(flashDuration);

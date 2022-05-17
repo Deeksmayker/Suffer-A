@@ -6,6 +6,9 @@ TagManager:
   tags:
   - SimpleAttack
   - Level
+  - Info
+  - TransitionSpawn
+  - Shield
   layers:
   - Default
   - TransparentFX

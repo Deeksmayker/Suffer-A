@@ -12,6 +12,7 @@ namespace DefaultNamespace.Fight
         [SerializeField] private float damageImmunityDuration;
         [SerializeField] private float healDuration;
         [SerializeField] private ParticleSystem healParticles;
+        [SerializeField] private ParticleSystem hitParticles;
 
         private ParticleSystem _particles;
         private Coroutine _healingCoroutine;
@@ -19,6 +20,10 @@ namespace DefaultNamespace.Fight
         public static UnityEvent OnHeal = new UnityEvent();
         public static UnityEvent<int> OnHitTaken = new UnityEvent<int>();
         public static UnityEvent<int> OnDamageTaken = new UnityEvent<int>();
+
+        public static UnityEvent OnHealStart = new UnityEvent();
+        public static UnityEvent OnHealEnd = new UnityEvent();
+        public static UnityEvent OnDie = new UnityEvent();
         
         private void Awake()
         {
@@ -39,11 +44,7 @@ namespace DefaultNamespace.Fight
             
             PlayerInGameInput.OnHealUp.AddListener(() =>
             {
-                if (_healingCoroutine == null)
-                    return;
-                StopCoroutine(_healingCoroutine);
-                PlayerPreferences.CanMove = true;
-                Destroy(_particles);
+                StopHeal();
             });
             PlayerInGameInput.OnAbility.AddListener(() => SpendBlood());
             OnHeal.AddListener(SpendBlood);
@@ -52,6 +53,9 @@ namespace DefaultNamespace.Fight
         
         public IEnumerator TakeDamage(int value = 1)
         {
+            Instantiate(hitParticles, transform.position, Quaternion.identity);
+            StopHeal();
+            
             PlayerPreferences.CanTakeDamage = false;
             
             PlayerPreferences.CurrentHealth -= value;
@@ -76,17 +80,29 @@ namespace DefaultNamespace.Fight
 
         public void Die()
         {
-            
+            OnDie.Invoke();
         }
 
         private IEnumerator Heal()
         {
+            OnHealStart.Invoke();
             _particles = Instantiate(healParticles, transform.position, Quaternion.identity);
             PlayerPreferences.CanMove = false;
             yield return new WaitForSeconds(healDuration);
             OnHeal.Invoke();
             PlayerPreferences.CurrentHealth += 1;
             PlayerPreferences.CanMove = true;
+        }
+
+        private void StopHeal()
+        {
+            if (_healingCoroutine == null)
+                return;
+            OnHealEnd.Invoke();
+            StopCoroutine(_healingCoroutine);
+            PlayerPreferences.CanMove = true;
+            if (_particles != null)
+                _particles.Stop();
         }
 
         private void SpendBlood()

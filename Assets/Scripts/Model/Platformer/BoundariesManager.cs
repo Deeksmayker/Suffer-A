@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Cinemachine;
 using Movement;
 using UnityEngine;
@@ -7,7 +8,12 @@ namespace DefaultNamespace.Platformer
 {
     public class BoundariesManager : MonoBehaviour
     {
-        [SerializeField] private CinemachineConfiner machine;
+        private CinemachineConfiner machine;
+
+        private void Start()
+        {
+            machine = GameObject.FindObjectOfType<CinemachineConfiner>();
+        }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
@@ -15,6 +21,11 @@ namespace DefaultNamespace.Platformer
                 return;
 
             machine.m_BoundingShape2D = gameObject.GetComponent<PolygonCollider2D>();
+        }
+
+        private void OnDestroy()
+        {
+            machine.m_BoundingShape2D = null;
         }
     }
 }

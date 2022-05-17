@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 7245986657592745214}
   - component: {fileID: 7245986657592745212}
   - component: {fileID: 7245986657592745215}
-  m_Layer: 0
+  - component: {fileID: 5350215145971957533}
+  - component: {fileID: 4545807678332497840}
+  - component: {fileID: 8654521221633310443}
+  m_Layer: 7
   m_Name: "\u21161 BulletFlyingHoming"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7245986657592744961}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.7, y: 5.32, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.13128805, y: 0.13128805, z: 0.4376268}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -95,12 +98,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ad295ee19e17244ad4e99483d41e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  lifeTime: 3
+  speed: 3
+  lifeTime: 6
   distance: 0
   whatIsSolid:
     serializedVersion: 2
     m_Bits: 320
   playerPos: {fileID: 0}
   bulletObject: {fileID: 7245986657592744961}
-  mobOption: 0
+--- !u!114 &5350215145971957533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7245986657592744961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56363e1ecf8247dfa00431c06cb3fb13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10000
+  damage: 1
+  hitParticles: {fileID: 8726942104815698756, guid: e4c2871cf3bc68e45bb77b402e050e9a, type: 3}
+--- !u!58 &4545807678332497840
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7245986657592744961}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.029252369, y: -0.2700001}
+  serializedVersion: 2
+  m_Radius: 1.9032557
+--- !u!50 &8654521221633310443
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7245986657592744961}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -13,8 +13,24 @@ namespace DefaultNamespace.Fight
         public static UnityEvent<bool> OnEnemyDownHit = new UnityEvent<bool>();
         public static UnityEvent<bool> OnEnemyUpHit = new UnityEvent<bool>();
         public static UnityEvent<float> OnHit = new UnityEvent<float>();
+        public static UnityEvent OnStrongHit = new UnityEvent();
         public static UnityEvent OnVerticalCanAttack = new UnityEvent();
 
+        public static UnityEvent OnSimpleAttack = new UnityEvent();
+        public static UnityEvent OnStrongAttack = new UnityEvent();
+        public static UnityEvent OnFailedStrong = new UnityEvent();
+        
+        public static UnityEvent OnSimpleHorizontal = new UnityEvent();
+        public static UnityEvent OnStrongHorizontal = new UnityEvent();
+        public static UnityEvent OnFailedHorizontal = new UnityEvent();
+        
+        public static UnityEvent OnSimpleUp = new UnityEvent();
+        public static UnityEvent OnStrongUp = new UnityEvent();
+        public static UnityEvent OnFailedUp = new UnityEvent();
+        
+        public static UnityEvent OnSimpleDown = new UnityEvent();
+        public static UnityEvent OnStrongDown = new UnityEvent();
+        public static UnityEvent OnFailedDown = new UnityEvent();
 
         [SerializeField] protected LayerMask hitLayer;
 
@@ -40,24 +56,32 @@ namespace DefaultNamespace.Fight
         [SerializeField] private float timeForKeyUp;
         private float _chargeDuration = 0f;
 
+        public static Vector2 AttackDirection = Vector2.right;
+
         public static UnityEvent<bool> OnHorizontalCanAttack = new UnityEvent<bool>();
 
         private Coroutine _chargeAttackCoroutine;
-        private AudioSource _preparingSound;
-        
+
         private void Awake()
         {
+            chargedPreparingAudio = Instantiate(chargedPreparingAudio, preparedChargedCenter);
+            preparedChargedAudio = Instantiate(preparedChargedAudio, preparedChargedCenter);
+            
             PlayerInGameInput.OnAttackKeyDown.AddListener(() => _chargeAttackCoroutine = StartCoroutine(ChargeAttack()));
             PlayerInGameInput.OnAttackKeyUp.AddListener(() =>
             {
-                StopCoroutine(_chargeAttackCoroutine);
+                if (_chargeAttackCoroutine != null)
+                    StopCoroutine(_chargeAttackCoroutine);
                 DecideAttackDirection();
             });
         }
 
         private IEnumerator ChargeAttack()
         {
-            _preparingSound = Instantiate(chargedPreparingAudio, preparedChargedCenter);
+            if (!PlayerPreferences.AttackAvailable)
+                yield break;
+            
+            chargedPreparingAudio.Play();
             
             var flag = true;
             
@@ -66,7 +90,7 @@ namespace DefaultNamespace.Fight
                 if (_chargeDuration >= chargedAttackTime && _chargeDuration - chargedAttackTime <= timeForKeyUp && flag)
                 {
                     ParticlesEffects.StartParticle(preparedChargedParticle, preparedChargedCenter);
-                    Instantiate(preparedChargedAudio, preparedChargedCenter);
+                    preparedChargedAudio.Play();
                     flag = false;
                 }
                 _chargeDuration += Time.deltaTime;
@@ -78,12 +102,17 @@ namespace DefaultNamespace.Fight
 
         private void DecideAttackDirection()
         {
+            if (!PlayerPreferences.AttackAvailable)
+                return;
+            
             if (_chargeDuration < chargedAttackTime)
-                Destroy(_preparingSound);
+                chargedPreparingAudio.Stop();
             
             if (PlayerInGameInput.VerticalRaw == 0 ||
                 PlayerInGameInput.VerticalRaw == -1 && PlayerPreferences.IsGrounded)
             {
+                AttackDirection = PlayerPreferences.FaceRight ? Vector2.right : Vector2.left;
+                
                 var x = PowerAttack ? horizontalRangeX * 2 : horizontalRangeX;
                 var y = PowerAttack ? horizontalRangeY * 2 : horizontalRangeY;
                 var line = PowerAttack ? bigHorizontalAttackLine : horizontalAttackLine;
@@ -93,6 +122,7 @@ namespace DefaultNamespace.Fight
             else
             {
                 var isUpAttack = PlayerInGameInput.VerticalRaw == 1;
+                AttackDirection = isUpAttack ? Vector2.up : Vector2.down;
                 var x = PowerAttack ? verticalRangeX * 2 : verticalRangeX;
                 var y = PowerAttack ? verticalRangeY * 2 : verticalRangeY;
                 var line = PowerAttack
@@ -116,9 +146,9 @@ namespace DefaultNamespace.Fight
             var damage = PowerAttack ? PlayerPreferences.HitDamage * 2 : PlayerPreferences.HitDamage;
             _canAttack = false;
             //OnHorizontalCanAttack.Invoke(false);
-
             CheckStrongAttack(ref damage, attackEffect);
-
+            
+         
             _chargeDuration = 0f;
             
             DealDamageInRange(attackCenter, rangeX, rangeY, hitEvent, damage);
@@ -141,6 +171,8 @@ namespace DefaultNamespace.Fight
                 var isStrongAttack = damage > PlayerPreferences.HitDamage;
                 hitEvent.Invoke(isStrongAttack);
                 OnHit.Invoke(damage > PlayerPreferences.HitDamage ? damage*3.35f : damage * 5);
+                if (damage > PlayerPreferences.HitDamage)
+                    OnStrongHit.Invoke();
             }
 
             foreach (var enemy in enemiesInRange)
@@ -157,8 +189,58 @@ namespace DefaultNamespace.Fight
             {
                 damage *= 5;
                 attackEffect.GetComponent<LineRenderer>().startColor = Color.red;
+                OnStrongAttack.Invoke();
+                
+                if (IsHorizontal())
+                    OnStrongHorizontal.Invoke();
+
+                else
+                {
+                    if (IsUp())
+                        OnStrongUp.Invoke();
+
+                    else
+                        OnStrongDown.Invoke();
+                }
+            }
+
+            else
+            {
+                if (_chargeDuration < chargedAttackTime)
+                {
+                    OnSimpleAttack.Invoke();
+                    
+                    if (IsHorizontal())
+                        OnSimpleHorizontal.Invoke();
+                    else
+                    {
+                        if (IsUp())
+                            OnSimpleUp.Invoke();
+                        else
+                            OnSimpleDown.Invoke();
+                    }
+                }
+                else
+                {
+                    OnFailedStrong.Invoke();
+                    
+                    if (IsHorizontal())
+                        OnFailedHorizontal.Invoke();
+                    else
+                    {
+                        if (IsUp())
+                            OnFailedUp.Invoke();
+                        else
+                            OnFailedDown.Invoke();
+                    }
+                }
             }
         }
+
+        private bool IsHorizontal() => PlayerInGameInput.VerticalRaw == 0 ||
+                                       PlayerInGameInput.VerticalRaw == -1 && PlayerPreferences.IsGrounded;
+
+        private bool IsUp() => PlayerInGameInput.VerticalRaw == 1;
         
         private IEnumerator ShowAttackLine(GameObject attackEffect)
         {

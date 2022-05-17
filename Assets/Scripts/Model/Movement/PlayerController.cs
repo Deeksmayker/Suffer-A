@@ -29,10 +29,15 @@ namespace Movement
         private int _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
 
         private Vector2 _move;
-        
+
+        public static UnityEvent OnAirJerk = new UnityEvent();
+        public static UnityEvent OnRoll = new UnityEvent();
 
         private void Awake()
         {
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 144;
+            
             PlayerInGameInput.OnJumpKeyDown.AddListener(StartJump);
             PlayerInGameInput.OnJumpKeyUp.AddListener(StopJump);
             PlayerInGameInput.OnLungeKeyDown.AddListener(StartLunge);
@@ -64,6 +69,7 @@ namespace Movement
             Reflect();
         }
 
+        private bool _speedIsHightCoroutine;
         protected override void ComputeVelocity()
         {
             var inMove = Math.Abs(_move.x) > 0;
@@ -71,12 +77,26 @@ namespace Movement
             
             if (inMove && needToMove && Math.Abs(targetVelocity.x) > maxSpeed)
             {
-                var deceleration = 0.99f;
-                targetVelocity.x *= deceleration;
+                if (!_speedIsHightCoroutine)
+                {
+                    _speedIsHightCoroutine = true;
+                    StartCoroutine(HighSpeed());
+                }
             }
             else
             {
+                _speedIsHightCoroutine = false;
                 targetVelocity = _move * maxSpeed;
+            }
+        }
+
+        private IEnumerator HighSpeed()
+        {
+            while (_speedIsHightCoroutine)
+            {
+                var deceleration = 0.85f;
+                targetVelocity.x *= deceleration;
+                yield return new WaitForSeconds(0.05f);
             }
         }
         
@@ -135,20 +155,25 @@ namespace Movement
 
         private void StartLunge()
         {
+            if (!_canLunge)
+                return;
+            
             if (!PlayerPreferences.IsGrounded)
             {
                 if (_currentLungeAirCount == 0)
                     return;
                 _currentLungeAirCount -= 1;
+                OnAirJerk.Invoke();
             }
+            
+            else
+                OnRoll.Invoke();
             
             StartCoroutine("Lunge");
         }
         
         private IEnumerator Lunge()
         {
-            if (!_canLunge)
-                yield break;
             yield return new WaitForFixedUpdate();
             Vector2 direction = Vector2.zero;
             

@@ -1,6 +1,7 @@
 ﻿using System;
 using DefaultNamespace.Fight;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace DefaultNamespace
@@ -10,8 +11,13 @@ namespace DefaultNamespace
         [SerializeField] private Slider bloodSlider;
         [SerializeField] private Slider healthSlider;
 
+        [SerializeField] private GameObject journal;
+
+        public static UnityEvent<float> OnBloodIncrease = new UnityEvent<float>();
+
         private void Awake()
         {
+            DontDestroyOnLoad(gameObject);
             bloodSlider.value = PlayerPreferences.CurrentBlood;
             healthSlider.value = PlayerPreferences.CurrentHealth;
             PlayerHealth.OnDamageTaken.AddListener(DecreaseHealthValue);
@@ -19,6 +25,14 @@ namespace DefaultNamespace
             PlayerHealth.OnHeal.AddListener(DecreaseBloodValue);
             PlayerInGameInput.OnAbility.AddListener(DecreaseBloodValue);
             PlayerAttack.OnHit.AddListener(IncreaseBloodValue);
+            OnBloodIncrease.AddListener(IncreaseBloodValue);
+            
+        }
+
+        private void Update()
+        {
+            CheckMenuInput();
+            CheckMenuCloseInput();
         }
 
         private void DecreaseHealthValue(int value)
@@ -39,6 +53,25 @@ namespace DefaultNamespace
         private void IncreaseBloodValue(float value)
         {
             bloodSlider.value += value;
+        }
+
+        private void DecreaseBloodByValue(float value)
+        {
+            bloodSlider.value -= value;
+        }
+        
+        private void CheckMenuInput()
+        {
+            if (Input.GetKeyDown(PlayerInGameInput.JournalKey))
+                journal.SetActive(true);
+        }
+
+        private void CheckMenuCloseInput()
+        {
+            if (Input.GetKeyDown(PlayerInGameInput.EscapeKey))
+            {
+                journal.SetActive(false);
+            }
         }
     }
 }

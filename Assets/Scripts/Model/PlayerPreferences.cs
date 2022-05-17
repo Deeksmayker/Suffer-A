@@ -28,7 +28,7 @@ namespace DefaultNamespace
         public static bool ControlEnabled { get; private set; } = true;
         public static bool CanTakeDamage = true;
         public static bool CanMove = true;
-        public static int MaxLungeAirCount { get; private set; } = 1;
+        public static int MaxLungeAirCount = 0;
         
         public const float CoyoteTime = 0.05f;
         public const float InAirCoyoteTime = 0.17f;
@@ -40,6 +40,11 @@ namespace DefaultNamespace
         public static int HitDamage { get; private set; } = 1;
         public static int HorizontalProjectileDamage = 4;
 
+        public static bool AttackAvailable;
+        public static bool HorizontalAbilityAvailable;
+        public static bool UpAbilityAvailable;
+        public static bool DownAbilityAvailable;
+
         public static void EnableControl()
         {
             ControlEnabled = true;
@@ -48,11 +53,6 @@ namespace DefaultNamespace
         public static void DisableControl()
         {
             ControlEnabled = false;
-        }
-
-        public static void SetMaxAirLungeCount(int value)
-        {
-            MaxLungeAirCount = value;
         }
 
         public static void SetSpawnPoint(Vector3 point)

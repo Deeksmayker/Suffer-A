@@ -1,6 +1,8 @@
+using System;
 using DefaultNamespace.Fight;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -14,27 +16,42 @@ public class Bullet : MonoBehaviour
     private Vector2 vectorBullet = new Vector2();
     private float playerposY;
     public GameObject bulletObject;
-    public enum mobOptions
+    /*public enum mobOptions
     {
         flyingMob,
         defoultMob
     }
-    public mobOptions mobOption;
+    public mobOptions mobOption;*/
 
-    private void Start()
+    private void Awake()
     {
-        playerPos = GameObject.Find("Player").transform;
-        vectorBullet = playerPos.position - transform.position;
+        DefaultNamespace.Fight.Enemy.OnProjectileDamaged.AddListener((obj) =>
+        {
+            if (obj == gameObject)
+                Destroy(gameObject);
+        });
+        
+        DefaultNamespace.Fight.Enemy.OnEnemyPowerDamaged.AddListener((obj) =>
+        {
+            if (obj == gameObject)
+                ChangeDirectionOnPowerDamaged();
+        });
     }
 
     private void Update()
     {
+        if (playerPos == null)
+        {
+            playerPos = GameObject.FindWithTag("Player").transform;
+            vectorBullet = (playerPos.position - transform.position).normalized;
+        }
+        
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
         if (hitInfo.collider != null)
         {
             if (hitInfo.collider.CompareTag("Player"))
             {
-                StartCoroutine(hitInfo.collider.GetComponent<PlayerHealth>().TakeDamage());
+                PlayerHealth.OnHitTaken.Invoke(3);
             }
             Destroy(gameObject);
         }
@@ -42,15 +59,16 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Debug.Log(playerPos.position.x);
-        if (mobOptions.defoultMob == mobOption)
-        {
-            transform.Translate(Vector2.right * speed * Time.deltaTime * 10);
-        }
-        else if (mobOptions.flyingMob == mobOption)
-        {
-            transform.Translate(vectorBullet * speed * Time.deltaTime);
-        }
+
+        transform.Translate(vectorBullet * speed * Time.deltaTime);
+        
         lifeTime -= Time.deltaTime;
     }
+
+    private void ChangeDirectionOnPowerDamaged()
+    {
+        vectorBullet = PlayerAttack.AttackDirection;
+    }
+    
+    
 }

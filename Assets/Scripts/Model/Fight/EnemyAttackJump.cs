@@ -18,13 +18,11 @@ public class EnemyAttackJump : MonoBehaviour
     private bool _startCaroutine = true;
     private EnemyMove enemyMove;
 
-    private void Awake()
-    {
-        player = GameObject.Find("Player").transform;
-    }
+
     private void Start()
     {
         enemyMove = GetComponent<EnemyMove>();
+        player = GameObject.Find("Player").transform;
     }
 
     // Update is called once per frame
@@ -60,7 +58,16 @@ public class EnemyAttackJump : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             physic.AddForce(new Vector2(10 * enemyMove.motionControll, -10));
         }
-        Collider2D player = Physics2D.OverlapBox(attackPos.position, new Vector2 (rangeAttackX,rangeAttackY), playerMask);
+        Collider2D playerCollider = Physics2D.OverlapBox(attackPos.position, new Vector2(rangeAttackX, rangeAttackY), 0, playerMask);
+        if (playerCollider)
+        {
+            PlayerHealth.OnHitTaken.Invoke(attackDamage);
+        }
+        enemyMove.StanEnemy();
+        for (int i = 0; i < 60; i++)
+        {
+            yield return new WaitForSeconds(enemyMove.startStopTime / 100);
+        }
         StopAllCoroutines();
         _startCaroutine = true;
     }

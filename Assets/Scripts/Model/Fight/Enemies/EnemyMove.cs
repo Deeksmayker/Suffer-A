@@ -29,16 +29,11 @@ public class EnemyMove : MonoBehaviour
     private bool _side1 = true;
     public Vector2 vectorMove;
 
-    public Transform mobPlatform;
-
+    public Transform startPointMove;
+    public Transform endPointMove;
     public float normalSpeed;
     public float startStopTime;
     public float stopTime;
-
-    private void Awake()
-    {
-        player = GameObject.Find("Player").transform;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +68,11 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+            player = GameObject.FindWithTag("Player").transform;
+        if (player == null)
+            return;
+    
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         if (mobOption == mobOptions.standingMob)
         {
@@ -80,11 +80,11 @@ public class EnemyMove : MonoBehaviour
             vectorMove = new Vector2(motionControll, 0);
             if (motionControll !=0 && agroDistance == _prevAgroDistance)
             {
-                agroDistance += 1;
+                agroDistance += 2;
             }
             else if(motionControll == 0 && agroDistance != _prevAgroDistance)
             {
-                agroDistance -= 1;
+                agroDistance -= 2;
             }
         }
         else if (mobOption == mobOptions.walkingMob)
@@ -122,26 +122,19 @@ public class EnemyMove : MonoBehaviour
 
     private void CheckEndPlatform()
     {
-        if (transform.position.x >= mobPlatform.position.x + mobPlatform.localScale.x / 2 - 3 )
+        if (transform.position.x >= endPointMove.position.x)
         {
             agroDistance = 0;
-            Debug.Log(1);
-        }
-        else if (transform.position.x < startPoint - 4)
-        {
-            agroDistance = _prevAgroDistance;
-            Debug.Log(_prevAgroDistance);
         }
 
-        if (transform.position.x <= mobPlatform.position.x - mobPlatform.localScale.x / 2 + 3)
+        if (transform.position.x <= startPointMove.position.x )
         {
             agroDistance = 0;
-            Debug.Log(1);
         }
-        else if (transform.position.x > startPoint + 4)
+
+        if (transform.position.x < endPointMove.position.x - 4 && transform.position.x > startPointMove.position.x + 4 && mobOption != mobOptions.standingMob)
         {
             agroDistance = _prevAgroDistance;
-            Debug.Log(_prevAgroDistance);
         }
     }
 

@@ -146,3 +146,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1000
   damage: 1
+  hitParticles: {fileID: 8726942104815698756, guid: e4c2871cf3bc68e45bb77b402e050e9a, type: 3}

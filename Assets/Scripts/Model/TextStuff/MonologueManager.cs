@@ -9,12 +9,15 @@ namespace DefaultNamespace.TextStuff
     public class MonologueManager : MonoBehaviour
     {
         [SerializeField] private Transform character;
-        [SerializeField] private GameObject monologuePanel;
-        [SerializeField] private Text monologueText;
+        private GameObject monologuePanel;
+        private Text monologueText;
         private Queue<string> sentences;
 
         private void Awake()
         {
+            monologuePanel = GameObject.FindWithTag("Info");
+            monologueText = monologuePanel.GetComponentInChildren<Text>();
+            
             if (character == null)
                 character = FindObjectOfType<PlayerController>().transform;
             sentences = new Queue<string>(); 
@@ -24,7 +27,8 @@ namespace DefaultNamespace.TextStuff
         private void StartMonologue(Monologue monologue)
         {
             sentences.Clear();
-            monologuePanel.SetActive(true);
+            monologuePanel.GetComponent<Image>().enabled = true;
+            monologuePanel.GetComponentInChildren<Text>().enabled = true;
 
             foreach (var sentence in monologue.sentences)
             {
@@ -62,11 +66,15 @@ namespace DefaultNamespace.TextStuff
 
         private void EndMonologue()
         {
-            monologuePanel.SetActive(false);
+            monologuePanel.GetComponent<Image>().enabled = false;
+            monologuePanel.GetComponentInChildren<Text>().enabled = false;
         }
         
         private void LateUpdate()
         {
+            if (character == null)
+                character = FindObjectOfType<PlayerController>().transform;
+            
             FollowCharacter();
         }
 
