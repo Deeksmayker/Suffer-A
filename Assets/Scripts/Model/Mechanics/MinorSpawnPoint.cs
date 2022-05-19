@@ -8,8 +8,7 @@ namespace Mechanics
     {
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.tag == "Player")
-                PlayerPreferences.SetSpawnPoint(transform.position);
+            PlayerPreferences.MinorSpawnPoint = transform.position;
         }
     }
 }
