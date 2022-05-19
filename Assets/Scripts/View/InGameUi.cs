@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using DefaultNamespace.Fight;
 using UnityEngine;
 using UnityEngine.Events;
@@ -27,12 +28,20 @@ namespace DefaultNamespace
             PlayerAttack.OnHit.AddListener(IncreaseBloodValue);
             OnBloodIncrease.AddListener(IncreaseBloodValue);
             
+            PlayerHealth.OnDie.AddListener(() => StartCoroutine(SetMaxHealthAndSetBlood()));
         }
 
         private void Update()
         {
             CheckMenuInput();
             CheckMenuCloseInput();
+        }
+
+        private IEnumerator SetMaxHealthAndSetBlood()
+        {
+            yield return new WaitForSeconds(PlayerPreferences.RespawnTime);
+            healthSlider.value = PlayerPreferences.MaxHealth;
+            bloodSlider.value = 0;
         }
 
         private void DecreaseHealthValue(int value)

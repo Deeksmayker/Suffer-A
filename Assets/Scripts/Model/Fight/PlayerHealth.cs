@@ -24,6 +24,7 @@ namespace DefaultNamespace.Fight
         public static UnityEvent OnHealStart = new UnityEvent();
         public static UnityEvent OnHealEnd = new UnityEvent();
         public static UnityEvent OnDie = new UnityEvent();
+        public static UnityEvent OnRespawn = new UnityEvent();
         
         private void Awake()
         {
@@ -59,11 +60,11 @@ namespace DefaultNamespace.Fight
             PlayerPreferences.CanTakeDamage = false;
             
             PlayerPreferences.CurrentHealth -= value;
-            /*if (PlayerPreferences.CurrentHealth == 0)
+            if (PlayerPreferences.CurrentHealth == 0)
             {
                 Die();
                 yield break;
-            }*/
+            }
 
             StartCoroutine(Utils.StopTimeForWhile(timeStopDuration));
             GetComponent<PlayerController>().Bounce(new Vector2(PlayerPreferences.FaceRight ? -1 : 1, 0.3f) * 10);

@@ -18,7 +18,7 @@ namespace DefaultNamespace
         }
         
         [SerializeField] private int sceneIndex;
-        private Animator blackScreen;
+        private Animator _blackScreen;
         [SerializeField] private float transitionTime;
         [SerializeField] private Direction moveDirection;
         private string _transitionName;
@@ -38,7 +38,7 @@ namespace DefaultNamespace
         {
             DontDestroyOnLoad(gameObject);
 
-            blackScreen.SetTrigger("Start");
+            _blackScreen.SetTrigger("Start");
             PlayerPreferences.DisableControl();
             StartCoroutine(playerController.WalkToDirection((int)moveDirection));
             
@@ -51,7 +51,7 @@ namespace DefaultNamespace
 
         private void Start()
         {
-            blackScreen = GameObject.Find("MinorLoadScreen").GetComponent<Animator>();
+            _blackScreen = GameObject.Find("MinorLoadScreen").GetComponent<Animator>();
             
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
@@ -68,6 +68,7 @@ namespace DefaultNamespace
 
         private IEnumerator OnSceneLoad()
         {
+            _blackScreen.SetTrigger("Stop");
             var player = GameObject.FindWithTag("Player");
             
             player.transform.position = GameObject.Find(_transitionName + 1).transform.position;

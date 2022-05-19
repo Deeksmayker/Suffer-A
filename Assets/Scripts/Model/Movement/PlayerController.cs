@@ -35,6 +35,8 @@ namespace Movement
 
         private void Awake()
         {
+            DontDestroyOnLoad(gameObject);
+            
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = 144;
             

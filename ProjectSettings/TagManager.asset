@@ -9,6 +9,7 @@ TagManager:
   - Info
   - TransitionSpawn
   - Shield
+  - DarkScreen
   layers:
   - Default
   - TransparentFX

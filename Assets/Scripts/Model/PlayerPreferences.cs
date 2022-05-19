@@ -4,6 +4,8 @@ namespace DefaultNamespace
 {
     public class PlayerPreferences
     {
+        public static float RespawnTime = 3;
+        
         public static int MaxHealth = 4;
         private static int _currentHealth = MaxHealth;
         public static int CurrentHealth
@@ -21,8 +23,9 @@ namespace DefaultNamespace
             set => _currentBlood = Mathf.Clamp(value, 0, MaxBlood);
         }
         public static float BloodSpend = 50;
-        
-        public static Vector3 SpawnPoint { get; private set; }
+
+        public static Vector3 MinorSpawnPoint;
+        public static Vector3 MajorSpawnPoint;
 
         public static bool InTransition = false;
         public static bool ControlEnabled { get; private set; } = true;
@@ -53,11 +56,6 @@ namespace DefaultNamespace
         public static void DisableControl()
         {
             ControlEnabled = false;
-        }
-
-        public static void SetSpawnPoint(Vector3 point)
-        {
-            SpawnPoint = point;
         }
     }
 }
