@@ -21075,5 +21075,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Jerk
       objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234966, guid: c835f086256e5994e86f2239ca86db84, type: 3}
+      propertyPath: rangeAttackX
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234966, guid: c835f086256e5994e86f2239ca86db84, type: 3}
+      propertyPath: rangeAttackY
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234966, guid: c835f086256e5994e86f2239ca86db84, type: 3}
+      propertyPath: startTimeBtwAttacl
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c835f086256e5994e86f2239ca86db84, type: 3}

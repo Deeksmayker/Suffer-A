@@ -14841,6 +14841,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234953, guid: 09c01b51c94140e469d75c57cee0f27d, type: 3}
+      propertyPath: endPoint
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234953, guid: 09c01b51c94140e469d75c57cee0f27d, type: 3}
+      propertyPath: startPoint
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6438397716004234959, guid: 09c01b51c94140e469d75c57cee0f27d, type: 3}
       propertyPath: m_Name
       value: EnemyFlyingHomingShot
