@@ -238,7 +238,7 @@ MonoBehaviour:
   startPointMove: {fileID: 0}
   endPointMove: {fileID: 0}
   normalSpeed: 2
-  startStopTime: 0.1
+  startStopTime: 2
   stopTime: 0
 --- !u!114 &6438397716004234966
 MonoBehaviour:

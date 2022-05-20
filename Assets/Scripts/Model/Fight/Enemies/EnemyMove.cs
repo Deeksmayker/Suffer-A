@@ -38,6 +38,7 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player").transform;
         if (player == null)
             player = GameObject.FindWithTag("Player").transform;
         
@@ -61,7 +62,6 @@ public class EnemyMove : MonoBehaviour
         {
             flyingEnemy = new FlyingEnemy();
             motionControll = -1;
-            transform.position = new Vector2(transform.position.x, 5);
         }
     }
 
@@ -138,10 +138,26 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    public void StanEnemy()
+    public void StanEnemy(float stanTime = 0)
     {
+        if (stanTime > 0)
+        {
+            StartCoroutine(StanMove());
+            startStopTime = stanTime;
+        }
         stopTime = startStopTime;
     }
+
+    public IEnumerator StanMove()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            yield return new WaitForSeconds(0.01f);
+            physic.AddForce(new Vector2(-10 * motionControll, 0));
+        }
+        StopAllCoroutines();
+    }
+
 
     private void MovingEnemy()
     {

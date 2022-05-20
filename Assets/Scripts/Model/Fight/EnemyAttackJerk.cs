@@ -18,10 +18,10 @@ public class EnemyAttackJerk : MonoBehaviour
     public LayerMask playerMask;
     private bool _startCaroutine = true;
     private EnemyMove enemyMove;
-    
+
     private void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        player = GameObject.Find("Player").transform;
         enemyMove = GetComponent<EnemyMove>();
     }
 
