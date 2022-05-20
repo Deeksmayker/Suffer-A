@@ -38,6 +38,9 @@ public class EnemyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startPointMove = GameObject.Find("StartPointMove").transform;
+        endPointMove = GameObject.Find("EndPointMove").transform;
+        
         player = GameObject.Find("Player").transform;
         if (player == null)
             player = GameObject.FindWithTag("Player").transform;

@@ -91,6 +91,7 @@ namespace DefaultNamespace.Fight
             PlayerPreferences.CanMove = false;
             yield return new WaitForSeconds(healDuration);
             OnHeal.Invoke();
+            OnHealEnd.Invoke();
             PlayerPreferences.CurrentHealth += 1;
             PlayerPreferences.CanMove = true;
         }

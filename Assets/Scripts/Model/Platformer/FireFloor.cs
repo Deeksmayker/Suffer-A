@@ -57,7 +57,7 @@ namespace DefaultNamespace.Platformer
                 yield return null;
             }
             
-            PlayerHealth.OnDamageTaken.Invoke(1);
+            PlayerHealth.OnHitTaken.Invoke(1);
             _isRunning = false;
         } 
     }

@@ -185,7 +185,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.5986972, y: -0.24728787}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -196,7 +196,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 1.980485, y: 3.2559698}
   m_EdgeRadius: 0
 --- !u!114 &6438397716004234956
 MonoBehaviour:
@@ -254,8 +254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPos: {fileID: 6438397716023908200}
   attackDamage: 0
-  rangeAttackX: 7
-  rangeAttackY: 5
+  rangeAttackX: 0
+  rangeAttackY: 0
   playerMask:
     serializedVersion: 2
     m_Bits: 256

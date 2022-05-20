@@ -18,6 +18,8 @@ namespace Mechanics
 
         private IEnumerator TeleportPlayerWithBlackScreen(Collider2D col)
         {
+            if (PlayerPreferences.CurrentHealth == 0)
+                yield break;
             var blackScreenAnimator = GameObject.FindWithTag("DarkScreen").GetComponent<Animator>();
             
             blackScreenAnimator.SetTrigger("Start");

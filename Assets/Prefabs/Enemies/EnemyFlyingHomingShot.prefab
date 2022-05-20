@@ -92,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 6438397716004234959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.39764, y: 0.39764, z: 0.39764}
   m_Children:
   - {fileID: 6438397716023908200}
   - {fileID: 6438397715640674181}
@@ -254,11 +254,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPos: {fileID: 6438397716023908200}
   attackDamage: 0
-  rangeAttackX: 7
-  rangeAttackY: 5
+  rangeAttackX: 0
+  rangeAttackY: 0
   playerMask:
     serializedVersion: 2
     m_Bits: 256
+  startTimeBtwAttacl: 2
 --- !u!114 &1251564143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d8a44bd659fd1349a6b14effde63341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimeBtwAttacl: 1
+  startTimeBtwAttacl: 2
   bullet: {fileID: 7245986657592744961, guid: 5f78056722af14549b8e4f73b45b6ca1, type: 3}
   shotPoint: {fileID: 6438397715640674181}
   player: {fileID: 0}
