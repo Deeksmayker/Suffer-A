@@ -8,9 +8,9 @@ namespace DefaultNamespace.Platformer
     {
         [SerializeField] private float bloodPerSecond;
 
-        private void OnTriggerStay2D(Collider2D other)
+        private void OnCollisionStay2D(Collision2D collision)
         {
-            if (other.GetComponent<PlayerController>() == null)
+            if (collision.gameObject.GetComponent<PlayerController>() == null)
                 return;
 
             PlayerPreferences.CurrentBlood += bloodPerSecond * Time.deltaTime;

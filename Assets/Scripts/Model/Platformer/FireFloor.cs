@@ -13,12 +13,12 @@ namespace DefaultNamespace.Platformer
         private Coroutine _coroutine;
         private bool _isRunning;
 
-        private void OnTriggerStay2D(Collider2D other)
+        private void OnCollisionStay2D(Collision2D collision)
         {
-            if (other.GetComponent<PlayerController>() == null)
+            if (collision.gameObject.GetComponent<PlayerController>() == null)
                 return;
 
-            other.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
+            collision.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
             if (PlayerInGameInput.HorizontalRaw == 0)
             {
                 if (!_isRunning)
