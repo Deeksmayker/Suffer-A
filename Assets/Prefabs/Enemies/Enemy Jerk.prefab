@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 6438397716004234953}
   - component: {fileID: 6438397716004234966}
   - component: {fileID: 1251564151}
+  - component: {fileID: 1904509813}
   m_Layer: 7
   m_Name: Enemy Jerk
   m_TagString: Untagged
@@ -183,7 +184,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.69491386, y: -0.20338929}
@@ -260,7 +261,7 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 256
-  startTimeBtwAttacl: 0
+  startTimeBtwAttacl: 2
 --- !u!114 &1251564151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,10 +276,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTimeBtwAttacl: 2
   physic: {fileID: 6438397716004234954}
-  attackDamage: 1
+  attackDamage: 0
   attackPos: {fileID: 343602483}
   player: {fileID: 0}
   rangeAttackX: 8
+  rangeAttackY: 5
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &1904509813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6438397716004234959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528f1cc6354a6674faa89b53c56d19f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPos: {fileID: 1839736986}
+  attackDamage: 0
+  rangeAttackX: 5
   rangeAttackY: 5
   playerMask:
     serializedVersion: 2

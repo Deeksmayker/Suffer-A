@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 6438397716004234953}
   - component: {fileID: 6438397716004234966}
   - component: {fileID: 1718378735}
+  - component: {fileID: 1701502924596038793}
   m_Layer: 7
   m_Name: EnemyDive
   m_TagString: Untagged
@@ -183,7 +184,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.5986972, y: -0.24728787}
@@ -282,6 +283,25 @@ MonoBehaviour:
   startTimeBtwAttacl: 4
   startPoint: {fileID: 0}
   physic: {fileID: 6438397716004234954}
+--- !u!114 &1701502924596038793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6438397716004234959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528f1cc6354a6674faa89b53c56d19f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPos: {fileID: 1839736986}
+  attackDamage: 0
+  rangeAttackX: 0
+  rangeAttackY: 0
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &6438397716023908203
 GameObject:
   m_ObjectHideFlags: 0
