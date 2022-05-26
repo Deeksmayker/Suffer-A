@@ -18,6 +18,7 @@ public class PlayerInGameInput : MonoBehaviour
     public static KeyCode InteractionKey = KeyCode.UpArrow;
     public static KeyCode EscapeKey = KeyCode.Escape;
     public static KeyCode JournalKey = KeyCode.J;
+    public static KeyCode DiaryKey = KeyCode.U;
 
 
     public static float HorizontalRaw { get; private set; }

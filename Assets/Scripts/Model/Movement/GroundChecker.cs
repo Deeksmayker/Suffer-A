@@ -10,7 +10,8 @@ namespace Movement
     public class GroundChecker : MonoBehaviour
     {
         [SerializeField] private LayerMask floorLayer;
-        [SerializeField] private BoxCollider2D boxCollider;
+        [SerializeField] private BoxCollider2D playerCollider;
+        private BoxCollider2D _ceilingCollider;
         [SerializeField] private float extraHeightText = 0.5f;
         
         private bool _coroutineRunning = false;
@@ -22,6 +23,7 @@ namespace Movement
 
         private void Awake()
         {
+            _ceilingCollider = GetComponent<BoxCollider2D>();
             _previousFloorPosition = Vector2.zero;
             StartCoroutine(CheckFloor());
         }
@@ -29,12 +31,22 @@ namespace Movement
         private void Update()
         {
             CheckGrounded();
+            CheckCeiling();
+        }
+
+        private void CheckCeiling()
+        {
+            var rayCastHit = Physics2D.BoxCast(_ceilingCollider.bounds.center, _ceilingCollider.bounds.size, 0f,
+                Vector2.up, 0f,
+                floorLayer);
             
+            if (rayCastHit)
+                GetComponentInParent<PlayerController>().StopJump();
         }
 
         private void CheckGrounded()
         {
-            _rayCastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down,
+            _rayCastHit = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0f, Vector2.down,
                 extraHeightText, floorLayer);
 
             //Color rayColor = _rayCastHit.collider != null ? Color.green : Color.red;

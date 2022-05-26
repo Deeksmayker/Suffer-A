@@ -34,9 +34,9 @@ namespace DefaultNamespace.Platformer
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (!other.gameObject.GetComponent<PlayerController>())
+            if (!other.gameObject.GetComponent<PlayerController>() || PlayerPreferences.InTransition)
                 return;
-
+                
             machine.m_BoundingShape2D = null;
         }
 

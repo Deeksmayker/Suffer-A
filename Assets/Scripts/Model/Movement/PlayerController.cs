@@ -144,7 +144,7 @@ namespace Movement
             }
         }
 
-        private void StopJump()
+        public void StopJump()
         {
             StopCoroutine("Jump");
             if (velocity.y > 0)

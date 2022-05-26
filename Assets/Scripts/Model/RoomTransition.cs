@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
+using Cinemachine;
+using DefaultNamespace.Platformer;
 using Movement;
 using UnityEditor;
 using UnityEngine;
@@ -68,6 +70,9 @@ namespace DefaultNamespace
 
         private IEnumerator OnSceneLoad()
         {
+            FindObjectOfType<CinemachineConfiner>().m_BoundingShape2D = 
+                FindObjectOfType<BoundariesManager>().GetComponent<PolygonCollider2D>();
+        
             _blackScreen.SetTrigger("Stop");
             var player = GameObject.FindWithTag("Player");
             

@@ -13,6 +13,8 @@ namespace DefaultNamespace
         [SerializeField] private Slider healthSlider;
 
         [SerializeField] private GameObject journal;
+        [SerializeField] private GameObject diary;
+        [SerializeField] private GameObject pause;
 
         public static UnityEvent<float> OnBloodIncrease = new UnityEvent<float>();
 
@@ -72,14 +74,50 @@ namespace DefaultNamespace
         private void CheckMenuInput()
         {
             if (Input.GetKeyDown(PlayerInGameInput.JournalKey))
-                journal.SetActive(true);
+            {
+                diary.SetActive(false);
+                
+                if (journal.activeSelf)
+                    journal.SetActive(false);
+                
+                else
+                    journal.SetActive(true);
+            }
+            
+
+            if (Input.GetKeyDown(PlayerInGameInput.DiaryKey))
+            {
+                journal.SetActive(false);
+                
+                if (diary.activeSelf)
+                    diary.SetActive(false);
+                
+                else
+                    diary.SetActive(true);
+            }
+
+            if (Input.GetKeyDown(PlayerInGameInput.EscapeKey))
+            {
+                journal.SetActive(false);
+                diary.SetActive(false);
+                pause.SetActive(true);
+                Time.timeScale = 0;
+            }
         }
 
         private void CheckMenuCloseInput()
         {
             if (Input.GetKeyDown(PlayerInGameInput.EscapeKey))
             {
+                Debug.Log(pause.activeSelf);
                 journal.SetActive(false);
+                diary.SetActive(false);
+
+                if (pause.activeSelf)
+                {
+                    pause.SetActive(false);
+                    Time.timeScale = 1;
+                }
             }
         }
     }
