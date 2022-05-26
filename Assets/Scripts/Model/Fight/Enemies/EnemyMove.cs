@@ -35,6 +35,9 @@ public class EnemyMove : MonoBehaviour
     public float normalSpeed;
     public float startStopTime;
     public float stopTime;
+    public bool stoneSleep = true;
+    public UnityEvent OnWalkStone = new UnityEvent();
+    public UnityEvent OnUnSleep = new UnityEvent();
 
     // Start is called before the first frame update
 
@@ -93,7 +96,13 @@ public class EnemyMove : MonoBehaviour
             vectorMove = new Vector2(motionControll, 0);
             if (motionControll !=0 && agroDistance == _prevAgroDistance)
             {
+                if (stoneSleep)
+                {
+                    stoneSleep = false;
+                    OnUnSleep.Invoke(); // Просыпается камень
+                }
                 agroDistance += 2;
+                OnWalkStone.Invoke(); // Камень убегает
             }
             else if(motionControll == 0 && agroDistance != _prevAgroDistance)
             {
