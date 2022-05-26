@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &463250008 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7320191033720706196, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-  m_PrefabInstance: {fileID: 1199279690}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &541066643
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,6 +230,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &848380339 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8486794860800436380, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+  m_PrefabInstance: {fileID: 1199279690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1199279690
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -242,229 +248,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 55865796, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: "\u042F \u043E\u043A\u0430\u0437\u0430\u043B\u0441\u044F \u0432 \u043D\u0435\u043F\u043E\u043D\u044F\u0442\u043D\u043E\u043C
-        \u043C\u0435\u0441\u0442\u0435, \u043D\u0435 \u043F\u043E\u043D\u0438\u043C\u0430\u044E
-        \u0434\u043E \u043A\u043E\u043D\u0446\u0430 \u0433\u0434\u0435 \u044F. \u041F\u0440\u043E\u0438\u0441\u0445\u043E\u0434\u0438\u0442
-        \u043B\u0438 \u044D\u0442\u043E \u0432\u0441\u0435 \u043D\u0430 \u044F\u0432\u0443,
-        \u0438\u043B\u0438 \u043C\u043E\u0436\u0435\u0442 \u0431\u044B\u0442\u044C
-        \u044F \u0443\u043C\u0435\u0440?.. \u0412\u0441\u0435 \u043E\u043A\u0440\u0443\u0436\u0435\u043D\u0438\u0435
-        \u043C\u043D\u0435 \u0447\u0442\u043E-\u0442\u043E \u043D\u0430\u043F\u043E\u043C\u0438\u043D\u0430\u0435\u0442,
-        \u043D\u043E \u044F \u0434\u043E \u043A\u043E\u043D\u0446\u0430 \u043D\u0435
-        \u043C\u043E\u0433\u0443 \u043F\u043E\u043D\u044F\u0442\u044C \u0447\u0442\u043E.
-        \u041D\u0430 \u043C\u0435\u043D\u044F \u043D\u0430\u043F\u0430\u0434\u0430\u044E\u0442
-        \u0441\u0442\u0440\u0430\u043D\u043D\u044B\u0435 \u043E\u0431\u0440\u0430\u0437\u044B,
-        \u043D\u043E \u044F \u043D\u0435 \u043C\u043E\u0433\u0443 \u0432\u0441\u043F\u043E\u043C\u043D\u0438\u0442\u044C,
-        \u043E\u0442\u043A\u0443\u0434\u0430 \u044F \u044D\u0442\u043E \u0437\u043D\u0430\u044E.
-        \u041C\u043E\u0436\u0435\u0442 \u044F \u0443\u0436\u0435 \u0431\u044B\u043B
-        \u0437\u0434\u0435\u0441\u044C \u0438\u043B\u0438 \u044D\u0442\u043E \u043F\u0440\u043E\u0441\u0442\u043E
-        \u0441\u0442\u0440\u0430\u043D\u043D\u044B\u0439 \u0441\u043E\u043D. \u0422\u0430\u043A
-        \u0438\u043B\u0438 \u0438\u043D\u0430\u0447\u0435 \u043C\u043D\u0435 \u043F\u0440\u0438\u0434\u0435\u0442\u0441\u044F
-        \u0437\u0430\u0449\u0438\u0449\u0430\u0442\u044C\u0441\u044F, \u0435\u0441\u043B\u0438
-        \u044F \u043D\u0435 \u0445\u043E\u0447\u0443 \u0431\u044B\u0442\u044C \u043F\u043E\u0442\u0435\u0440\u044F\u043D\u043D\u044B\u043C
-        \u0437\u0434\u0435\u0441\u044C. \u0414\u0443\u043C\u0430\u044E \u043C\u043D\u0435
-        \u0441\u0442\u043E\u0438\u0442 \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0430\u0442\u044C
-        \u0441\u043F\u0443\u0441\u043A\u0430\u0442\u044C\u0441\u044F. \u0425\u043E\u0442\u044F
-        \u043A\u0430\u043A \u0431\u0443\u0434\u0442\u043E \u0443 \u043C\u0435\u043D\u044F
-        \u0435\u0441\u0442\u044C \u0432\u044B\u0431\u043E\u0440\u2026 "
-      objectReference: {fileID: 0}
-    - target: {fileID: 75384691, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: " \u0411\u043E\u0436\u0435, \u044F \u043F\u043E\u0432\u0441\u0442\u0440\u0435\u0447\u0430\u043B
-        \u043D\u0435\u0432\u0438\u0434\u0430\u043D\u043D\u044B\u0445 \u043C\u043D\u0435
-        \u0440\u0430\u043D\u0435\u0435 \u043B\u044E\u0434\u0435\u0439.. \u0425\u043E\u0442\u044F
-        \u043D\u0435\u0442, \u0438\u0445 \u0441\u043B\u043E\u0436\u043D\u043E \u043D\u0430\u0437\u0432\u0430\u0442\u044C
-        \u043B\u044E\u0434\u044C\u043C\u0438, \u043D\u0435\u043A\u043E\u0442\u043E\u0440\u044B\u0435
-        \u0438\u043C\u0435\u044E\u0442 \u043B\u0438\u0448\u044C \u043A\u0430\u043A\u0438\u0435-\u0442\u043E
-        \u0441\u0445\u043E\u0436\u0438\u0435 \u0441 \u043B\u044E\u0434\u044C\u043C\u0438
-        \u0447\u0435\u0440\u0442\u044B, \u043A\u0430\u043A\u043E\u0439-\u0442\u043E
-        \u043E\u0436\u0438\u0432\u0448\u0438\u0439 \u043A\u0430\u043C\u0435\u043D\u044C,
-        \u043B\u0435\u0442\u0430\u044E\u0449\u0438\u0435 \u0433\u043E\u043B\u043E\u0432\u044B,
-        \u044F \u043D\u0430\u0448\u0435\u043B \u0441\u0442\u0440\u0430\u043D\u043D\u044B\u0439
-        \u043C\u0435\u0447, \u0445\u043E\u0442\u044F \u0431\u044B \u0441 \u043D\u0438\u043C
-        \u044F \u0447\u0443\u0432\u0441\u0442\u0432\u0443\u044E \u0441\u0435\u0431\u044F
-        \u043D\u0435\u043C\u043D\u043E\u0433\u043E \u0431\u0435\u0437\u043E\u043F\u0430\u0441\u043D\u0435\u0435,
-        \u043D\u043E \u043E\u043D \u0432\u043F\u0438\u043B\u0441\u044F \u043C\u043D\u0435
-        \u0432 \u0440\u0443\u043A\u0443, \u0442\u0435\u043F\u0435\u0440\u044C \u044F
-        \u0434\u0430\u0436\u0435 \u043D\u0435 \u043C\u043E\u0433\u0443 \u0435\u0433\u043E
-        \u0431\u0440\u043E\u0441\u0438\u0442\u044C, \u043D\u0435 \u0441\u043A\u0430\u0437\u0430\u0442\u044C
-        \u0447\u0442\u043E\u0431\u044B \u044F \u0445\u043E\u0442\u0435\u043B \u0435\u0433\u043E
-        \u0432\u044B\u043A\u0438\u043D\u0443\u0442\u044C, \u043B\u0438\u0448\u044C
-        \u0431\u043B\u0430\u0433\u043E\u0434\u0430\u0440\u044F \u0435\u043C\u0443
-        \u044F \u0432\u0441\u0435 \u0435\u0449\u0435 \u0436\u0438\u0432. \u0414\u0430
-        \u043E \u0447\u0435\u043C \u044F, \u044D\u0442\u043E \u043D\u0435 \u043C\u043E\u0436\u0435\u0442
-        \u0431\u044B\u0442\u044C \u043F\u043E \u043D\u0430\u0441\u0442\u043E\u044F\u0449\u0435\u043C\u0443. 
-        \u042D\u0442\u043E \u0442\u043E\u0447\u043D\u043E \u0441\u043E\u043D\u2026 "
-      objectReference: {fileID: 0}
-    - target: {fileID: 170374511, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: " \u042F \u0443\u0436\u0435 \u0432\u0438\u0434\u0435\u043B \u043C\u043D\u043E\u0433\u043E
-        \u043D\u0435\u043E\u0431\u044A\u044F\u0441\u043D\u0438\u043C\u044B\u0445
-        \u0432\u0435\u0449\u0435\u0439, \u043D\u043E \u0441 \u043A\u0430\u0436\u0434\u044B\u043C
-        \u0440\u0430\u0437\u043E\u043C, \u043F\u043E\u044F\u0432\u043B\u044F\u0442\u044C\u0441\u044F
-        \u0447\u0442\u043E-\u0442\u043E \u043D\u043E\u0432\u043E\u0435. \u0427\u0435\u043C
-        \u043D\u0438\u0436\u0435 \u044F \u0441\u043F\u0443\u0441\u043A\u0430\u044E\u0441\u044C,
-        \u0434\u0430\u0432\u043B\u0435\u043D\u0438\u0435 \u043F\u043E\u0432\u044B\u0448\u0430\u0435\u0442\u0441\u044F,
-        \u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u0441\u044F \u0445\u043E\u043B\u043E\u0434\u043D\u0435\u0435,
-        \u044F \u043D\u0430\u0448\u0435\u043B \u043A\u0430\u043A\u043E\u0439-\u0442\u043E
-        \u0437\u0430\u0431\u0440\u043E\u0448\u0435\u043D\u043D\u044B\u0439 \u043B\u0430\u0433\u0435\u0440\u044C.
-        \u041F\u043E\u043B\u0443\u0447\u0438\u043B\u043E\u0441\u044C \u0445\u043E\u0442\u044C
-        \u043D\u0435\u043C\u043D\u043E\u0433\u043E \u043E\u0442\u0434\u043E\u0445\u043D\u0443\u0442\u044C
-        \u0442\u0430\u043C. \u042F \u0432\u0441\u0435 \u0431\u043B\u0438\u0436\u0435
-        \u043A \u043D\u0435\u043F\u043E\u043D\u044F\u0442\u043D\u043E\u0439 \u0430\u0440\u0435\u043D\u0435,
-        \u0438\u043B\u0438 \u0447\u0435\u0440\u0442 \u0437\u043D\u0430\u0435\u0442
-        \u0447\u0442\u043E \u044D\u0442\u043E. \u0412\u043E\u0437\u043C\u043E\u0436\u043D\u043E
-        \u044F \u043F\u043E\u043B\u0443\u0447\u0443 \u0445\u043E\u0442\u044C \u043A\u0430\u043A\u0438\u0435-\u0442\u043E
-        \u043E\u0442\u0432\u0435\u0442\u044B \u0442\u0430\u043C, \u043F\u043E\u0442\u043E\u043C\u0443-\u0447\u0442\u043E
-        \u0441\u0435\u0439\u0447\u0430\u0441 \u0432\u043E\u043F\u0440\u043E\u0441
-        \u0432\u0441\u0435 \u0431\u043E\u043B\u044C\u0448\u0435 \u0438 \u0431\u043E\u043B\u044C\u0448\u0435.
-        \u041E\u0441\u0442\u0430\u043B\u043E\u0441\u044C \u0441\u043E\u0432\u0441\u0435\u043C
-        \u043D\u0435\u043C\u043D\u043E\u0433\u043E. \u041D\u0443\u0436\u043D\u043E
-        \u0441\u043E\u0431\u0440\u0430\u0442\u044C\u0441\u044F  \u0441 \u0441\u0438\u043B\u0430\u043C\u0438
-        \u0438 \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C \u0441\u0432\u043E\u0439
-        \u043F\u0443\u0442\u044C.  "
-      objectReference: {fileID: 0}
-    - target: {fileID: 507791463, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: "\u042D\u0442\u043E \u0442\u043E\u0447\u043D\u043E \u043D\u0435 \u0441\u043E\u043D,
-        \u044F \u0438\u0441\u043F\u044B\u0442\u044B\u0432\u0430\u044E \u0431\u043E\u043B\u044C,
-        \u043D\u0430 \u0433\u043E\u0440\u044F\u0449\u0435\u0439 \u0437\u0435\u043C\u043B\u0435
-        \u043C\u043E\u0438 \u043D\u043E\u0433\u0438 \u0431\u0443\u043A\u0432\u0430\u043B\u044C\u043D\u043E
-        \u043D\u0430\u0447\u0438\u043D\u0430\u044E\u0442 \u0433\u043E\u0440\u0435\u0442\u044C,
-        \u044F \u043D\u0435 \u043C\u043E\u0433\u0443 \u043E\u043F\u0438\u0441\u0430\u0442\u044C
-        \u043D\u0430\u0441\u043A\u043E\u043B\u044C\u043A\u043E \u043C\u043D\u0435
-        \u0441\u0442\u0430\u043D\u043E\u0432\u0438\u0442\u0441\u044F \u0441\u0442\u0440\u0430\u0448\u043D\u043E
-        \u0441 \u043A\u0430\u0436\u0434\u043E\u0439 \u043D\u043E\u0432\u043E\u0439
-        \u043A\u043E\u043C\u043D\u0430\u0442\u043E\u0439 \u0432 \u043A\u043E\u0442\u043E\u0440\u0443\u044E
-        \u044F \u043F\u0440\u0438\u0445\u043E\u0436\u0443. \u042F \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0443
-        \u0441\u0442\u0440\u0430\u043D\u0441\u0442\u0432\u043E\u0432\u0430\u0442\u044C
-        \u0437\u0434\u0435\u0441\u044C \u0432 \u043F\u043E\u0438\u0441\u043A\u0435
-        \u0445\u043E\u0442\u044C \u043A\u0430\u043A\u0438\u0445-\u0442\u043E \u043E\u0442\u0432\u0435\u0442\u043E\u0432,
-        \u0438 \u0431\u0443\u0434\u0443 \u0441\u043F\u0443\u0441\u043A\u0430\u0442\u044C\u0441\u044F
-        \u0432\u043D\u0438\u0437, \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E
-        \u043A\u0442\u043E-\u0442\u043E \u043F\u043E\u043F\u0430\u043B \u0432 \u0442\u0430\u043A\u0443\u044E
-        \u0436\u0435 \u0431\u0435\u0434\u0443 \u043A\u0430\u043A \u0438 \u044F, \u0438
-        \u044F \u0441\u043C\u043E\u0433\u0443 \u043A\u043E\u0433\u043E-\u043D\u0438\u0431\u0443\u0434\u044C
-        \u0432\u0441\u0442\u0440\u0435\u0442\u0438\u0442\u044C, \u0445\u043E\u0442\u044C
-        \u0438 \u0434\u0443\u043C\u0430\u044E \u044D\u0442\u043E \u043C\u0430\u043B\u043E\u0432\u0435\u0440\u043E\u044F\u0442\u043D\u043E,
-        \u043D\u043E \u043F\u043E\u043F\u044B\u0442\u0430\u0442\u044C \u0443\u0434\u0430\u0447\u0443
-        \u0441\u0442\u043E\u0438\u0442. \u042F \u0437\u0430\u043F\u0438\u0441\u044B\u0432\u0430\u044E
-        \u043D\u0430\u0431\u043B\u044E\u0434\u0435\u043D\u0438\u044F \u043E \u0442\u0435\u0445,
-        \u0441 \u043A\u0435\u043C \u043C\u043D\u0435 \u043F\u0440\u0438\u0445\u043E\u0434\u0438\u0442\u0441\u044F
-        \u0441\u0442\u0430\u043B\u043A\u0438\u0432\u0430\u0442\u044C\u0441\u044F,
-        \u043E\u043A\u0440\u0443\u0436\u0435\u043D\u0438\u0438 \u0438 \u0441\u0432\u043E\u0438\u0445
-        \u043C\u044B\u0441\u043B\u044F\u0445 \u0434\u0430\u0431\u044B \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C
-        \u0440\u0430\u0441\u0441\u0443\u0434\u043E\u043A.  "
-      objectReference: {fileID: 0}
-    - target: {fileID: 1139810190, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1139810190, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458108337, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: "\u042F \u0432\u0438\u0434\u0435\u043B \u043D\u0435\u043F\u043E\u043D\u044F\u0442\u043D\u0432\u0430\u044B\u0440\u043E
-        \u043A\u0433\u043E \u0438\u043B\u0438 \u043D\u0435\u043F\u043E\u043D\u044F\u043F\u0430\u043D\u0442\u043D\u043E
-        \u0447\u0442\u043E. \u041C\u043D\u0435\u044F \u043E\u0445\u0432\u0432\u0430\u0442\u043B\u0438
-        \u043A\u0440\u043E\u043C\u0435\u0448\u044B\u043D\u044B\u0439 \u0443\u0436\u0430\u0441,
-        \u043E\u0447\u0440\u0435\u043A\u0443\u0440\u0435\u043D\u0434\u043D\u0430\u044F
-        \u043F\u0430\u043D\u0438\u043F\u0432\u0438\u043F\u043D\u0441\u043A\u0430\u044F
-        \u0430\u0442\u0430\u043A\u0430. \u041A\u0442\u043E-\u0442\u043E \u0442\u043E\u0447\u043D\u043F\u0430\u043E
-        \u043F\u0440\u044B\u0433\u043D\u0443\u043B \u0432\u043D\u0438\u0437 \u0438\u0437
-        \u044D\u0442\u043E\u0439 \u043A\u043E\u043C\u043D\u0430\u043F\u0442\u044B,
-        \u0434\u0443\u043C\u0430\u044E \u043A\u0430\u043A \u0440\u0430\u0437 \u0430\u0440\u0435\u043D\u0430
-        \u0438 \u043D\u0430\u0445\u043F\u0430\u043E\u0434\u0438\u0442\u0441\u044F
-        \u043F\u043E\u0434\u043E\u043C\u043D\u043E\u0439, \u043C\u043E\u0438 \u0440\u0443\u043A\u0443\u0438
-        \u0434\u0440\u043E\u0436\u0430\u0442, \u043F\u0438\u0448\u0443 \u044D\u0442\u043E,
-        \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E \u0432 \u043F\u043E\u0441\u043B\u0435\u0434\u043D\u0438\u0435
-        \u043C\u0438\u043D\u0443\u0442\u044B \u0441\u0432\u0435\u043E\u0443\u0439
-        \u0436\u0438\u0437\u043D\u0438, \u0432\u043E\u0437\u043C\u043E\u043D\u0436\u043E
-        \u044D\u0442\u043E \u043A\u0442\u043E-\u0442\u043E \u043A\u043E\u0433\u0433\u043B\u0430\u0434
-        \u0438\u043D\u0431\u0443\u0434\u044C \u043D\u0430\u0439\u0434\u0435\u0442,
-        \u043D\u043E \u043F\u0440\u0438\u0448\u043B\u043E \u0432\u0440\u0435\u043C\u044F
-        \u0432\u0441\u0442\u0440\u0435\u0442\u0438\u0442\u044C\u0441\u044F \u0441\u043E
-        \u0441\u0432\u043E\u0438\u043C \u0441\u0442\u0440\u0430\u0445\u043E\u0432
-        \u043B\u0438\u0446\u043E\u043C\u043A\u043B\u0438\u0446\u0443. \u041F\u0440\u043E\u0449\u0430\u0439\u0442\u0435.
-        \u042F \u0441\u0435\u0439\u0447\u0430\u0441 \u0431\u0443\u0434\u0443 \u0441\u043F\u0443\u0441\u043A\u0430\u0442\u044C\u0441\u044F
-        \u0432\u043D\u0438.. \u041E \u0411\u043E\u0436\u0435!   "
-      objectReference: {fileID: 0}
-    - target: {fileID: 1459666282, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 160.72003
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716161646, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1716161646, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1951135571, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1951135571, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1951135571, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2033051195, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2033051195, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2033051195, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2118585564, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: "\u0412\u0441\u0435 \u0431\u0435\u0441\u043F\u043E\u043B\u0435\u0437\u043D\u043E!
-        \u0412\u0441\u0435 \u044D\u0442\u043E \u043D\u0435 \u0438\u043C\u0435\u0435\u0442
-        \u0441\u043C\u044B\u0441\u043B\u0430! \u042F \u0447\u0443\u0432\u0441\u0442\u0432\u0443\u044E
-        \u0431\u043E\u043B\u044C \u0438 \u043A\u0430\u043A \u0431\u0443\u0434\u0442\u043E
-        \u0432 \u043C\u043E\u0435\u0439 \u0433\u043E\u043B\u043E\u0432\u0435 \u043A\u0442\u043E-\u0442\u043E
-        \u0440\u043E\u0435\u0442\u0441\u044F, \u043C\u044B\u0441\u043B\u0438 \u0438\u0434\u0443\u0442
-        \u0431\u0435\u0437\u043E\u0441\u0442\u0430\u043D\u043E\u0432\u043E\u0447\u043D\u043E,
-        \u043C\u043D\u0435 \u043A\u0430\u0436\u0435\u0442\u0441\u044F \u044F \u0443\u0436\u0435
-        \u0445\u043E\u0436\u0443 \u043A\u0440\u0443\u0433\u0430\u043C\u0438, \u044F
-        \u0443\u0436\u0435 \u0431\u044B\u043B \u0437\u0434\u0435\u0441\u044C. \u042D\u0442\u0438
-        \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0430, \u0430\u0442\u0430\u043A\u0443\u044E\u0449\u0438\u0435
-        \u043C\u0435\u043D\u044F.. \u0418\u043C\u0435\u0435\u044E\u0442 \u043B\u0438
-        \u043E\u043D\u0438 \u0440\u0430\u0437\u0443\u043C, \u043F\u043E\u043D\u0438\u043C\u0430\u044E\u0442
-        \u043B\u0438 \u043E\u043D\u0438 \u0445\u043E\u0442\u044C \u0447\u0442\u043E-\u0442\u043E,
-        \u0447\u0435\u0433\u043E \u043E\u043D\u0438 \u0445\u043E\u0442\u044F\u0442?
-        \u041F\u0440\u043E\u0433\u043D\u0430\u0442\u044C \u043C\u0435\u043D\u044F,
-        \u043F\u0440\u0435\u0434\u043E\u0441\u0442\u0435\u0440\u0435\u0447\u044C
-        \u043E\u0442 \u0447\u0435\u0433\u043E-\u0442\u043E, \u0438\u043B\u0438 \u0432\u043E\u0432\u0441\u0435
-        \u0443\u0431\u0438\u0442\u044C? \u042F \u0432\u0438\u0434\u0435\u043B \u0447\u0435\u043B\u043E\u0432\u0435\u043A\u0430,
-        \u0438\u043B\u0438 \u0447\u0442\u043E-\u0442\u043E \u043F\u043E\u0445\u043E\u0436\u0435\u0435
-        \u043D\u0430 \u0447\u0435\u043B\u043E\u0432\u0435\u043A\u0430, \u0432\u0440\u043E\u0441\u0448\u0435\u0433\u043E
-        \u0432 \u0441\u0442\u0435\u043D\u0443, \u044F \u0431\u0443\u0434\u0443 \u0434\u0435\u043B\u0430\u0442\u044C
-        \u0432\u0441\u0435 \u0434\u043E \u0442\u0435\u0445 \u043F\u043E\u0440, \u043F\u043E\u043A\u0430
-        \u0447\u0443\u0432\u0441\u0442\u0432\u0443\u044E \u0441\u0438\u043B\u044B
-        \u0432 \u0440\u0443\u043A\u0430\u0445, \u0434\u0430\u0431\u044B \u043D\u0435
-        \u043F\u0430\u0441\u0442\u044C \u0442\u043E\u0439 \u0436\u0435 \u0443\u0447\u0430\u0441\u0442\u044C\u044E\u2026 "
-      objectReference: {fileID: 0}
-    - target: {fileID: 597267752094128912, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 827000699055455741, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_TagString
-      value: DarkScreen
-      objectReference: {fileID: 0}
     - target: {fileID: 827000700761208054, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -557,76 +340,52 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1693653025880866805, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1693653025880866807, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6974209413325826861, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: diary
-      value: 
-      objectReference: {fileID: 1350283293}
-    - target: {fileID: 6974209413325826861, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: pause
-      value: 
-      objectReference: {fileID: 1592951454}
-    - target: {fileID: 6974209413325826861, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: journal
-      value: 
-      objectReference: {fileID: 463250008}
-    - target: {fileID: 7123465045121707817, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7320191033720706196, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7412140079577685430, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1572
-      objectReference: {fileID: 0}
-    - target: {fileID: 7412140079577685430, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 865
-      objectReference: {fileID: 0}
-    - target: {fileID: 7875483858251951962, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7977161540093824444, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8063712199057349975, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+    - target: {fileID: 1505448562496249931, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8063712199057349975, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8063712199057349975, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8063712199057349975, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8063712199057349975, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1920
-      objectReference: {fileID: 0}
-    - target: {fileID: 8063712199057349975, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8063712199057349975, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-      propertyPath: m_AnchoredPosition.y
+    - target: {fileID: 1505448562496249931, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189342657467574719, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189342657467574719, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2189342657467574719, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802371663410648176, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802371663410648176, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974209413325826861, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: bloodSlider
+      value: 
+      objectReference: {fileID: 2083894929}
+    - target: {fileID: 6974209413325826861, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: healthSlider
+      value: 
+      objectReference: {fileID: 848380339}
+    - target: {fileID: 9038717783527888659, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038717783527888659, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9038717783527888659, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8378,11 +8137,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1350283293 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 597267752094128912, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-  m_PrefabInstance: {fileID: 1199279690}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1357528917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9783,11 +9537,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1592951454 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7977161540093824444, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
-  m_PrefabInstance: {fileID: 1199279690}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1991657984
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9877,6 +9626,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9498e857200f254eb3995074fa899eb, type: 3}
+--- !u!114 &2083894929 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3206402197156026480, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+  m_PrefabInstance: {fileID: 1199279690}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2122378668 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6506188835933485866, guid: 1f14305fc84c1824bafa5d67f0973210, type: 3}
