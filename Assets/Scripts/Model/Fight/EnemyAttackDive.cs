@@ -28,7 +28,8 @@ public class EnemyAttackDive : MonoBehaviour
 
     private void Update()
     {
-        if (timeBtwAttack > 0)
+        float distanceToPlayer = Vector2.Distance(transform.position, playerPos.position);
+        if (timeBtwAttack > 0 && distanceToPlayer < enemyMove.agroDistance)
         {
             timeBtwAttack -= Time.deltaTime;
             vectorPlayer = playerPos.position - transform.position;
@@ -44,7 +45,6 @@ public class EnemyAttackDive : MonoBehaviour
     public IEnumerator Dive()
     {
         backToStartPoint = false;
-        Debug.Log(1);
         for (int i = 0; i < 1000; i++)
         {
             if (hitInfo)
@@ -52,7 +52,7 @@ public class EnemyAttackDive : MonoBehaviour
                 break;
             }
             enemyMove.stopTime = 1;
-            physic.AddForce(vectorPlayer );
+            physic.AddForce(vectorPlayer * speed );
             yield return new WaitForSeconds(0.01f);
         }
 
@@ -64,7 +64,7 @@ public class EnemyAttackDive : MonoBehaviour
                 break;
             }
 
-            physic.AddForce(-vectorPlayer );
+            physic.AddForce(-vectorPlayer * speed );
             yield return new WaitForSeconds(0.01f);
         }
         StopAllCoroutines();

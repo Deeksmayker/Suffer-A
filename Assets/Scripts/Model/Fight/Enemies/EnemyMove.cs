@@ -30,7 +30,6 @@ public class EnemyMove : MonoBehaviour
     private bool _side = true;
     private bool _side1 = true;
     public Vector2 vectorMove;
-
     public Transform startPointMove;
     public Transform endPointMove;
     public float normalSpeed;
