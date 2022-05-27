@@ -41136,7 +41136,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7667158318877017601, guid: c2e8eb4846fd46247bc9107e5c27e6a0, type: 3}
       propertyPath: m_Name
-      value: NotePickup (1)
+      value: zapys3
       objectReference: {fileID: 0}
     - target: {fileID: 7667158318877017602, guid: c2e8eb4846fd46247bc9107e5c27e6a0, type: 3}
       propertyPath: infoPanel
@@ -44006,7 +44006,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7667158318877017601, guid: c2e8eb4846fd46247bc9107e5c27e6a0, type: 3}
       propertyPath: m_Name
-      value: NotePickup
+      value: zapys4
       objectReference: {fileID: 0}
     - target: {fileID: 7667158318877017602, guid: c2e8eb4846fd46247bc9107e5c27e6a0, type: 3}
       propertyPath: infoPanel
