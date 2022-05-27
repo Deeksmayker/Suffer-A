@@ -38,12 +38,20 @@ public class EnemyMove : MonoBehaviour
 
     // Start is called before the first frame update
 
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Shield")
+        {
+            StunEnemy(1);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.GetComponent<HorizontalAbilityProjectile>() == null)
             return;
 
-        StanEnemy(2);
+        StunEnemy(2);
     }
 
     void Start()
@@ -151,17 +159,17 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    public void StanEnemy(float stanTime = 0)
+    public void StunEnemy(float stanTime = 0)
     {
         if (stanTime > 0)
         {
-            StartCoroutine(StanMove());
+            StartCoroutine(StunMove());
             startStopTime = stanTime;
         }
         stopTime = startStopTime;
     }
 
-    public IEnumerator StanMove()
+    public IEnumerator StunMove()
     {
         for (int i = 0; i < 20; i++)
         {

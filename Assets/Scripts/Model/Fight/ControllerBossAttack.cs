@@ -42,7 +42,7 @@ public class ControllerBossAttack : MonoBehaviour
 
     public IEnumerator AttackBossController()
     {
-        enemyMove.StanEnemy();
+        enemyMove.StunEnemy();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);
@@ -58,7 +58,7 @@ public class ControllerBossAttack : MonoBehaviour
 
         for (int i = 0; i < 60; i++)
         {
-            enemyMove.StanEnemy();
+            enemyMove.StunEnemy();
             playerCollider = Physics2D.OverlapBox(attackPosFloorExplosion.position, new Vector2(rangeAttackFloorX, rangeAttackFloorY), 0, playerMask);
             if (playerCollider)
             {
@@ -68,7 +68,7 @@ public class ControllerBossAttack : MonoBehaviour
         }
 
         yield return new WaitForSeconds(5f);
-        enemyMove.StanEnemy();
+        enemyMove.StunEnemy();
         yield return new WaitForSeconds(enemyMove.startStopTime);
         for (int i = 0; i < 60; i++)
         {
@@ -80,13 +80,13 @@ public class ControllerBossAttack : MonoBehaviour
         transform.position = new Vector2(transform.position.x, transform.position.y + 5);
         for (int i = 0; i < bullets.Length; i++)
         {
-            enemyMove.StanEnemy();
+            enemyMove.StunEnemy();
             Instantiate(bullets[i], attackPosShotBall.position, transform.rotation);
         }
 
         for (int i = 0; i < 5; i++)
         {
-            enemyMove.StanEnemy();
+            enemyMove.StunEnemy();
             yield return new WaitForSeconds(enemyMove.startStopTime);
         }
 

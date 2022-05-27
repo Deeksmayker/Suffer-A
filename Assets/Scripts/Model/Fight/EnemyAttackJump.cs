@@ -42,7 +42,7 @@ public class EnemyAttackJump : MonoBehaviour
 
     public IEnumerator Jump()
     {
-        enemyMove.StanEnemy();
+        enemyMove.StunEnemy();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);
@@ -62,7 +62,7 @@ public class EnemyAttackJump : MonoBehaviour
         {
             PlayerHealth.OnHitTaken.Invoke(attackDamage);
         }
-        enemyMove.StanEnemy();
+        enemyMove.StunEnemy();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);

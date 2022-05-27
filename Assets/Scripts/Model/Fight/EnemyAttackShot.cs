@@ -34,7 +34,7 @@ public class EnemyAttackShot : MonoBehaviour
         if (timePeriodAttack >= 0 )
         {
             ShotPlayer();
-            enemyMove.StanEnemy();
+            enemyMove.StunEnemy();
             timePeriodAttack -= Time.deltaTime;
         }
         else if (timePeriodAttack < 0 && timePeriodMove >= 0)

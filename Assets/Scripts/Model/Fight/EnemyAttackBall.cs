@@ -44,7 +44,7 @@ public class EnemyAttackBall : MonoBehaviour
 
     public IEnumerator Jerk()
     {
-        enemyMove.StanEnemy();
+        enemyMove.StunEnemy();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);
@@ -71,7 +71,7 @@ public class EnemyAttackBall : MonoBehaviour
             }
             turnEnemy();
         }
-        enemyMove.StanEnemy();
+        enemyMove.StunEnemy();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);
