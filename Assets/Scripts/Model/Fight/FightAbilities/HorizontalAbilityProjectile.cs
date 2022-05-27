@@ -7,7 +7,15 @@ namespace DefaultNamespace.Fight
 {
     public class HorizontalAbilityProjectile : MonoBehaviour
     {
+        [SerializeField] private ParticleSystem flyingParticle;
         [SerializeField] private ParticleSystem destroyParticle;
+
+        private ParticleSystem _flyingParticles;
+
+        private void Awake()
+        {
+            _flyingParticles = Instantiate(flyingParticle, transform.position, quaternion.identity);
+        }
 
         private void OnCollisionEnter2D(Collision2D col)
         {
