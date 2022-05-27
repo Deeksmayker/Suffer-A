@@ -41,6 +41,14 @@ public class EnemyMove : MonoBehaviour
 
     // Start is called before the first frame update
 
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Shield")
+        {
+            StanEnemy(1);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.GetComponent<HorizontalAbilityProjectile>() == null)
