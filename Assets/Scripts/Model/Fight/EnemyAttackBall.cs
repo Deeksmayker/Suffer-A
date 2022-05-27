@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class EnemyAttackBall : MonoBehaviour
 {
@@ -19,7 +21,8 @@ public class EnemyAttackBall : MonoBehaviour
     private bool _startCaroutine = true;
     private EnemyMove enemyMove;
     private bool hitInfo;
-
+    public UnityEvent OnEndRolling = new UnityEvent();
+    public UnityEvent OnPrepare = new UnityEvent();
     private void Start()
     {
         player = GameObject.Find("Player").transform;
@@ -45,6 +48,7 @@ public class EnemyAttackBall : MonoBehaviour
     public IEnumerator Jerk()
     {
         enemyMove.StanEnemy();
+        OnPrepare.Invoke();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);
@@ -72,6 +76,7 @@ public class EnemyAttackBall : MonoBehaviour
             turnEnemy();
         }
         enemyMove.StanEnemy();
+        OnEndRolling.Invoke();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);
@@ -96,7 +101,6 @@ public class EnemyAttackBall : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(1);
         hitInfo = true;
     }
 }

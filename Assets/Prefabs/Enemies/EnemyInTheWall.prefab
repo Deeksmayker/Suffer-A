@@ -5015,6 +5015,13 @@ MonoBehaviour:
   normalSpeed: 2
   startStopTime: 2
   stopTime: 0
+  stoneSleep: 1
+  OnWalkStone:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnSleep:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1251564152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5034,6 +5041,13 @@ MonoBehaviour:
     m_Bits: 256
   rangeAttackX: 15
   rangeAttackY: 5
+  player: {fileID: 0}
+  OnNoAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnSleep:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8387050316423800925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5156,11 +5170,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2684012521984043090, guid: 2aaf23ea970a84e41abb43700a34f005, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.0020303726
+      value: 0.0020298958
       objectReference: {fileID: 0}
     - target: {fileID: 20055398992603420, guid: 2aaf23ea970a84e41abb43700a34f005, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.00001001358
+      value: 0.000006198883
       objectReference: {fileID: 0}
     - target: {fileID: 20055398992603420, guid: 2aaf23ea970a84e41abb43700a34f005, type: 3}
       propertyPath: m_Bounds.m_Center.y
@@ -5192,7 +5206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5318481426309943093, guid: 2aaf23ea970a84e41abb43700a34f005, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -0.00021982193
+      value: -0.00022029877
       objectReference: {fileID: 0}
     - target: {fileID: 5318481426309943093, guid: 2aaf23ea970a84e41abb43700a34f005, type: 3}
       propertyPath: m_Bounds.m_Extent.x
@@ -5257,3 +5271,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2563968023045979882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312998576217347657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d437a1eb7630984a977cf067d665b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
