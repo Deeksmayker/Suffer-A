@@ -2,6 +2,8 @@ using System.Collections;
 using DefaultNamespace.Fight;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class ControllerBossAttack : MonoBehaviour
 {
@@ -24,6 +26,10 @@ public class ControllerBossAttack : MonoBehaviour
     private bool _startCaroutine = true;
     private EnemyMove enemyMove;
     public GameObject[] bullets;
+    public UnityEvent OnBaseAttack = new UnityEvent();
+    public UnityEvent OnFloorAttack = new UnityEvent();
+    public UnityEvent OnJerkAttack = new UnityEvent();
+    public UnityEvent OnPrepareShotAttack = new UnityEvent();
     private void Start()
     {
         player = GameObject.Find("Player").transform;
@@ -48,6 +54,7 @@ public class ControllerBossAttack : MonoBehaviour
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);
         }
 
+        OnBaseAttack.Invoke();
         Collider2D playerCollider = Physics2D.OverlapBox(attackPosBaseAttack.position, new Vector2(rangeAttackBaseAttackX, rangeAttackBaseAttackY), 0, playerMask);
         if (playerCollider)
         {
@@ -55,7 +62,7 @@ public class ControllerBossAttack : MonoBehaviour
         }
 
         yield return new WaitForSeconds(5f);
-
+        OnFloorAttack.Invoke();
         for (int i = 0; i < 60; i++)
         {
             enemyMove.StunEnemy();
@@ -70,13 +77,17 @@ public class ControllerBossAttack : MonoBehaviour
         yield return new WaitForSeconds(5f);
         enemyMove.StunEnemy();
         yield return new WaitForSeconds(enemyMove.startStopTime);
+        OnJerkAttack.Invoke();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(0.01f);
             physic.AddForce(new Vector2(enemyMove.agroDistance * 2 * enemyMove.motionControll, 0) * speedJerk);
         }
-        yield return new WaitForSeconds(5f);
 
+        yield return new WaitForSeconds(5f);
+        OnPrepareShotAttack.Invoke();
+        enemyMove.StanEnemy();
+        yield return new WaitForSeconds(enemyMove.startStopTime);
         transform.position = new Vector2(transform.position.x, transform.position.y + 5);
         for (int i = 0; i < bullets.Length; i++)
         {

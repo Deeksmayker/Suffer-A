@@ -2,7 +2,7 @@ using System.Collections;
 using DefaultNamespace.Fight;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class EnemyAttackJerk : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -18,7 +18,7 @@ public class EnemyAttackJerk : MonoBehaviour
     public LayerMask playerMask;
     private bool _startCaroutine = true;
     private EnemyMove enemyMove;
-
+    public UnityEvent OnJerk = new UnityEvent();
     private void Start()
     {
         player = GameObject.Find("Player").transform;
@@ -50,6 +50,7 @@ public class EnemyAttackJerk : MonoBehaviour
         }
 
         enemyMove.speed = enemyMove.normalSpeed;
+        OnJerk.Invoke();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(0.01f);
