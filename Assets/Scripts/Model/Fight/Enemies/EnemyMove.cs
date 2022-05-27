@@ -57,8 +57,13 @@ public class EnemyMove : MonoBehaviour
         StanEnemy(2);
     }
 
+    private Animator _animator;
+
+    
     void Start()
     {
+        _animator = GetComponentInChildren<Animator>();
+        
         startPointMove = GameObject.Find("StartPointMove").transform;
         endPointMove = GameObject.Find("EndPointMove").transform;
         
@@ -88,6 +93,7 @@ public class EnemyMove : MonoBehaviour
             motionControll = -1;
         }
     }
+
 
     // Update is called once per frame
     void Update()
@@ -135,6 +141,8 @@ public class EnemyMove : MonoBehaviour
         CheckEndPlatform();
         StopMoveEnemy();
         MovingEnemy();
+        
+        _animator.SetFloat("VelocityX", physic.velocity.x);
     }
 
     private void StopMoveEnemy()
@@ -152,7 +160,7 @@ public class EnemyMove : MonoBehaviour
 
     private void CheckEndPlatform()
     {
-        if (transform.position.x >= endPointMove.position.x)
+        /*if (transform.position.x >= endPointMove.position.x)
         {
             agroDistance = 0;
         }
@@ -160,7 +168,7 @@ public class EnemyMove : MonoBehaviour
         if (transform.position.x <= startPointMove.position.x )
         {
             agroDistance = 0;
-        }
+        }*/
 
         if (transform.position.x < endPointMove.position.x - 4 && transform.position.x > startPointMove.position.x + 4 && mobOption != mobOptions.standingMob)
         {
