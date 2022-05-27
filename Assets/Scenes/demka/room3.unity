@@ -54859,7 +54859,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7667158318877017601, guid: c2e8eb4846fd46247bc9107e5c27e6a0, type: 3}
       propertyPath: m_Name
-      value: NotePickup
+      value: vtorayazapis
       objectReference: {fileID: 0}
     - target: {fileID: 7667158318877017602, guid: c2e8eb4846fd46247bc9107e5c27e6a0, type: 3}
       propertyPath: infoPanel
@@ -54879,11 +54879,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7667158318877017613, guid: c2e8eb4846fd46247bc9107e5c27e6a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.7
+      value: 42.8
       objectReference: {fileID: 0}
     - target: {fileID: 7667158318877017613, guid: c2e8eb4846fd46247bc9107e5c27e6a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23
+      value: 23.3
       objectReference: {fileID: 0}
     - target: {fileID: 7667158318877017613, guid: c2e8eb4846fd46247bc9107e5c27e6a0, type: 3}
       propertyPath: m_LocalPosition.z
