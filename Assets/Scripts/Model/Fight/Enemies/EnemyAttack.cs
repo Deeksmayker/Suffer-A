@@ -27,7 +27,7 @@ public class EnemyAttack : MonoBehaviour
             EnemyAttackAnimation.Invoke();
             enemyMove.StanEnemy();
             Collider2D player = Physics2D.OverlapBox(attackPos.position, new Vector2(rangeAttackX, rangeAttackY), 0, playerMask);
-            if (player)
+            if (player != null)
             {
                 PlayerHealth.OnHitTaken.Invoke(attackDamage);
             }
