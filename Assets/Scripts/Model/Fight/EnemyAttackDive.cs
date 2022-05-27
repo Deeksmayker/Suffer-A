@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DefaultNamespace;
+using Movement;
+using UnityEngine.Events;
 
 public class EnemyAttackDive : MonoBehaviour
 {
@@ -16,6 +19,7 @@ public class EnemyAttackDive : MonoBehaviour
     private bool hitInfo;
     private EnemyMove enemyMove;
     public Rigidbody2D physic;
+    public UnityEvent OnAttacking = new UnityEvent();
     private void Start()
     {
         hitInfo = false;
@@ -44,6 +48,7 @@ public class EnemyAttackDive : MonoBehaviour
 
     public IEnumerator Dive()
     {
+        OnAttacking.Invoke();
         backToStartPoint = false;
         for (int i = 0; i < 1000; i++)
         {
