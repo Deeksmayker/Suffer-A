@@ -43,7 +43,7 @@ public class EnemyAttackJerk : MonoBehaviour
 
     public IEnumerator Jerk()
     {
-        enemyMove.StunEnemy();
+        enemyMove.StanEnemy();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);
@@ -61,7 +61,7 @@ public class EnemyAttackJerk : MonoBehaviour
         {
             PlayerHealth.OnHitTaken.Invoke(attackDamage);
         }
-        enemyMove.StunEnemy();
+        enemyMove.StanEnemy();
         for (int i = 0; i < 60; i++)
         {
             yield return new WaitForSeconds(enemyMove.startStopTime / 100);

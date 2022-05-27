@@ -45,7 +45,7 @@ public class EnemyMove : MonoBehaviour
     {
         if (col.gameObject.tag == "Shield")
         {
-            StunEnemy(1);
+            StanEnemy(1);
         }
     }
 
@@ -54,7 +54,7 @@ public class EnemyMove : MonoBehaviour
         if (col.GetComponent<HorizontalAbilityProjectile>() == null)
             return;
 
-        StunEnemy(2);
+        StanEnemy(2);
     }
 
     void Start()
@@ -168,17 +168,17 @@ public class EnemyMove : MonoBehaviour
         }
     }
 
-    public void StunEnemy(float stanTime = 0)
+    public void StanEnemy(float stanTime = 0)
     {
         if (stanTime > 0)
         {
-            StartCoroutine(StunMove());
+            StartCoroutine(StanMove());
             startStopTime = stanTime;
         }
         stopTime = startStopTime;
     }
 
-    public IEnumerator StunMove()
+    public IEnumerator StanMove()
     {
         for (int i = 0; i < 20; i++)
         {

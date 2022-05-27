@@ -264,7 +264,7 @@ MonoBehaviour:
   cooldown: 0.3
   prefab: {fileID: 2036461036102771342, guid: 3889dfb78263bca458bb9d97d1e25536, type: 3}
   projectileSpeed: 25
-  maxDistance: 8
+  maxDistance: 15
 --- !u!114 &5926877983404885864
 MonoBehaviour:
   m_ObjectHideFlags: 0

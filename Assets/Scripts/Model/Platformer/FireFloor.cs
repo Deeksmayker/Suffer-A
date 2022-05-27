@@ -38,11 +38,11 @@ namespace DefaultNamespace.Platformer
 
         }
 
-        private void OnTriggerExit2D(Collider2D other)
+        private void OnCollisionExit2D(Collision2D other)
         {
-            if (other.GetComponent<PlayerController>() == null)
+            if (other.gameObject.GetComponent<PlayerController>() == null)
                 return;
-            other.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+            other.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.white;
             StopCoroutine(_coroutine);
             _isRunning = false;
         }

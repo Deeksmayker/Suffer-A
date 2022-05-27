@@ -35,8 +35,14 @@ namespace DefaultNamespace.Fight
             Destroy(gameObject);
         }
 
+        private void Update()
+        {
+            _flyingParticles.transform.position = transform.position;
+        }
+
         private void OnDestroy()
         {
+            Destroy(_flyingParticles);
             Instantiate(destroyParticle, transform.position, quaternion.identity);
         }
     }
