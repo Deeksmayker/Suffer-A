@@ -12,8 +12,8 @@ namespace DefaultNamespace.Fight
         public static UnityEvent<GameObject> OnEnemyPowerDamaged = new UnityEvent<GameObject>();
         public static UnityEvent<GameObject> OnProjectileDamaged = new UnityEvent<GameObject>();
         
-        [SerializeField] protected int health;
-        [SerializeField] protected int damage = 1;
+        [SerializeField] public int health;
+        [SerializeField] public int damage = 1;
 
         [SerializeField] protected ParticleSystem hitParticles;
         

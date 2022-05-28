@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Fight;
+using DefaultNamespace.TextStuff.JournalStuff;
 using UnityEngine;
 
 public class EnemyAttackShot : MonoBehaviour
@@ -68,5 +70,11 @@ public class EnemyAttackShot : MonoBehaviour
         {
             timeBtwAttack -= Time.deltaTime;
         }
+    }
+    
+    private void OnDestroy()
+    {
+        if (GetComponent<Enemy>().health <= 0)
+            JournalHandler.EnemiesKillCount["Head"]++;
     }
 }

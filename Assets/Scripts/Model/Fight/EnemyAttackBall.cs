@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Fight;
+using DefaultNamespace.TextStuff.JournalStuff;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -96,6 +99,12 @@ public class EnemyAttackBall : MonoBehaviour
         {
             transform.Rotate(new Vector2(0, -180));
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (GetComponent<Enemy>().health <= 0)
+            JournalHandler.EnemiesKillCount["Pango"]++;
     }
 
 

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DefaultNamespace;
+using DefaultNamespace.Fight;
+using DefaultNamespace.TextStuff.JournalStuff;
 using Movement;
 using UnityEngine.Events;
 
@@ -80,5 +82,11 @@ public class EnemyAttackDive : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         hitInfo = true;
+    }
+    
+    private void OnDestroy()
+    {
+        if (GetComponent<Enemy>().health <= 0)
+            JournalHandler.EnemiesKillCount["Bat"]++;
     }
 }
