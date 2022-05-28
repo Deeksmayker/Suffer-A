@@ -13,8 +13,12 @@ namespace DefaultNamespace.TextStuff
         private Text _monologueText;
         private Queue<string> _sentences;
 
+        [SerializeField] private AudioSource monologueSound;
+
         private void Awake()
         {
+            monologueSound = Instantiate(monologueSound, transform);
+            
             _monologuePanel = GameObject.Find("Replic");
             _monologueText = _monologuePanel.GetComponentInChildren<Text>();
             
@@ -24,8 +28,9 @@ namespace DefaultNamespace.TextStuff
             MonologueTrigger.OnMonologueTriggered.AddListener(StartMonologue);
         }
 
-        private void StartMonologue(Monologue monologue)
+        public void StartMonologue(Monologue monologue)
         {
+            monologueSound.Play();
             _sentences.Clear();
             _monologuePanel.GetComponent<Image>().enabled = true;
             _monologuePanel.GetComponentInChildren<Text>().enabled = true;
@@ -66,6 +71,7 @@ namespace DefaultNamespace.TextStuff
 
         private void EndMonologue()
         {
+            monologueSound.Stop();
             _monologuePanel.GetComponent<Image>().enabled = false;
             _monologuePanel.GetComponentInChildren<Text>().enabled = false;
         }

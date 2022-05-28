@@ -16,6 +16,8 @@ namespace DefaultNamespace.Fight
         [SerializeField] public int damage = 1;
 
         [SerializeField] protected ParticleSystem hitParticles;
+
+        [SerializeField] private AudioSource hitSound;
         
         private SpriteRenderer _sprite;
 
@@ -30,6 +32,8 @@ namespace DefaultNamespace.Fight
 
         private void Awake()
         {
+            hitSound = Instantiate(hitSound, transform);
+            
             _sprite = GetComponent<SpriteRenderer>();
             if (_sprite != null)
                 _sprite.material.color = Color.white;
@@ -37,6 +41,7 @@ namespace DefaultNamespace.Fight
 
         public virtual void TakeDamage(int dmg)
         {
+            hitSound.Play();
             Instantiate(hitParticles, transform.position, Quaternion.identity);
             OnEnemyDamaged.Invoke(gameObject);
             if (dmg > PlayerPreferences.HitDamage)

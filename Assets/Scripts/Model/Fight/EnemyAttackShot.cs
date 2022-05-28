@@ -17,6 +17,8 @@ public class EnemyAttackShot : MonoBehaviour
     private float timePeriodMove;
     public float startTimePeriodMove;
 
+    [SerializeField] private AudioSource audio;
+
     public enum bulletOptions
     {
         defoultBullets,
@@ -27,6 +29,8 @@ public class EnemyAttackShot : MonoBehaviour
 
     private void Start()
     {
+        audio = Instantiate(audio, transform);
+        
         player = GameObject.FindWithTag("Player").transform;
         enemyMove = GetComponent<EnemyMove>();
     }

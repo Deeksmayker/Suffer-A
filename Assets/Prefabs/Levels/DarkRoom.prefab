@@ -164,3 +164,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380d53b22b064f5094088676d918791e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nearestDarkRooms: []
+  enterSound: {fileID: 1743951009046387815, guid: 2f3bb939564908c4186c10b3e42fd2cf, type: 3}

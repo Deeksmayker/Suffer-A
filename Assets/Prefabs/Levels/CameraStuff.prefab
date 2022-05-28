@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6506188835933485867}
   - component: {fileID: 1971426875}
+  - component: {fileID: 2122378671}
   m_Layer: 0
   m_Name: CameraStuff
   m_TagString: Untagged
@@ -43,6 +44,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15a8320f472543cd8f8a3a2ad0e6d17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2122378671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6506188835933485866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d45005779ce44015a5e09e4bfb80420f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6506188836311855567
@@ -293,8 +306,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitShakePower: 1
   hitShakeTime: 0.1
-  lungeShakePower: 0
-  lungeShakeTime: 0
+  blockShakePower: 0
+  blockShakeTime: 0
+  damagedShakePower: 0
+  damagedShakeTime: 0
 --- !u!114 &6506188835185245148
 MonoBehaviour:
   m_ObjectHideFlags: 0

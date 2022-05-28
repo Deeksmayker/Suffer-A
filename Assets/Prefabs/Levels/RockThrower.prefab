@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwDelay: 3
   rock: {fileID: 6280769809905474174, guid: afb3f3673d844ac4a96b7816685f4b1c, type: 3}
+  throwSound: {fileID: 1743951009046387815, guid: caddbfcd067dd4d4881ab6da83e608d6, type: 3}

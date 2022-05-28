@@ -14,6 +14,8 @@ namespace DefaultNamespace.Fight
         [SerializeField] private ParticleSystem healParticles;
         [SerializeField] private ParticleSystem hitParticles;
 
+        [SerializeField] private AudioSource damagedSound;
+
         private ParticleSystem _particles;
         private Coroutine _healingCoroutine;
 
@@ -28,6 +30,8 @@ namespace DefaultNamespace.Fight
         
         private void Awake()
         {
+            damagedSound = Instantiate(damagedSound, transform);
+            
             OnHitTaken.AddListener((value) =>
             {
                 if (!PlayerPreferences.CanTakeDamage)
@@ -54,6 +58,8 @@ namespace DefaultNamespace.Fight
         
         public IEnumerator TakeDamage(int value = 1)
         {
+            damagedSound.Play();
+            
             Instantiate(hitParticles, transform.position, Quaternion.identity);
             StopHeal();
             

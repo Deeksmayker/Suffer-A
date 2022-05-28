@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyParticles: {fileID: 1158500657036976715, guid: 6f26199c97254cc46820ee6c6b444519, type: 3}
+  destroySound: {fileID: 1743951009046387815, guid: 7e624d314b0bdce4f85216c634c1141b, type: 3}
 --- !u!61 &2192269334836694438
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -255,3 +256,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spikeRb: {fileID: 2192269334836694436}
+  fallSound: {fileID: 1743951009046387815, guid: caddbfcd067dd4d4881ab6da83e608d6, type: 3}

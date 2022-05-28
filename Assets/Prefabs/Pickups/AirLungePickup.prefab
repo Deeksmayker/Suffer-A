@@ -92,5 +92,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3017ce9c432f4ef2a897ce9f6131bbdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infoPanel: {fileID: 1111967145378790135, guid: e4ad26544f3430e418613807e66ba36d, type: 3}
   particles: {fileID: 8276645885861137741, guid: 72694534542d3e649b6d30ac016ea296, type: 3}
+  sound: {fileID: 1743951009046387815, guid: cc6c29d68efd628488b3a86eb247246a, type: 3}

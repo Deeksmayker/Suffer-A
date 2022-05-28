@@ -10,6 +10,8 @@ namespace DefaultNamespace.Platformer
         
         [SerializeField] private GameObject rock;
 
+        [SerializeField] private AudioSource throwSound;
+
         private void Awake()
         {
             StartCoroutine(ThrowRock());
@@ -19,6 +21,7 @@ namespace DefaultNamespace.Platformer
         {
             while (true)
             {
+                Instantiate(throwSound);
                 Instantiate(rock, transform.position, Quaternion.identity);
                 yield return new WaitForSeconds(throwDelay);
             }

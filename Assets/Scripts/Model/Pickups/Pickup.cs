@@ -13,8 +13,12 @@ namespace DefaultNamespace.Pickups
         public ParticleSystem particles;
         protected ParticleSystem ParticleInstance;
 
+        [SerializeField] private AudioSource sound;
+
         private void Start()
         {
+            Instantiate(sound, transform);
+            
             if (PickupsUseHandler.PickupUsed(gameObject.name))
             {
                 Destroy(gameObject);

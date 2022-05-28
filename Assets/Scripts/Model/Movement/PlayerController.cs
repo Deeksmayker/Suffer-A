@@ -24,6 +24,12 @@ namespace Movement
 
         [SerializeField] private float horizontalAttackBouncePower;
         [SerializeField] private float downAttackBouncePower;
+
+        [SerializeField] private AudioSource walkingSound;
+        [SerializeField] private AudioSource jumpSound;
+        [SerializeField] private AudioSource rollSound;
+        [SerializeField] private AudioSource airJerkSound;
+        [SerializeField] private AudioSource mainTheme;
         
         private bool _canLunge = true;
         private int _currentLungeAirCount = PlayerPreferences.MaxLungeAirCount;
@@ -35,6 +41,14 @@ namespace Movement
 
         private void Awake()
         {
+            mainTheme = Instantiate(mainTheme, transform);
+            mainTheme.Play();
+            
+            walkingSound = Instantiate(walkingSound, transform);
+            jumpSound = Instantiate(jumpSound, transform);
+            rollSound = Instantiate(rollSound, transform);
+            airJerkSound = Instantiate(airJerkSound, transform);
+            
             DontDestroyOnLoad(gameObject);
             
             QualitySettings.vSyncCount = 0;
@@ -107,6 +121,10 @@ namespace Movement
             bool isAccelerationOrMaxSpeed = Math.Abs(PlayerInGameInput.HorizontalRaw) == 1;
             
             _move.x = Mathf.Clamp(PlayerInGameInput.Horizontal * (isAccelerationOrMaxSpeed ? acceleration : 1/acceleration), -1, 1);
+            if (Mathf.Abs(_move.x) > 0 && !walkingSound.isPlaying && PlayerPreferences.IsGrounded)
+                walkingSound.Play();
+            if (Mathf.Abs(_move.x) == 0 || !PlayerPreferences.IsGrounded)
+                walkingSound.Stop();
         }
 
         #region JumpLogic
@@ -119,6 +137,8 @@ namespace Movement
         
         private IEnumerator Jump()
         {
+            jumpSound.Play();
+            
             var duration = 0f;
             while (duration < jumpTime)
             {
@@ -164,12 +184,16 @@ namespace Movement
             {
                 if (_currentLungeAirCount == 0)
                     return;
+                airJerkSound.Play();
                 _currentLungeAirCount -= 1;
                 OnAirJerk.Invoke();
             }
-            
+
             else
+            {
+                rollSound.Play();
                 OnRoll.Invoke();
+            }
             
             StartCoroutine("Lunge");
         }

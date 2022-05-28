@@ -121,6 +121,7 @@ MonoBehaviour:
   health: 10000
   damage: 1
   hitParticles: {fileID: 8726942104815698756, guid: e4c2871cf3bc68e45bb77b402e050e9a, type: 3}
+  hitSound: {fileID: 1743951009046387815, guid: 17aa68fbdb0e6fe44955fe9fbfbf4652, type: 3}
 --- !u!58 &4545807678332497840
 CircleCollider2D:
   m_ObjectHideFlags: 0
