@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections;
+using Camera;
 using DefaultNamespace.Fight;
+using Movement;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace DefaultNamespace
@@ -15,6 +18,7 @@ namespace DefaultNamespace
         [SerializeField] private GameObject journal;
         [SerializeField] private GameObject diary;
         [SerializeField] private GameObject pause;
+        [SerializeField] private GameObject settings;
 
         public static UnityEvent<float> OnBloodIncrease = new UnityEvent<float>();
 
@@ -95,30 +99,49 @@ namespace DefaultNamespace
                 else
                     diary.SetActive(true);
             }
-
-            if (Input.GetKeyDown(PlayerInGameInput.EscapeKey))
-            {
-                journal.SetActive(false);
-                diary.SetActive(false);
-                pause.SetActive(true);
-                Time.timeScale = 0;
-            }
+            
         }
 
         private void CheckMenuCloseInput()
         {
             if (Input.GetKeyDown(PlayerInGameInput.EscapeKey))
             {
-                Debug.Log(pause.activeSelf);
-                journal.SetActive(false);
-                diary.SetActive(false);
+                if (journal.activeSelf || diary.activeSelf || settings.activeSelf)
+                {
+                    journal.SetActive(false);
+                    diary.SetActive(false);
+                    settings.SetActive(false);
+                    return;
+                }
 
                 if (pause.activeSelf)
                 {
                     pause.SetActive(false);
                     Time.timeScale = 1;
                 }
+                else
+                {
+                    journal.SetActive(false);
+                    diary.SetActive(false);
+                    pause.SetActive(true);
+                    Time.timeScale = 0;
+                }
             }
+        }
+
+        public void ClosePause()
+        {
+            pause.SetActive(false);
+            Time.timeScale = 1;
+        }
+
+        public void ReturnToMainMenu()
+        {
+            Time.timeScale = 1;
+            Destroy(FindObjectOfType<PlayerController>().gameObject);
+            Destroy(FindObjectOfType<CameraStuff>().gameObject);
+            SceneManager.LoadScene(0);
+            Destroy(gameObject);
         }
     }
 }

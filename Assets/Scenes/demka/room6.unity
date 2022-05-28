@@ -416,7 +416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6013241788206245671, guid: 73b9a6a342a4450488803433dce5242c, type: 3}
       propertyPath: sceneIndex
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6013241788206245671, guid: 73b9a6a342a4450488803433dce5242c, type: 3}
       propertyPath: blackScreen
@@ -595,7 +595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6013241788206245671, guid: 73b9a6a342a4450488803433dce5242c, type: 3}
       propertyPath: sceneIndex
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6013241788206245671, guid: 73b9a6a342a4450488803433dce5242c, type: 3}
       propertyPath: blackScreen
