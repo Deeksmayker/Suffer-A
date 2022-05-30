@@ -13,8 +13,12 @@ namespace DefaultNamespace.Platformer
 
         [SerializeField] private List<GameObject> nearestDarkRooms = new List<GameObject>();
 
+        [SerializeField] private AudioSource enterSound;
+
         private void Awake()
         {
+            enterSound = Instantiate(enterSound, transform);
+            
             Animator = GetComponent<Animator>();
         }
 
@@ -24,6 +28,7 @@ namespace DefaultNamespace.Platformer
                 return;
              
             Animator.SetBool("Inside", true);
+            enterSound.Play();
             foreach (var room in nearestDarkRooms)
             {
                 room.GetComponent<DarkRoom>().Animator.SetBool("Inside", true);

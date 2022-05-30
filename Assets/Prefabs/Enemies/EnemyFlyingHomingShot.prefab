@@ -187,7 +187,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.5512953, y: -0.8453193}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -198,7 +198,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 5.220518, y: 6.6906385}
   m_EdgeRadius: 0
 --- !u!114 &6438397716004234956
 MonoBehaviour:
@@ -215,6 +215,7 @@ MonoBehaviour:
   health: 6
   damage: 1
   hitParticles: {fileID: 8726942104815698756, guid: e4c2871cf3bc68e45bb77b402e050e9a, type: 3}
+  hitSound: {fileID: 1743951009046387815, guid: f15fda712cd1d9046aa4f55766114658, type: 3}
 --- !u!114 &6438397716004234953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +243,13 @@ MonoBehaviour:
   normalSpeed: 2
   startStopTime: 2
   stopTime: 0
+  stoneSleep: 1
+  OnWalkStone:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnSleep:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6438397716004234966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +257,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6438397716004234959}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7a0b3eef968e2f47a5d9bdd07438eb8, type: 3}
   m_Name: 
@@ -262,6 +270,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   startTimeBtwAttacl: 2
+  EnemyAttackAnimation:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1251564143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +291,7 @@ MonoBehaviour:
   player: {fileID: 0}
   startTimePeriodAttacl: 3
   startTimePeriodMove: 3
+  audio: {fileID: 1743951009046387815, guid: 006a8f72e838e474cb03ac824e743989, type: 3}
   bulletOption: 1
 --- !u!95 &3325786125895126032
 Animator:

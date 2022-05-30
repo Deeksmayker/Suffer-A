@@ -8,9 +8,11 @@ namespace DefaultNamespace.Pickups
     public class NotePickup : Pickup
     {
         [SerializeField] private int noteIndex;
+        [SerializeField] private AudioSource pickSound;
     
         public override void Interact()
         {
+            Instantiate(pickSound, transform);
             Diary.OnNotePickup.Invoke(noteIndex);
             StartCoroutine(ShowInfoPanel());
             base.Interact();

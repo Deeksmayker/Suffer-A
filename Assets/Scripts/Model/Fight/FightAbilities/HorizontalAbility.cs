@@ -32,9 +32,10 @@ namespace DefaultNamespace.Fight
             
             while (missile != null)
             {
-                if (Math.Abs(missile.transform.position.x) - Math.Abs(startPosition.x) >= maxDistance)
+                if (Vector2.Distance(startPosition, missile.transform.position) >= maxDistance)
                     Destroy(missile);
-                missile.transform.position += new Vector3(direction, 0) * projectileSpeed * Time.deltaTime;
+                else
+                    missile.transform.position += new Vector3(direction, 0) * projectileSpeed * Time.deltaTime;
                 
                 yield return new WaitForFixedUpdate();
             }

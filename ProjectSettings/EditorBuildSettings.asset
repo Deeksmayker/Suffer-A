@@ -5,12 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/FightingDemo.unity
-    guid: 7001e7387d25ef74fa61e97c1e35af42
+  - enabled: 1
+    path: Assets/Scenes/demka/MainMenu.unity
+    guid: a0615e86bd01487488ea3e91143d4c2f
   - enabled: 1
     path: Assets/Scenes/demka/room0.unity
     guid: ff24afa15d771d543bac037303391f6c
@@ -38,7 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/demka/room8.unity
     guid: aeb027b21550e594987f4fe61aabf95b
-  - enabled: 0
-    path: Assets/Scenes/TransitionTest.unity
-    guid: ccf1781d2c88b0a4596cabfb544f0775
+  - enabled: 1
+    path: Assets/Scenes/demka/room9.unity
+    guid: 4b85406d5d197044ebffdbeba901e332
   m_configObjects: {}

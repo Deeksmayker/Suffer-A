@@ -213,6 +213,7 @@ MonoBehaviour:
   health: 20
   damage: 1
   hitParticles: {fileID: 8726942104815698756, guid: e4c2871cf3bc68e45bb77b402e050e9a, type: 3}
+  hitSound: {fileID: 1743951009046387815, guid: f15fda712cd1d9046aa4f55766114658, type: 3}
 --- !u!114 &6438397716004234953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +241,13 @@ MonoBehaviour:
   normalSpeed: 2
   startStopTime: 2
   stopTime: 0
+  stoneSleep: 1
+  OnWalkStone:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnSleep:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6438397716004234966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +268,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   startTimeBtwAttacl: 0
+  EnemyAttackAnimation:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1251564142
 MonoBehaviour:
   m_ObjectHideFlags: 0

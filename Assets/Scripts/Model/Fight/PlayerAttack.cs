@@ -183,7 +183,7 @@ namespace DefaultNamespace.Fight
 
         private void CheckStrongAttack(ref int damage, GameObject attackEffect)
         {
-            attackEffect.GetComponent<LineRenderer>().startColor = Color.green;
+            attackEffect.GetComponent<LineRenderer>().startColor = Color.white;
             
             if (_chargeDuration >= chargedAttackTime && _chargeDuration - chargedAttackTime <= timeForKeyUp)
             {

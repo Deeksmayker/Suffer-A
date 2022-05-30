@@ -1,6 +1,7 @@
 using DefaultNamespace.Fight;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.TextStuff.JournalStuff;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -49,5 +50,11 @@ public class EnemyInTheWall : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(attackPos.position, new Vector2(rangeAttackX, rangeAttackY));
+    }
+    
+    private void OnDestroy()
+    {
+        if (GetComponent<Enemy>().health <= 0)
+            JournalHandler.EnemiesKillCount["Wall"]++;
     }
 }

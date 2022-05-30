@@ -1,6 +1,7 @@
 using System.Collections;
 using DefaultNamespace.Fight;
 using System.Collections.Generic;
+using DefaultNamespace.TextStuff.JournalStuff;
 using UnityEngine;
 using UnityEngine.Events;
 public class EnemyAttackJerk : MonoBehaviour
@@ -74,5 +75,11 @@ public class EnemyAttackJerk : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(attackPos.position, new Vector2(rangeAttackX, rangeAttackY));
+    }
+    
+    private void OnDestroy()
+    {
+        if (GetComponent<Enemy>().health <= 0)
+            JournalHandler.EnemiesKillCount["Father"]++;
     }
 }

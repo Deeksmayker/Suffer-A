@@ -1,8 +1,13 @@
+using System;
 using System.Collections;
 using DefaultNamespace.Fight;
 using System.Collections.Generic;
+using Camera;
+using DefaultNamespace;
+using Movement;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 
 public class ControllerBossAttack : MonoBehaviour
@@ -111,5 +116,18 @@ public class ControllerBossAttack : MonoBehaviour
         Gizmos.DrawWireCube(attackPosFloorExplosion.position, new Vector2(rangeAttackFloorX, rangeAttackFloorY));
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(attackPosBaseAttack.position, new Vector2(rangeAttackBaseAttackX, rangeAttackBaseAttackY));
+    }
+
+    private void OnDestroy()
+    {
+        if (GetComponent<Enemy>().health <= 0)
+        {
+            DontDestroyOnLoad(gameObject);
+            Destroy(FindObjectOfType<PlayerController>().gameObject);
+            Destroy(FindObjectOfType<CameraStuff>().gameObject);
+            Destroy(FindObjectOfType<InGameUi>().gameObject);
+            SceneManager.LoadScene(0);
+            Destroy(gameObject);
+        }
     }
 }

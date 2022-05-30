@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee9d71485174e3294a24cb3ef1ec05f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infoPanel: {fileID: 0}
   particles: {fileID: 8276645885861137741, guid: 72694534542d3e649b6d30ac016ea296, type: 3}
-  noteButton: {fileID: 0}
+  sound: {fileID: 1743951009046387815, guid: cc6c29d68efd628488b3a86eb247246a, type: 3}
+  noteIndex: 0
+  pickSound: {fileID: 1743951009046387815, guid: 34076401fda000d49a94b10db7476494, type: 3}
