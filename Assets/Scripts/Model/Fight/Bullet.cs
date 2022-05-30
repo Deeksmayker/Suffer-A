@@ -16,6 +16,8 @@ public class Bullet : MonoBehaviour
     private Vector2 vectorBullet = new Vector2();
     private float playerposY;
     public GameObject bulletObject;
+
+    private bool _isChangedDirection;
     /*public enum mobOptions
     {
         flyingMob,
@@ -65,9 +67,22 @@ public class Bullet : MonoBehaviour
         lifeTime -= Time.deltaTime;
     }
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.GetComponent<Enemy>() != null && _isChangedDirection)
+            col.GetComponent<Enemy>().TakeDamage(2);
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.GetComponent<Enemy>() != null && _isChangedDirection)
+            col.gameObject.GetComponent<Enemy>().TakeDamage(2);
+    }
+
     private void ChangeDirectionOnPowerDamaged()
     {
         vectorBullet = PlayerAttack.AttackDirection;
+        _isChangedDirection = true;
     }
     
     

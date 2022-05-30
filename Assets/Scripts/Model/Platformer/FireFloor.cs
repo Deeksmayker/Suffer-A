@@ -9,9 +9,24 @@ namespace DefaultNamespace.Platformer
     public class FireFloor : MonoBehaviour
     {
         [SerializeField] private float timeForTakeDamage;
+
+        private Animator _fireFloorEffectAnimator;
         
         private Coroutine _coroutine;
         private bool _isRunning;
+
+        private void Awake()
+        {
+            _fireFloorEffectAnimator = GameObject.Find("FireFloorEffect").GetComponent<Animator>();
+        }
+
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            if (col.gameObject.GetComponent<PlayerController>() == null)
+                return;
+            
+            _fireFloorEffectAnimator.SetBool("fire", true);
+        }
 
         private void OnCollisionStay2D(Collision2D collision)
         {
@@ -45,6 +60,7 @@ namespace DefaultNamespace.Platformer
             other.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.white;
             StopCoroutine(_coroutine);
             _isRunning = false;
+            _fireFloorEffectAnimator.SetBool("fire", false);
         }
 
         private IEnumerator WaitForTime()

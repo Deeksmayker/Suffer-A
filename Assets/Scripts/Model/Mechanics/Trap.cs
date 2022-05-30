@@ -22,14 +22,16 @@ namespace Mechanics
                 yield break;
             var blackScreenAnimator = GameObject.FindWithTag("DarkScreen").GetComponent<Animator>();
             
-            blackScreenAnimator.SetTrigger("Start");
+            blackScreenAnimator.SetBool("fade", true);
+            PlayerPreferences.CanMove = false;
 
             yield return new WaitForSeconds(0.5f);
 
             if (PlayerPreferences.CurrentHealth == 0)
                 yield break;
             
-            blackScreenAnimator.SetTrigger("Stop");
+            blackScreenAnimator.SetBool("fade", false);
+            PlayerPreferences.CanMove = true;
             
             col.GetComponent<PlayerController>().Teleport(PlayerPreferences.MinorSpawnPoint);
 

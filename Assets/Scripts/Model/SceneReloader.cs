@@ -19,8 +19,9 @@ namespace DefaultNamespace
         private IEnumerator ReloadSceneOnDie()
         {
             var scene = SceneManager.GetActiveScene();
-            
-            _blackScreenAnimator.SetTrigger("Start");
+
+            PlayerPreferences.CanMove = false;
+            _blackScreenAnimator.SetBool("fade", true);
 
             yield return new WaitForSeconds(PlayerPreferences.RespawnTime);
             
@@ -31,11 +32,8 @@ namespace DefaultNamespace
             PlayerPreferences.EnableControl();
             PlayerPreferences.CanTakeDamage = true;
             GameObject.FindWithTag("Player").transform.position = PlayerPreferences.MajorSpawnPoint;
-            _blackScreenAnimator.SetTrigger("Stop");
+            _blackScreenAnimator.SetBool("fade", false);
 
-            yield return new WaitForSeconds(1);
-            
-            _blackScreenAnimator.SetTrigger("Stop");
         }
     }
 }

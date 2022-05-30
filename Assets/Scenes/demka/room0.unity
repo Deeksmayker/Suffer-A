@@ -329,6 +329,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 541066644}
+    - target: {fileID: 827000700761208055, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 827000700761208058, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -7593,6 +7597,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6149108227015610740, guid: 9bc29dce5b7168a4c976157fc8a44226, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6425130335709075669, guid: 9bc29dce5b7168a4c976157fc8a44226, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924411826029749337, guid: 9bc29dce5b7168a4c976157fc8a44226, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924411826029749337, guid: 9bc29dce5b7168a4c976157fc8a44226, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bc29dce5b7168a4c976157fc8a44226, type: 3}
 --- !u!1 &1379864509
@@ -7633,7 +7653,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379864509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.474317, y: 4.1492295, z: -2.4552095}
+  m_LocalPosition: {x: -4.474317, y: 4.1492295, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

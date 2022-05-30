@@ -11,6 +11,9 @@ namespace DefaultNamespace.Pickups
             PlayerPreferences.AttackAvailable = true;
             StartCoroutine(ShowInfoPanel());
             GlobalEvents.OnSwordPickup.Invoke();
+
+            GameObject.Find("меч").GetComponent<SpriteRenderer>().enabled = true;
+            
             base.Interact();
         }
 

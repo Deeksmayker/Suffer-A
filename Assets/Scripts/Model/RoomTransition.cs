@@ -40,7 +40,7 @@ namespace DefaultNamespace
         {
             DontDestroyOnLoad(gameObject);
 
-            _blackScreen.SetTrigger("Start");
+            _blackScreen.SetBool("fade", true);
             PlayerPreferences.DisableControl();
             StartCoroutine(playerController.WalkToDirection((int)moveDirection));
             
@@ -73,7 +73,7 @@ namespace DefaultNamespace
             FindObjectOfType<CinemachineConfiner>().m_BoundingShape2D = 
                 FindObjectOfType<BoundariesManager>().GetComponent<PolygonCollider2D>();
         
-            _blackScreen.SetTrigger("Stop");
+            _blackScreen.SetBool("fade", false);
             var player = GameObject.FindWithTag("Player");
             
             player.transform.position = GameObject.Find(_transitionName + 1).transform.position;

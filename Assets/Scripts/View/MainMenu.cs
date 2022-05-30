@@ -9,13 +9,23 @@ namespace DefaultNamespace
     public class MainMenu : MonoBehaviour
     {
         [SerializeField] private GameObject video;
+        private GameObject vid;
 
         private IEnumerator Start()
         {
-            var vid = Instantiate(video);
+            vid = Instantiate(video);
             vid.GetComponent<VideoPlayer>().targetCamera = UnityEngine.Camera.main;
             yield return new WaitForSeconds(8);
             Destroy(vid);
+        }
+
+        private void Update()
+        {
+            if (Input.anyKey)
+            {
+                Destroy(vid);
+                StopAllCoroutines();
+            }
         }
 
         public void LoadFirstScene()

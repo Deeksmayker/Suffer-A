@@ -5,10 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class BossAnimation : MonoBehaviour
 {
-    public const string isBaseAttack = "isBaseAttack";
-    public const string isFloorAttack = "isFloorAttack";
-    public const string isJerkAttack = "isJerkAttack";
-    public const string isPrepareShotAttack = "isPrepareShotAttack";
+    public const string isBaseAttack = "Hit";
+    public const string isFloorAttack = "DownAbility";
+    public const string isJerkAttack = "Jerk";
+    public const string isPrepareShotAttack = "ProjectTileAbility";
 
     private Animator _animator;
     private ControllerBossAttack bossAttack;
