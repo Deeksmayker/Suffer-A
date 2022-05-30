@@ -19,6 +19,8 @@ namespace DefaultNamespace.TextStuff.JournalStuff
         private List<int> _openedButtons= new List<int>();
         [SerializeField] private List<GameObject> journalButtons;
 
+        public Monologue textOnNewJournalNote;
+
         private void Update()
         {
             int index = 0;
@@ -26,7 +28,9 @@ namespace DefaultNamespace.TextStuff.JournalStuff
             {
                 if (enemies.Value >= 5 && !_openedButtons.Contains(index))  
                 {
+                    MonologueTrigger.OnMonologueTriggered.Invoke(textOnNewJournalNote);
                     journalButtons[index].SetActive(true);
+                    _openedButtons.Add(index);
                 }
 
                 index++;

@@ -218,7 +218,7 @@ MonoBehaviour:
   horizontalRangeX: 1.19
   horizontalRangeY: 1.57
   verticalRangeX: 2.14
-  verticalRangeY: 1.38
+  verticalRangeY: 1.8
   chargedPreparingAudio: {fileID: 659085341297493151, guid: 7596ae70ac2b9304b95d59fd6a8c62e7, type: 3}
   preparedChargedAudio: {fileID: 1743951009046387815, guid: 3016f74ea3fb4824e8e37569d09dc841, type: 3}
   preparedChargedCenter: {fileID: 6482762552271730065}
@@ -253,6 +253,7 @@ MonoBehaviour:
   healDuration: 2
   healParticles: {fileID: 6870273931962037729, guid: 6842778a73aa83a40b4f65f66f68da9d, type: 3}
   hitParticles: {fileID: 8726942104815698756, guid: e4c2871cf3bc68e45bb77b402e050e9a, type: 3}
+  damagedSound: {fileID: 0}
 --- !u!114 &2341990547614878307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,7 +846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6818635175928903556, guid: 7d0b95dfbd7545246afed271a8b347dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.07
+      value: -0.109
       objectReference: {fileID: 0}
     - target: {fileID: 6818635175928903556, guid: 7d0b95dfbd7545246afed271a8b347dc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1084,7 +1085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6818635175928903556, guid: 7d0b95dfbd7545246afed271a8b347dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.094
+      value: 0.139
       objectReference: {fileID: 0}
     - target: {fileID: 6818635175928903556, guid: 7d0b95dfbd7545246afed271a8b347dc, type: 3}
       propertyPath: m_LocalPosition.z
