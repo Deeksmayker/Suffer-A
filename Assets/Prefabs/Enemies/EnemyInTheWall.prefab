@@ -76,7 +76,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -4960,7 +4960,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.3267541, y: -0.22278666}
+  m_Offset: {x: -0.37122726, y: -0.22278666}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4971,7 +4971,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.9206572, y: 3.7226892}
+  m_Size: {x: 2.8317108, y: 3.7226892}
   m_EdgeRadius: 0
 --- !u!114 &6438397716004234956
 MonoBehaviour:
@@ -5023,6 +5023,9 @@ MonoBehaviour:
   OnUnSleep:
     m_PersistentCalls:
       m_Calls: []
+  OnStun:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1251564152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5040,7 +5043,7 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 256
-  rangeAttackX: 15
+  rangeAttackX: 33.2
   rangeAttackY: 5
   player: {fileID: 0}
   OnNoAttack:
@@ -5056,7 +5059,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6438397716004234959}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 528f1cc6354a6674faa89b53c56d19f6, type: 3}
   m_Name: 
@@ -5171,11 +5174,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2684012521984043090, guid: 2aaf23ea970a84e41abb43700a34f005, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: 0.0020298958
+      value: 0.0020303726
       objectReference: {fileID: 0}
     - target: {fileID: 20055398992603420, guid: 2aaf23ea970a84e41abb43700a34f005, type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 0.000006198883
+      value: 0.00001001358
       objectReference: {fileID: 0}
     - target: {fileID: 20055398992603420, guid: 2aaf23ea970a84e41abb43700a34f005, type: 3}
       propertyPath: m_Bounds.m_Center.y
@@ -5207,7 +5210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5318481426309943093, guid: 2aaf23ea970a84e41abb43700a34f005, type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -0.00022029877
+      value: -0.00021982193
       objectReference: {fileID: 0}
     - target: {fileID: 5318481426309943093, guid: 2aaf23ea970a84e41abb43700a34f005, type: 3}
       propertyPath: m_Bounds.m_Extent.x

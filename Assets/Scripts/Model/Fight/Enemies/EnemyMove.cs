@@ -40,6 +40,8 @@ public class EnemyMove : MonoBehaviour
     public UnityEvent OnWalkStone = new UnityEvent();
     public UnityEvent OnUnSleep = new UnityEvent();
 
+    public UnityEvent OnStun = new UnityEvent();
+
     // Start is called before the first frame update
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -64,9 +66,6 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         _animator = GetComponentInChildren<Animator>();
-        
-        startPointMove = GameObject.Find("StartPointMove").transform;
-        endPointMove = GameObject.Find("EndPointMove").transform;
         
         player = GameObject.Find("Player").transform;
         if (player == null)
@@ -163,11 +162,14 @@ public class EnemyMove : MonoBehaviour
     {
         if (transform.position.x >= endPointMove.position.x)
         {
+            Debug.Log(gameObject.name + " " + endPointMove.position);
             agroDistance = 0;
         }
 
         if (transform.position.x <= startPointMove.position.x )
         {
+            Debug.Log(gameObject.name + " позиция меньше стартпоинта");
+
             agroDistance = 0;
         }
 
@@ -179,6 +181,7 @@ public class EnemyMove : MonoBehaviour
 
     public void StanEnemy(float stanTime = 0)
     {
+        OnStun.Invoke();
         if (stanTime > 0)
         {
             StartCoroutine(StanMove());

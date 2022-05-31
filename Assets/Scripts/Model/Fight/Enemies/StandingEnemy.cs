@@ -30,6 +30,4 @@ public class StandingEnemy
 
         return motionController;
     }
-    
-    
 }

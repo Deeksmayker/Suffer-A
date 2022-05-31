@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Camera
 {
@@ -11,13 +12,18 @@ namespace Camera
         /// <summary>
         /// Movement of the layer is scaled by this value.
         /// </summary>
-        public Vector3 movementScale = Vector3.one;
+        public Vector2 movementScale = Vector2.one;
 
-        [SerializeField] private Transform _camera;
+        private Transform _camera;
+
+        private void Awake()
+        {
+            _camera = UnityEngine.Camera.main.transform;
+        }
 
         void LateUpdate()
         {
-            transform.position = Vector3.Scale(_camera.position, movementScale);
+            transform.position = Vector2.Scale(_camera.position, movementScale);
         }
     }
 }

@@ -264,8 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPos: {fileID: 6438397716023908200}
   attackDamage: 0
-  rangeAttackX: 2.5
-  rangeAttackY: 3.5
+  rangeAttackX: 0
+  rangeAttackY: 0
   playerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -290,8 +290,8 @@ MonoBehaviour:
   attackDamage: 0
   attackPos: {fileID: 343602483}
   player: {fileID: 0}
-  rangeAttackX: 8
-  rangeAttackY: 5
+  rangeAttackX: 0
+  rangeAttackY: 0
   playerMask:
     serializedVersion: 2
     m_Bits: 256
