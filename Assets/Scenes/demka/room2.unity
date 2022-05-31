@@ -51060,6 +51060,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234953, guid: af571a86339ef004486b398324c9916d, type: 3}
+      propertyPath: endPointMove
+      value: 
+      objectReference: {fileID: 405856724}
+    - target: {fileID: 6438397716004234953, guid: af571a86339ef004486b398324c9916d, type: 3}
+      propertyPath: startPointMove
+      value: 
+      objectReference: {fileID: 405856725}
     - target: {fileID: 6438397716004234959, guid: af571a86339ef004486b398324c9916d, type: 3}
       propertyPath: m_Name
       value: EnemyRock
@@ -51899,6 +51907,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+--- !u!4 &405856724 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695721301428, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 405856723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &405856725 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695763539346, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 405856723}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &432694323
 GameObject:
   m_ObjectHideFlags: 3
@@ -53226,6 +53244,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234953, guid: 09c01b51c94140e469d75c57cee0f27d, type: 3}
+      propertyPath: endPointMove
+      value: 
+      objectReference: {fileID: 1228536592}
+    - target: {fileID: 6438397716004234953, guid: 09c01b51c94140e469d75c57cee0f27d, type: 3}
+      propertyPath: startPointMove
+      value: 
+      objectReference: {fileID: 1228536593}
     - target: {fileID: 6438397716004234959, guid: 09c01b51c94140e469d75c57cee0f27d, type: 3}
       propertyPath: m_Name
       value: EnemyFlyingHomingShot
@@ -53450,6 +53476,14 @@ PrefabInstance:
       propertyPath: startPoint
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234953, guid: 09c01b51c94140e469d75c57cee0f27d, type: 3}
+      propertyPath: endPointMove
+      value: 
+      objectReference: {fileID: 1413047358}
+    - target: {fileID: 6438397716004234953, guid: 09c01b51c94140e469d75c57cee0f27d, type: 3}
+      propertyPath: startPointMove
+      value: 
+      objectReference: {fileID: 1413047359}
     - target: {fileID: 6438397716004234959, guid: 09c01b51c94140e469d75c57cee0f27d, type: 3}
       propertyPath: m_Name
       value: EnemyFlyingHomingShot
@@ -53562,6 +53596,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234953, guid: af571a86339ef004486b398324c9916d, type: 3}
+      propertyPath: endPointMove
+      value: 
+      objectReference: {fileID: 1677105789}
+    - target: {fileID: 6438397716004234953, guid: af571a86339ef004486b398324c9916d, type: 3}
+      propertyPath: startPointMove
+      value: 
+      objectReference: {fileID: 1677105790}
     - target: {fileID: 6438397716004234959, guid: af571a86339ef004486b398324c9916d, type: 3}
       propertyPath: m_Name
       value: EnemyRock
@@ -64586,6 +64628,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6042062298776732156, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
   m_PrefabInstance: {fileID: 1228536590}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1228536592 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695721301428, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 1228536590}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1228536593 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695763539346, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 1228536590}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1230044178
 GameObject:
   m_ObjectHideFlags: 3
@@ -65235,6 +65287,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+--- !u!4 &1413047358 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695721301428, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 1413047357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1413047359 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695763539346, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 1413047357}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1413345512
 GameObject:
   m_ObjectHideFlags: 0
@@ -66274,6 +66336,16 @@ PrefabInstance:
 --- !u!4 &1677105788 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6042062298776732156, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 1677105787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1677105789 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695721301428, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 1677105787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1677105790 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695763539346, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
   m_PrefabInstance: {fileID: 1677105787}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1682274719
