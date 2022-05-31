@@ -2136,6 +2136,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6042062298776732156, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
   m_PrefabInstance: {fileID: 790011436}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &790011438 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695721301428, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 790011436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &790011439 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695763539346, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 790011436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &795477228
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,6 +2303,14 @@ PrefabInstance:
       propertyPath: startPoint
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234953, guid: 99cfa051f9894e545912d916c3eedeeb, type: 3}
+      propertyPath: endPointMove
+      value: 
+      objectReference: {fileID: 2024970254}
+    - target: {fileID: 6438397716004234953, guid: 99cfa051f9894e545912d916c3eedeeb, type: 3}
+      propertyPath: startPointMove
+      value: 
+      objectReference: {fileID: 2024970255}
     - target: {fileID: 6438397716004234959, guid: 99cfa051f9894e545912d916c3eedeeb, type: 3}
       propertyPath: m_Name
       value: EnemyDive
@@ -2366,6 +2384,14 @@ PrefabInstance:
       propertyPath: startPoint
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234953, guid: af571a86339ef004486b398324c9916d, type: 3}
+      propertyPath: endPointMove
+      value: 
+      objectReference: {fileID: 790011438}
+    - target: {fileID: 6438397716004234953, guid: af571a86339ef004486b398324c9916d, type: 3}
+      propertyPath: startPointMove
+      value: 
+      objectReference: {fileID: 790011439}
     - target: {fileID: 6438397716004234959, guid: af571a86339ef004486b398324c9916d, type: 3}
       propertyPath: m_Name
       value: EnemyRock (1)
@@ -2456,6 +2482,16 @@ PrefabInstance:
 --- !u!4 &937099958 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6042062298776732156, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 937099957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &937099959 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695721301428, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 937099957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &937099960 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695763539346, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
   m_PrefabInstance: {fileID: 937099957}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1130247341
@@ -2630,6 +2666,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6042062298776732156, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
   m_PrefabInstance: {fileID: 1158474790}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1158474792 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695721301428, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 1158474790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1158474793 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695763539346, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 1158474790}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1172141577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2697,6 +2743,14 @@ PrefabInstance:
       propertyPath: startPoint
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234953, guid: af571a86339ef004486b398324c9916d, type: 3}
+      propertyPath: endPointMove
+      value: 
+      objectReference: {fileID: 1895673228}
+    - target: {fileID: 6438397716004234953, guid: af571a86339ef004486b398324c9916d, type: 3}
+      propertyPath: startPointMove
+      value: 
+      objectReference: {fileID: 1895673229}
     - target: {fileID: 6438397716004234959, guid: af571a86339ef004486b398324c9916d, type: 3}
       propertyPath: m_Name
       value: EnemyRock
@@ -2933,6 +2987,14 @@ PrefabInstance:
       propertyPath: startPoint
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234953, guid: 09c01b51c94140e469d75c57cee0f27d, type: 3}
+      propertyPath: endPointMove
+      value: 
+      objectReference: {fileID: 937099959}
+    - target: {fileID: 6438397716004234953, guid: 09c01b51c94140e469d75c57cee0f27d, type: 3}
+      propertyPath: startPointMove
+      value: 
+      objectReference: {fileID: 937099960}
     - target: {fileID: 6438397716004234959, guid: 09c01b51c94140e469d75c57cee0f27d, type: 3}
       propertyPath: m_Name
       value: EnemyFlyingHomingShot (4)
@@ -44650,6 +44712,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6438397716004234953, guid: c835f086256e5994e86f2239ca86db84, type: 3}
+      propertyPath: endPointMove
+      value: 
+      objectReference: {fileID: 1158474792}
+    - target: {fileID: 6438397716004234953, guid: c835f086256e5994e86f2239ca86db84, type: 3}
+      propertyPath: startPointMove
+      value: 
+      objectReference: {fileID: 1158474793}
     - target: {fileID: 6438397716004234959, guid: c835f086256e5994e86f2239ca86db84, type: 3}
       propertyPath: m_Name
       value: Enemy Jerk
@@ -45640,6 +45710,16 @@ PrefabInstance:
 --- !u!4 &1895673227 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6042062298776732156, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 1895673226}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1895673228 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695721301428, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 1895673226}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1895673229 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695763539346, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
   m_PrefabInstance: {fileID: 1895673226}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1955885734
@@ -52867,6 +52947,16 @@ PrefabInstance:
 --- !u!4 &2024970253 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6042062298776732156, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 2024970252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2024970254 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695721301428, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
+  m_PrefabInstance: {fileID: 2024970252}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2024970255 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3823743695763539346, guid: 476303f9177c58a40a26fc9db607740d, type: 3}
   m_PrefabInstance: {fileID: 2024970252}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2081358659
