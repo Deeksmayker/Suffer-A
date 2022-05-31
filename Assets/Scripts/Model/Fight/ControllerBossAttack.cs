@@ -8,6 +8,7 @@ using Movement;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 
 public class ControllerBossAttack : MonoBehaviour
@@ -118,16 +119,30 @@ public class ControllerBossAttack : MonoBehaviour
         Gizmos.DrawWireCube(attackPosBaseAttack.position, new Vector2(rangeAttackBaseAttackX, rangeAttackBaseAttackY));
     }
 
+    [SerializeField] private GameObject credits;
+
     private void OnDestroy()
     {
         if (GetComponent<Enemy>().health <= 0)
         {
-            DontDestroyOnLoad(gameObject);
-            Destroy(FindObjectOfType<PlayerController>().gameObject);
-            Destroy(FindObjectOfType<CameraStuff>().gameObject);
-            Destroy(FindObjectOfType<InGameUi>().gameObject);
-            SceneManager.LoadScene(0);
-            Destroy(gameObject);
+            StartCoroutine(ShowCreditsAndEndGame());
         }
+    }
+
+    private IEnumerator ShowCreditsAndEndGame()
+    {
+        DontDestroyOnLoad(gameObject);
+        Destroy(FindObjectOfType<PlayerController>().gameObject);
+        Destroy(FindObjectOfType<InGameUi>().gameObject);
+
+        credits = Instantiate(credits);
+        credits.GetComponent<VideoPlayer>().targetCamera = UnityEngine.Camera.main;
+
+        yield return new WaitForSeconds(24);
+        
+        Destroy(FindObjectOfType<CameraStuff>().gameObject);
+
+        SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
 }

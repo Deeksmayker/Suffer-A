@@ -16,5 +16,15 @@ namespace DefaultNamespace
             Destroy(_vid);
             Destroy(gameObject);
         }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StopAllCoroutines();
+                Destroy(_vid);
+                Destroy(gameObject);
+            }
+        }
     }
 }

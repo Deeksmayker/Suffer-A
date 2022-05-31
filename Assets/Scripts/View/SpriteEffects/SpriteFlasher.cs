@@ -23,17 +23,26 @@ namespace DefaultNamespace.SpriteEffects
         
         private IEnumerator Flash(GameObject obj)
         {
-            var sprite = obj.GetComponent<SpriteRenderer>();
-            if (sprite == null)
+            var sprites = obj.GetComponentsInChildren<SpriteRenderer>();
+            if (sprites == null || sprites.Length == 0)
                 yield break;
             
             if (_originalMaterial == null)
-                _originalMaterial = sprite.material;
+                _originalMaterial = sprites[0].material;
+
+            foreach (var sprite in sprites)
+            {
+                sprite.material = flashMaterial;
+            }
             
-            sprite.material = flashMaterial;
             yield return new WaitForSeconds(flashDuration);
-            if (sprite != null)
-                sprite.material = _originalMaterial;
+            if (sprites[0] != null)
+            {
+                foreach (var sprite in sprites)
+                {
+                    sprite.material = _originalMaterial;
+                }
+            }
         }
     }
 }

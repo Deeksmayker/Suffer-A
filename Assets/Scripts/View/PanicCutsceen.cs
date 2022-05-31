@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -22,6 +23,17 @@ namespace DefaultNamespace
             PlayerPreferences.CanMove = true;
             Destroy(_vid);
             Destroy(gameObject);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.End))
+            {
+                StopAllCoroutines();
+                PlayerPreferences.CanMove = true;
+                Destroy(_vid);
+                Destroy(gameObject);
+            }
         }
     }
 }
