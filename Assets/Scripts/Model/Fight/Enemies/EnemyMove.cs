@@ -161,7 +161,7 @@ public class EnemyMove : MonoBehaviour
 
     private void CheckEndPlatform()
     {
-        /*if (transform.position.x >= endPointMove.position.x)
+        if (transform.position.x >= endPointMove.position.x)
         {
             agroDistance = 0;
         }
@@ -169,7 +169,7 @@ public class EnemyMove : MonoBehaviour
         if (transform.position.x <= startPointMove.position.x )
         {
             agroDistance = 0;
-        }*/
+        }
 
         if (transform.position.x < endPointMove.position.x - 4 && transform.position.x > startPointMove.position.x + 4 && mobOption != mobOptions.standingMob)
         {

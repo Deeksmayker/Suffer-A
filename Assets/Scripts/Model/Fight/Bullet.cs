@@ -70,13 +70,19 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.GetComponent<Enemy>() != null && _isChangedDirection)
+        {
             col.GetComponent<Enemy>().TakeDamage(2);
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.GetComponent<Enemy>() != null && _isChangedDirection)
+        {
             col.gameObject.GetComponent<Enemy>().TakeDamage(2);
+            Destroy(gameObject);
+        }
     }
 
     private void ChangeDirectionOnPowerDamaged()

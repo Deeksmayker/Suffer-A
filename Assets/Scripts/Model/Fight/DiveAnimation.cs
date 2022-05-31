@@ -19,8 +19,7 @@ namespace DefaultNamespace
             enemyAttackDive = GetComponentInParent<EnemyAttackDive>();
             enemyAttackDive.OnAttacking.AddListener(() => {
                 _animator.SetTrigger(isAttackBat);
-                Debug.Log(1);
-                });
+            });
         }
     }
 }

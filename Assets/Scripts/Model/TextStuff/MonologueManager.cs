@@ -58,7 +58,6 @@ namespace DefaultNamespace.TextStuff
 
         private IEnumerator TypeSentence(string sentence)
         {
-            Debug.Log(sentence);
             _monologueText.text = "";
             foreach (var letter in sentence.ToCharArray())
             {
