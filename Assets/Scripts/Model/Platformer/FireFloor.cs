@@ -12,11 +12,11 @@ namespace DefaultNamespace.Platformer
 
         private Animator _fireFloorEffectAnimator;
         
-        private Coroutine _coroutine;
-        private bool _isRunning;
+        private bool _onFire;
 
         private void Awake()
         {
+            _counter = timeForTakeDamage;
             _fireFloorEffectAnimator = GameObject.Find("FireFloorEffect").GetComponent<Animator>();
         }
 
@@ -26,31 +26,7 @@ namespace DefaultNamespace.Platformer
                 return;
             
             _fireFloorEffectAnimator.SetBool("fire", true);
-        }
-
-        private void OnCollisionStay2D(Collision2D collision)
-        {
-            if (collision.gameObject.GetComponent<PlayerController>() == null)
-                return;
-
-            collision.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.yellow;
-            if (PlayerInGameInput.HorizontalRaw == 0)
-            {
-                if (!_isRunning)
-                {
-                    _coroutine = StartCoroutine(WaitForTime());
-                    _isRunning = true;
-                }
-            }
-            else
-            {
-                if (_isRunning)
-                {
-                    StopCoroutine(_coroutine);
-                    _isRunning = false;
-                }
-            }
-
+            _onFire = true;
         }
 
         private void OnCollisionExit2D(Collision2D other)
@@ -58,23 +34,38 @@ namespace DefaultNamespace.Platformer
             if (other.gameObject.GetComponent<PlayerController>() == null)
                 return;
             other.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.white;
-            StopCoroutine(_coroutine);
-            _isRunning = false;
+            _onFire = false;
             _fireFloorEffectAnimator.SetBool("fire", false);
         }
 
-        private IEnumerator WaitForTime()
+        private float _counter;
+        
+        private void Update()
         {
-            var time = 0f;
-
-            while (time < timeForTakeDamage)
+            if (PlayerInGameInput.HorizontalRaw != 0)
             {
-                time += Time.deltaTime;
-                yield return null;
+                _counter = timeForTakeDamage;
+                return;
             }
             
-            PlayerHealth.OnHitTaken.Invoke(1);
-            _isRunning = false;
-        } 
+            if (_onFire)
+            {
+                if (_counter <= 0)
+                {
+                    PlayerHealth.OnHitTaken.Invoke(1);
+                    _counter = timeForTakeDamage;
+                }
+
+                else
+                {
+                    _counter -= Time.deltaTime;
+                }
+            }
+
+            else
+            {
+                _counter = timeForTakeDamage;
+            }
+        }
     }
 }
