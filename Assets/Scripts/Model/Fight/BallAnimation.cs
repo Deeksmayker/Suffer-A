@@ -17,11 +17,9 @@ public class BallAnimation : MonoBehaviour
         enemyAttackBall = GetComponentInParent<EnemyAttackBall>();
         enemyAttackBall.OnPrepare.AddListener(() => {
             _animator.SetTrigger(isPrepare);
-            Debug.Log(1);
         });
         enemyAttackBall.OnEndRolling.AddListener(() => {
             _animator.SetTrigger(isEndRolling);
-            Debug.Log(2);
         });
     }
 }
