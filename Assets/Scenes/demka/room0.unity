@@ -185,6 +185,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 5523954053508556252, guid: 1f14305fc84c1824bafa5d67f0973210, type: 3}
   m_PrefabInstance: {fileID: 541066643}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &541066645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1971426875, guid: 1f14305fc84c1824bafa5d67f0973210, type: 3}
+  m_PrefabInstance: {fileID: 541066643}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a8320f472543cd8f8a3a2ad0e6d17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &594650447
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +532,26 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3271814599228235410, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3271814599228235410, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 541066645}
+    - target: {fileID: 3271814599228235410, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 3271814599228235410, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Camera.CameraStuff, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3271814599228235410, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4116006276832049264, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
       propertyPath: textOnNewJournalNote.sentences.Array.size
       value: 1
@@ -536,6 +567,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4802371663410648176, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7123465045121707817, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9038717783527888659, guid: 8f037c4d3eeaa71459ccfbd62cca6021, type: 3}
