@@ -1230,6 +1230,80 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96bb613c79be3464683007b551a36eda, type: 3}
+--- !u!1001 &469681523
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1504673056}
+    m_Modifications:
+    - target: {fileID: 8464473548138332081, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: monologue.sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332081, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: monologue.sentences.Array.data[0]
+      value: "\u0417\u0430\u0447\u0435\u043C \u0432\u0441\u0451 \u044D\u0442\u043E"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332081, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: monologue.sentences.Array.data[1]
+      value: "\u042F \u0442\u0430\u043A \u0443\u0441\u0442\u0430\u043B...."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332086, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: m_Name
+      value: MonologueTriggerNige (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -42.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.46112
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+--- !u!4 &469681524 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+  m_PrefabInstance: {fileID: 469681523}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &482698163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19121,6 +19195,7 @@ Transform:
   - {fileID: 1793829141}
   - {fileID: 1547255426}
   - {fileID: 482698164}
+  - {fileID: 469681524}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19216,7 +19291,7 @@ PrefabInstance:
     - target: {fileID: 8464473548138332081, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
       propertyPath: monologue.sentences.Array.data[0]
       value: "\u041F\u043E\u0434\u043E\u0437\u0440\u0438\u0442\u0435\u043B\u044C\u043D\u0430\u044F
-        \u0441\u0442\u0435\u043D\u0430"
+        \u0441\u0442\u0435\u043D\u0430....."
       objectReference: {fileID: 0}
     - target: {fileID: 8464473548138332086, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
       propertyPath: m_Name
@@ -19228,11 +19303,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.1406546
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8882904
+      value: 3.21
       objectReference: {fileID: 0}
     - target: {fileID: 8464473548138332093, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19694,8 +19769,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1504673056}
     m_Modifications:
     - target: {fileID: 8464473548138332081, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: monologue.sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332081, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
       propertyPath: monologue.sentences.Array.data[0]
-      value: "\u0412\u0441\u0435 \u043D\u0438\u0436\u0435 \u0438 \u043D\u0438\u0436\u0435..."
+      value: "\u0415\u0449\u0435 \u043D\u0438\u0436\u0435"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464473548138332081, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
+      propertyPath: monologue.sentences.Array.data[1]
+      value: "\u042F \u0442\u0430\u043A \u0443\u0441\u0442\u0430\u043B...."
       objectReference: {fileID: 0}
     - target: {fileID: 8464473548138332086, guid: ded97cd48f8fb784e8eb1b0042c4dc14, type: 3}
       propertyPath: m_Name

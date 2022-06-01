@@ -43,9 +43,12 @@ namespace DefaultNamespace.Pickups
         {
             if (other.GetComponent<PlayerController>() == null || PickupsUseHandler.PickupUsed(gameObject.name))
                 return;
-            
+
             if (Input.GetKey(PlayerInGameInput.InteractionKey))
+            {
+                DontDestroyOnLoad(gameObject);
                 Interact();
+            }
         }
 
         private void OnTriggerExit2D(Collider2D other)

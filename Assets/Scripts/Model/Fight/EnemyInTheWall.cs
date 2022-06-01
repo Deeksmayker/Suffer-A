@@ -20,16 +20,19 @@ public class EnemyInTheWall : MonoBehaviour
     public UnityEvent OnUnSleep = new UnityEvent();
 
     private ParticleSystem _particles;
-    private ParticleSystem _particleInstance;
-        
+
     private void Start()
     {
         _particles = GetComponentInChildren<ParticleSystem>();
-        _particleInstance = Instantiate(_particles, transform.position, Quaternion.identity);
+        _particles.Play();
         player = GameObject.FindWithTag("Player").transform;
         enemyMove = GetComponent<EnemyMove>();
         
-        enemyMove.OnStun.AddListener(() => StartCoroutine(Stun()));
+        enemyMove.OnStun.AddListener(() =>
+        {
+            StopAllCoroutines();
+            StartCoroutine(Stun());
+        });
     }
 
     private bool _inStun;
@@ -48,9 +51,11 @@ public class EnemyInTheWall : MonoBehaviour
     private IEnumerator Stun()
     {
         _inStun = true;
-        Destroy(_particleInstance);
-        yield return new WaitForSeconds(3);
-        _particleInstance = _particles;
+        _particles.Stop();
+        yield return new WaitForSeconds(2);
+        _particles.Play();
+
+        yield return new WaitForSeconds(4);
         _inStun = false;
     }
 
