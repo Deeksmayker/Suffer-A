@@ -5538,10 +5538,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5620941944247967656, guid: 9bc29dce5b7168a4c976157fc8a44226, type: 3}
-      propertyPath: damagedSound
-      value: 
-      objectReference: {fileID: 1743951009046387815, guid: 61fb14ef86f39b143bb2abda9eed9126, type: 3}
     - target: {fileID: 107537497407455088, guid: 9bc29dce5b7168a4c976157fc8a44226, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5589,22 +5585,6 @@ PrefabInstance:
     - target: {fileID: 107537497407455092, guid: 9bc29dce5b7168a4c976157fc8a44226, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6149108227015610740, guid: 9bc29dce5b7168a4c976157fc8a44226, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6425130335709075669, guid: 9bc29dce5b7168a4c976157fc8a44226, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7924411826029749337, guid: 9bc29dce5b7168a4c976157fc8a44226, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7924411826029749337, guid: 9bc29dce5b7168a4c976157fc8a44226, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9bc29dce5b7168a4c976157fc8a44226, type: 3}

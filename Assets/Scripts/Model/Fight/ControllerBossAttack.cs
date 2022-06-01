@@ -119,11 +119,13 @@ public class ControllerBossAttack : MonoBehaviour
         Gizmos.DrawWireCube(attackPosBaseAttack.position, new Vector2(rangeAttackBaseAttackX, rangeAttackBaseAttackY));
     }
 
+    public static UnityEvent OnBossKilled = new UnityEvent();
+    
     private void OnDestroy()
     {
         if (GetComponent<Enemy>().health <= 0)
         {
-            StartCoroutine(FindObjectOfType<Credits>().PlayCredits());
+            OnBossKilled.Invoke();
             Destroy(FindObjectOfType<PlayerController>().gameObject);
             Destroy(FindObjectOfType<InGameUi>().gameObject);
         }
