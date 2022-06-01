@@ -9,5 +9,10 @@ namespace Camera
         {
             DontDestroyOnLoad(gameObject);
         }
+
+        public void SetAudio(bool flag)
+        {
+            GetComponentInChildren<AudioListener>().enabled = flag;
+        }
     }
 }
