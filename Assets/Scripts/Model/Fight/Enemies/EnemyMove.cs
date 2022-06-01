@@ -162,14 +162,11 @@ public class EnemyMove : MonoBehaviour
     {
         if (transform.position.x >= endPointMove.position.x)
         {
-            Debug.Log(gameObject.name + " " + endPointMove.position);
             agroDistance = 0;
         }
 
         if (transform.position.x <= startPointMove.position.x )
         {
-            Debug.Log(gameObject.name + " позиция меньше стартпоинта");
-
             agroDistance = 0;
         }
 

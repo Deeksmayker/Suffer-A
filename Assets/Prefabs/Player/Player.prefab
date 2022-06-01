@@ -253,7 +253,7 @@ MonoBehaviour:
   healDuration: 2
   healParticles: {fileID: 6870273931962037729, guid: 6842778a73aa83a40b4f65f66f68da9d, type: 3}
   hitParticles: {fileID: 8726942104815698756, guid: e4c2871cf3bc68e45bb77b402e050e9a, type: 3}
-  damagedSound: {fileID: 0}
+  damagedSound: {fileID: 1743951009046387815, guid: 61fb14ef86f39b143bb2abda9eed9126, type: 3}
 --- !u!114 &2341990547614878307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2694,7 +2694,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5446017774521673814, guid: 22dd806eab2aa4b49b8ec69b985542ac, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4733766843621203114, guid: 22dd806eab2aa4b49b8ec69b985542ac, type: 3}
       propertyPath: m_Bounds.m_Center.x
@@ -2747,6 +2747,10 @@ PrefabInstance:
     - target: {fileID: 496984310279959236, guid: 22dd806eab2aa4b49b8ec69b985542ac, type: 3}
       propertyPath: m_Bounds.m_Extent.y
       value: 1.345
+      objectReference: {fileID: 0}
+    - target: {fileID: 920129021633028743, guid: 22dd806eab2aa4b49b8ec69b985542ac, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 920129021633028743, guid: 22dd806eab2aa4b49b8ec69b985542ac, type: 3}
       propertyPath: m_SortingOrder

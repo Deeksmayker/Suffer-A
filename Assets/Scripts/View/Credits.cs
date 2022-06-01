@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Camera;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,7 +11,12 @@ namespace DefaultNamespace
     {
         [SerializeField] private GameObject video;
         private GameObject _vid;
-        
+
+        private void Awake()
+        {
+            ControllerBossAttack.OnBossKilled.AddListener(() => StartCoroutine(PlayCredits()));
+        }
+
         public IEnumerator PlayCredits()
         {
             _vid = Instantiate(video);
