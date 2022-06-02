@@ -14,23 +14,23 @@ namespace DefaultNamespace
 
         private IEnumerator Start()
         {
-#if UNITY_WEBGL || !UNITY_EDITOR
-            yield return YandexGamesSdk.WaitForInitialization();
-            InterestialAd.Show();
-#endif
 
             vid = Instantiate(video);
             vid.GetComponent<VideoPlayer>().targetCamera = UnityEngine.Camera.main;
             yield return new WaitForSeconds(8);
             Destroy(vid);
+            
+            yield return YandexGamesSdk.WaitForInitialization();
+            InterestialAd.Show();
         }
 
         private void Update()
         {
-            if (Input.anyKey)
+            if (Input.anyKey && vid != null)
             {
                 Destroy(vid);
                 StopAllCoroutines();
+                InterestialAd.Show();
             }
         }
 
