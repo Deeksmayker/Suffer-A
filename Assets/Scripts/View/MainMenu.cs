@@ -9,16 +9,19 @@ namespace DefaultNamespace
 {
     public class MainMenu : MonoBehaviour
     {
-        [SerializeField] private GameObject video;
-        private GameObject vid;
-
+        private VideoPlayer videoPlayer;
+        
         private IEnumerator Start()
         {
+            videoPlayer = GetComponent<VideoPlayer>();
+            videoPlayer.url = System.IO.Path.Combine (Application.streamingAssetsPath,"zagruzka.mp4"); 
 
-            vid = Instantiate(video);
-            vid.GetComponent<VideoPlayer>().targetCamera = UnityEngine.Camera.main;
+
+
+            videoPlayer.Play();
+            videoPlayer.targetCamera = UnityEngine.Camera.main;
             yield return new WaitForSeconds(8);
-            Destroy(vid);
+            Destroy(videoPlayer);
             
             yield return YandexGamesSdk.WaitForInitialization();
             InterestialAd.Show();
@@ -26,9 +29,9 @@ namespace DefaultNamespace
 
         private void Update()
         {
-            if (Input.anyKey && vid != null)
+            if (Input.GetKeyDown(KeyCode.Space) && videoPlayer != null)
             {
-                Destroy(vid);
+                Destroy(videoPlayer);
                 StopAllCoroutines();
                 InterestialAd.Show();
             }
