@@ -21,7 +21,7 @@ namespace DefaultNamespace
 
         private void Update()
         {
-            if (Input.anyKey)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 Destroy(vid);
                 StopAllCoroutines();

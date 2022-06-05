@@ -10,6 +10,15 @@ namespace DefaultNamespace
         private GameObject _vid;
         private IEnumerator Start()
         {
+            PlayerPreferences.CurrentHealth = PlayerPreferences.MaxHealth;
+            PlayerPreferences.CurrentBlood = PlayerPreferences.MaxBlood;
+            PlayerPreferences.FaceRight = true;
+            PlayerPreferences.AttackAvailable = false;
+            PlayerPreferences.MaxLungeAirCount = 0;
+            PlayerPreferences.HorizontalAbilityAvailable = false;
+            PlayerPreferences.UpAbilityAvailable = false;
+            PlayerPreferences.DownAbilityAvailable = false;
+
             PlayerPreferences.CanMove = false;
             _vid = Instantiate(video);
             _vid.GetComponent<VideoPlayer>().targetCamera = UnityEngine.Camera.main;
