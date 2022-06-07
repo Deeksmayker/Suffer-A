@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace DefaultNamespace
 {
+    [Serializable]
     public class PlayerPreferences
     {
+        public static int CurrentSceneIndex = 0;
+        
         public static float RespawnTime = 3;
         
         public static int MaxHealth = 4;

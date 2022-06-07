@@ -94,10 +94,8 @@ namespace DefaultNamespace.Fight
 
         private IEnumerator ShowAdd()
         {
-#if UNITY_WEBGL || !UNITY_EDITOR
             yield return YandexGamesSdk.WaitForInitialization();
             InterestialAd.Show();
-#endif
         }
 
         private IEnumerator Heal()

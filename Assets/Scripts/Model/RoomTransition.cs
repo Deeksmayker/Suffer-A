@@ -38,6 +38,7 @@ namespace DefaultNamespace
 
         private IEnumerator LoadRoom(PlayerController playerController)
         {
+            PlayerPreferences.CurrentSceneIndex = sceneIndex;
             DontDestroyOnLoad(gameObject);
 
             _blackScreen.SetBool("fade", true);

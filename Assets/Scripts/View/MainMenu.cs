@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Agava.YandexGames;
+using Movement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
@@ -15,18 +16,6 @@ namespace DefaultNamespace
         {
             yield return YandexGamesSdk.WaitForInitialization();
             InterestialAd.Show();
-            LoadFirstScene();
-            
-            videoPlayer = GetComponent<VideoPlayer>();
-            videoPlayer.url = System.IO.Path.Combine (Application.streamingAssetsPath,"zagruzka.mp4");
-
-            videoPlayer.Play();
-            videoPlayer.targetCamera = UnityEngine.Camera.main;
-            yield return new WaitForSeconds(8);
-            Destroy(videoPlayer);
-            Destroy(GameObject.Find("Cube"));
-            
-            
         }
 
         private void Update()
@@ -43,6 +32,36 @@ namespace DefaultNamespace
         public void LoadFirstScene()
         {
             SceneManager.LoadScene(1);
+        }
+
+        public void LoadPlayerPrefsS()
+        {
+            StartCoroutine(LoadPlayerPrefs());
+        }
+        
+        private IEnumerator LoadPlayerPrefs() 
+        {
+            PlayerPreferences.CurrentSceneIndex = PlayerPrefs.GetInt("scene");
+            if (PlayerPreferences.CurrentSceneIndex == 0)
+                yield break;
+            DontDestroyOnLoad(gameObject);
+            PlayerPreferences.AttackAvailable = PlayerPrefs.GetInt("attack") == 1;
+            PlayerPreferences.HorizontalAbilityAvailable = PlayerPrefs.GetInt("horizontal") == 1;
+            PlayerPreferences.UpAbilityAvailable = PlayerPrefs.GetInt("up") == 1;
+            PlayerPreferences.DownAbilityAvailable = PlayerPrefs.GetInt("down") == 1;
+            PlayerPreferences.MaxLungeAirCount = PlayerPrefs.GetInt("airLunge");
+            PlayerPreferences.CurrentHealth = PlayerPrefs.GetInt("health");
+            PlayerPreferences.CurrentBlood = PlayerPrefs.GetFloat("blood");
+            PlayerPreferences.MajorSpawnPoint =
+                new Vector2(PlayerPrefs.GetFloat("majorX"), PlayerPrefs.GetFloat("majorY"));
+
+            LoadFirstScene();
+            yield return null;
+            SceneManager.LoadScene(PlayerPreferences.CurrentSceneIndex);
+
+            GameObject.FindWithTag("Player").gameObject.transform.position = PlayerPreferences.MajorSpawnPoint;
+            
+            Destroy(gameObject);
         }
 
         public void QuitGame()
