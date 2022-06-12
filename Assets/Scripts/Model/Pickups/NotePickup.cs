@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using DefaultNamespace.TextStuff.JournalStuff;
+using Lean.Localization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,9 +19,12 @@ namespace DefaultNamespace.Pickups
             base.Interact();
         }
 
+        [SerializeField] private LeanPhrase phrase;
+        
         public override IEnumerator ShowInfoPanel()
         {
-            infoPanel.GetComponentInChildren<Text>().text = "Поднята записка";
+            infoPanel.GetComponentInChildren<Text>().text = phrase.Entries
+                .Find(a => a.Language == Lean.Localization.LeanLocalization.GetFirstCurrentLanguage()).Text;
             infoPanel.GetComponent<Image>().enabled = true;
             infoPanel.GetComponentInChildren<Text>().enabled = true;
             ParticleInstance.Stop();

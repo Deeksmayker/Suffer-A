@@ -15,7 +15,7 @@ namespace DefaultNamespace.Pickups
 
         public override IEnumerator ShowInfoPanel()
         {
-            infoPanel.GetComponentInChildren<Text>().text = "Способность. В сторону и F";
+            infoPanel.GetComponentInChildren<Text>().text = "↔ + F";
             infoPanel.GetComponent<Image>().enabled = true;
             infoPanel.GetComponentInChildren<Text>().enabled = true;
             ParticleInstance.Stop();

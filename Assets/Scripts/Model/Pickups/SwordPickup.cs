@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Lean.Localization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,9 +18,12 @@ namespace DefaultNamespace.Pickups
             base.Interact();
         }
 
+        [SerializeField] private LeanPhrase phrase;
+        
         public override IEnumerator ShowInfoPanel()
         {
-            infoPanel.GetComponentInChildren<Text>().text = "Атака X. Если зажать и отжать в нужный момент произведется усиленная атака";
+            infoPanel.GetComponentInChildren<Text>().text = phrase.Entries
+                .Find(a => a.Language == Lean.Localization.LeanLocalization.GetFirstCurrentLanguage()).Text;
             infoPanel.GetComponent<Image>().enabled = true;
             infoPanel.GetComponentInChildren<Text>().enabled = true;
             ParticleInstance.Stop();
