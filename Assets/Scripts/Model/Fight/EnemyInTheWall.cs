@@ -55,7 +55,7 @@ public class EnemyInTheWall : MonoBehaviour
         yield return new WaitForSeconds(2);
         _particles.Play();
 
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         _inStun = false;
     }
 

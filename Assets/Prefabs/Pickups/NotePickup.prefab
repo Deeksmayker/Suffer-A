@@ -96,3 +96,4 @@ MonoBehaviour:
   sound: {fileID: 1743951009046387815, guid: cc6c29d68efd628488b3a86eb247246a, type: 3}
   noteIndex: 0
   pickSound: {fileID: 1743951009046387815, guid: 34076401fda000d49a94b10db7476494, type: 3}
+  phrase: {fileID: 2085790008314514683, guid: 861a67d2618d4434ab9d6e746de90cba, type: 3}
