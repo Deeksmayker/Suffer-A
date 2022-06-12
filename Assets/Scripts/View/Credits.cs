@@ -21,7 +21,7 @@ namespace DefaultNamespace
         {
             VideoAd.Show();
             
-            canvas = Instantiate(canvas);
+            canvas.SetActive(true);
             canvas.GetComponent<Canvas>().worldCamera = UnityEngine.Camera.main;
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
             Destroy(FindObjectOfType<CameraStuff>().gameObject);
