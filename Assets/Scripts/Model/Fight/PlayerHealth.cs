@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Agava.YandexGames;
 using Movement;
 using UnityEngine;
 using UnityEngine.Events;
@@ -89,13 +88,12 @@ namespace DefaultNamespace.Fight
         public void Die()
         {
             OnDie.Invoke();
-            StartCoroutine(ShowAdd());
+            ShowAdd();
         }
 
-        private IEnumerator ShowAdd()
+        private void ShowAdd()
         {
-            yield return YandexGamesSdk.WaitForInitialization();
-            InterestialAd.Show();
+            
         }
 
         private IEnumerator Heal()

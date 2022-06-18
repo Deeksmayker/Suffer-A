@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
-using Agava.YandexGames;
 using Camera;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
@@ -11,6 +11,7 @@ namespace DefaultNamespace
     public class Credits : MonoBehaviour
     {
         [SerializeField] private GameObject canvas;
+        public static UnityEvent OnGameEnd = new UnityEvent();
 
         private void Awake()
         {
@@ -19,8 +20,7 @@ namespace DefaultNamespace
 
         public IEnumerator PlayCredits()
         {
-            VideoAd.Show();
-            
+            OnGameEnd.Invoke();
             canvas.SetActive(true);
             canvas.GetComponent<Canvas>().worldCamera = UnityEngine.Camera.main;
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));

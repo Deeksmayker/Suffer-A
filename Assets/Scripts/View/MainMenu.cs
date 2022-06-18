@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections;
-using Agava.YandexGames;
 using Movement;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
+using YG;
 
 namespace DefaultNamespace
 {
     public class MainMenu : MonoBehaviour
     {
         private VideoPlayer videoPlayer;
+        public UnityEvent onGameLaunch = new UnityEvent();
         
-        private IEnumerator Start()
+        private void Start()
         {
-            yield return YandexGamesSdk.WaitForInitialization();
-            InterestialAd.Show();
+            onGameLaunch.Invoke();
         }
 
         private void Update()
@@ -25,7 +26,7 @@ namespace DefaultNamespace
                 Destroy(videoPlayer);
                 Destroy(GameObject.Find("Cube"));
                 StopAllCoroutines();
-                InterestialAd.Show();
+                //InterestialAd.Show();
             }
         }
 
@@ -44,6 +45,7 @@ namespace DefaultNamespace
             PlayerPreferences.CurrentSceneIndex = PlayerPrefs.GetInt("scene");
             if (PlayerPreferences.CurrentSceneIndex == 0)
                 yield break;
+            
             DontDestroyOnLoad(gameObject);
             PlayerPreferences.AttackAvailable = PlayerPrefs.GetInt("attack") == 1;
             PlayerPreferences.HorizontalAbilityAvailable = PlayerPrefs.GetInt("horizontal") == 1;
@@ -56,17 +58,25 @@ namespace DefaultNamespace
                 new Vector2(PlayerPrefs.GetFloat("majorX"), PlayerPrefs.GetFloat("majorY"));
 
             LoadFirstScene();
+            RemoveSpeedrun();
             yield return null;
             SceneManager.LoadScene(PlayerPreferences.CurrentSceneIndex);
 
             GameObject.FindWithTag("Player").gameObject.transform.position = PlayerPreferences.MajorSpawnPoint;
-            
             Destroy(gameObject);
         }
 
         public void QuitGame()
         {
             Application.Quit();
+        }
+
+        public void RemoveSpeedrun()
+        {
+            Destroy(GameObject.Find("SpeedrunCanvas"));
+            Destroy(GameObject.Find("SpeedrunCanvas"));
+            
+
         }
     }
 }

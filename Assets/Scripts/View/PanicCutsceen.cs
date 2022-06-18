@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
-using Agava.YandexGames;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Video;
 
 namespace DefaultNamespace
@@ -9,10 +9,11 @@ namespace DefaultNamespace
     public class PanicCutsceen : MonoBehaviour
     {
 
-        private IEnumerator Start()
+        public UnityEvent onRoomEnter = new UnityEvent();
+        
+        private void Start()
         {
-            yield return YandexGamesSdk.WaitForInitialization();
-            VideoAd.Show();
+            onRoomEnter.Invoke();
         }
     }
 }

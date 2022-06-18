@@ -6,6 +6,7 @@ namespace DefaultNamespace
     [Serializable]
     public class PlayerPreferences
     {
+
         public static int CurrentSceneIndex = 0;
         
         public static float RespawnTime = 3;

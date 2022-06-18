@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Video;
 
 namespace DefaultNamespace
 {
     public class FirstRoomCutscene : MonoBehaviour
     {
+        public static UnityEvent OnPlayBegin = new UnityEvent();
+        
         private void Start()
         {
             PlayerPreferences.CurrentHealth = PlayerPreferences.MaxHealth;
@@ -17,6 +20,8 @@ namespace DefaultNamespace
             PlayerPreferences.HorizontalAbilityAvailable = false;
             PlayerPreferences.UpAbilityAvailable = false;
             PlayerPreferences.MaxLungeAirCount = 0;
+            
+            OnPlayBegin.Invoke();
         }
     }
 }
